@@ -319,6 +319,22 @@ dialog::backdrop{background:rgba(0,0,0,.45)}
   letter-spacing:.05em;text-transform:uppercase}
 .dlg-b{padding:16px}
 .dlg-f{padding:12px 16px;border-top:1px solid var(--rule);display:flex;gap:8px;justify-content:flex-end}
+.wallgrid{display:grid;grid-template-columns:1fr 1fr;gap:6px;margin-top:9px}
+.wallchip{
+  display:flex;align-items:center;gap:6px;padding:6px 8px;font-size:11.5px;cursor:pointer;
+  background:var(--paper);border:1px solid var(--rule);border-radius:5px;color:var(--ink);
+  text-align:left
+}
+.wallchip:hover{border-color:var(--rule-strong);background:var(--surface-2)}
+.wallchip .sw{width:4px;height:13px;border-radius:1px;background:var(--poche);flex:none}
+.wallchip .st{
+  margin-left:auto;font-size:9.5px;letter-spacing:.07em;text-transform:uppercase;
+  color:var(--graphite-2)
+}
+.wallchip.off{opacity:.7;border-style:dashed}
+.wallchip.off .sw{background:none;border-left:2px dotted var(--rule-strong)}
+.wallchip.off .st{color:var(--stamp)}
+
 .runrow{
   display:grid;grid-template-columns:auto 1fr auto 14px auto;align-items:center;gap:9px;
   padding:7px 4px;border-bottom:1px solid var(--rule);font-size:12.5px;cursor:pointer
@@ -734,6 +750,7 @@ let S = {
   items:[],
   sel:null,
   selPart:null,              // index into room.partitions
+  selWall:null,              // "N" | "E" | "S" | "W"
   view:{ z:0.09, px:60, py:40 },
   snap:true, grid:true, dims:true,
   plan:true, planOp:0.5,
@@ -766,7 +783,7 @@ function loadPreset(id, keepView){
 }
 
 function snapshot(){
-  undoStack.push(JSON.stringify({room:S.room, items:S.items, sel:S.sel, selPart:S.selPart}));
+  undoStack.push(JSON.stringify({room:S.room, items:S.items, sel:S.sel, selPart:S.selPart, selWall:S.selWall}));
   if(undoStack.length > 80) undoStack.shift();
   redoStack = [];
   syncUndoButtons();
@@ -775,16 +792,17 @@ function restore(json){
   const d = JSON.parse(json);
   S.room = d.room; S.items = d.items; S.sel = d.sel;
   S.selPart = (d.selPart ?? null);
+  S.selWall = (d.selWall ?? null);
   renderAll();
 }
 function undo(){
   if(!undoStack.length) return;
-  redoStack.push(JSON.stringify({room:S.room, items:S.items, sel:S.sel, selPart:S.selPart}));
+  redoStack.push(JSON.stringify({room:S.room, items:S.items, sel:S.sel, selPart:S.selPart, selWall:S.selWall}));
   restore(undoStack.pop()); syncUndoButtons();
 }
 function redo(){
   if(!redoStack.length) return;
-  undoStack.push(JSON.stringify({room:S.room, items:S.items, sel:S.sel, selPart:S.selPart}));
+  undoStack.push(JSON.stringify({room:S.room, items:S.items, sel:S.sel, selPart:S.selPart, selWall:S.selWall}));
   restore(redoStack.pop()); syncUndoButtons();
 }
 function syncUndoButtons(){
@@ -903,6 +921,12 @@ function positionTrash(){
       ? { x:p.to, y:p.pos }
       : { x:p.pos + partThick(p), y:p.from };
   }
+  else if(S.selWall !== null){
+    const R = S.room, t = R.t || 90;
+    const mid = { N:{x:R.w/2, y:-t}, S:{x:R.w/2, y:R.h+t},
+                  W:{x:-t, y:R.h/2}, E:{x:R.w+t, y:R.h/2} }[S.selWall];
+    anchor = mid;
+  }
   if(!anchor){ btn.classList.remove("on"); return; }
   const sx = (sr.left - wrap.left) + S.view.px + anchor.x*S.view.z;
   const sy = (sr.top  - wrap.top)  + S.view.py + anchor.y*S.view.z;
@@ -911,7 +935,26 @@ function positionTrash(){
   btn.classList.add("on");
 }
 
+/* Deleting a perimeter wall opens that side rather than reshaping the
+   room, which is what the east side already is where it meets dining. */
+function removeWall(k){
+  const R = S.room;
+  R.openings = (R.openings||[]).filter(o => o.side !== k);
+  R.openings.push({ side:k, from:0, to:sideLen(k), kind:"open" });
+}
+function restoreWall(k){
+  const R = S.room;
+  R.openings = (R.openings||[]).filter(o =>
+    !(o.side === k && o.kind === "open" && o.from <= 0 && o.to >= sideLen(k)));
+}
+
 function deleteSelection(){
+  if(S.selWall !== null){
+    const k = S.selWall;
+    snapshot(); removeWall(k); S.selWall = null;
+    renderAll(); flash(`${SIDE_NAME[k]} removed`);
+    return;
+  }
   if(S.sel !== null){
     const it = S.items.find(i => i.id === S.sel);
     if(!it) return;
@@ -983,6 +1026,21 @@ function solidSpans(len, ops){
   if(c < len) out.push([c, len]);
   return out;
 }
+/* The four perimeter walls, each with the geometry of one span of it. */
+const SIDE_NAME = { N:"North wall", E:"East wall", S:"South wall", W:"West wall" };
+function wallSides(){
+  const R = S.room, t = R.t || 90;
+  return [
+    { k:"N", len:R.w, rect:(a,b) => ({x:a,   y:-t,  width:b-a, height:t}) },
+    { k:"S", len:R.w, rect:(a,b) => ({x:a,   y:R.h, width:b-a, height:t}) },
+    { k:"W", len:R.h, rect:(a,b) => ({x:-t,  y:a,   width:t, height:b-a}) },
+    { k:"E", len:R.h, rect:(a,b) => ({x:R.w, y:a,   width:t, height:b-a}) }
+  ];
+}
+const sideLen = k => (k === "N" || k === "S") ? S.room.w : S.room.h;
+const sideOps = k => (S.room.openings||[]).filter(o => o.side === k);
+const sideIsOpen = k => solidSpans(sideLen(k), sideOps(k)).length === 0;
+
 const partThick = p => p.t || S.room.t || 90;
 const partLimit = p => (p.orient === "h" ? S.room.h : S.room.w) - partThick(p);
 
@@ -994,18 +1052,27 @@ function drawWalls(g, hair){
   const spans = solidSpans;
   const ops = side => (R.openings||[]).filter(o => o.side === side);
 
-  // N and S run the full width plus corners; E and W sit between them.
-  for(const [a,b] of spans(R.w, ops("N")))
-    el("rect", {x:a, y:-t, width:b-a, height:t, ...solid}, grp);
-  for(const [a,b] of spans(R.w, ops("S")))
-    el("rect", {x:a, y:R.h, width:b-a, height:t, ...solid}, grp);
-  for(const [a,b] of spans(R.h, ops("W")))
-    el("rect", {x:-t, y:a, width:t, height:b-a, ...solid}, grp);
-  for(const [a,b] of spans(R.h, ops("E")))
-    el("rect", {x:R.w, y:a, width:t, height:b-a, ...solid}, grp);
-  // corner blocks
-  for(const [cx,cy] of [[-t,-t],[R.w,-t],[-t,R.h],[R.w,R.h]])
-    el("rect", {x:cx, y:cy, width:t, height:t, ...solid}, grp);
+  // Perimeter walls are selectable, so each solid stretch carries a hit
+  // strip. Deleting one opens that side rather than deforming the room.
+  for(const sd of wallSides()){
+    const segs = spans(sd.len, ops(sd.k));
+    for(const [a,b] of segs) el("rect", {...sd.rect(a,b), ...solid}, grp);
+    if(S.selWall === sd.k)
+      for(const [a,b] of segs)
+        el("rect", {...sd.rect(a,b), fill:"var(--stamp-soft)", stroke:"var(--stamp)",
+          "stroke-width":hair*2, "pointer-events":"none"}, grp);
+    for(const [a,b] of segs){
+      const hit = el("rect", {...sd.rect(a,b), fill:"transparent",
+        style:"cursor:pointer"}, grp);
+      hit.addEventListener("pointerdown", e => selectWall(e, sd.k));
+    }
+  }
+  // A corner block only makes sense where a wall actually arrives at it.
+  const openSide = k => solidSpans(k === "N" || k === "S" ? R.w : R.h, ops(k)).length === 0;
+  for(const [cx,cy,s1,s2] of [[-t,-t,"N","W"],[R.w,-t,"N","E"],
+                              [-t,R.h,"S","W"],[R.w,R.h,"S","E"]])
+    if(!openSide(s1) || !openSide(s2))
+      el("rect", {x:cx, y:cy, width:t, height:t, ...solid}, grp);
 
   // openings: door swings, sliders, open edges
   for(const o of (R.openings||[])) drawOpening(grp, o, t, hair);
@@ -1399,9 +1466,14 @@ function frontClearance(it){
     if(gap >= -20 && gap < best){ best = Math.max(0, gap); what = p.label || "partition"; }
   }
 
-  const wall = horizontal ? (dx > 0 ? R.x1 - face : face - R.x0)
-                          : (dy > 0 ? R.y1 - face : face - R.y0);
-  if(wall < best){ best = Math.max(0, wall); what = "wall"; }
+  const side = horizontal ? (dx > 0 ? "E" : "W") : (dy > 0 ? "S" : "N");
+  const wallSolid = solidSpans(sideLen(side), sideOps(side)).some(([a2,b2]) =>
+    Math.min(hi,b2) - Math.max(lo,a2) >= 60);
+  if(wallSolid){
+    const wall = horizontal ? (dx > 0 ? R.x1 - face : face - R.x0)
+                            : (dy > 0 ? R.y1 - face : face - R.y0);
+    if(wall < best){ best = Math.max(0, wall); what = SIDE_NAME[side].toLowerCase(); }
+  }
   return isFinite(best) ? {dist:best, what} : null;
 }
 
@@ -1635,15 +1707,22 @@ function applyRunChange(){
 /* ------------------------------------------------------------------ */
 /* Interaction                                                         */
 /* ------------------------------------------------------------------ */
+function selectWall(e, k){
+  if(spaceDown) return;
+  e.stopPropagation();
+  S.selWall = k; S.sel = null; S.selPart = null;
+  renderAll();
+}
+
 function beginPartDrag(e, pi){
   if(spaceDown) return;
   e.stopPropagation();
   stage.setPointerCapture(e.pointerId);
   const p = S.room.partitions[pi];
   const w = toWorld(e.clientX, e.clientY);
-  S.selPart = pi; S.sel = null;
+  S.selPart = pi; S.sel = null; S.selWall = null;
   partDrag = { pi, off:(p.orient === "h" ? w.y : w.x) - p.pos, moved:false,
-    start:JSON.stringify({room:S.room, items:S.items, sel:S.sel, selPart:S.selPart}) };
+    start:JSON.stringify({room:S.room, items:S.items, sel:S.sel, selPart:S.selPart, selWall:S.selWall}) };
   renderAll();
 }
 
@@ -1669,9 +1748,9 @@ function beginDrag(e, it){
   e.stopPropagation();
   stage.setPointerCapture(e.pointerId);
   const w = toWorld(e.clientX, e.clientY);
-  S.sel = it.id; S.selPart = null;
+  S.sel = it.id; S.selPart = null; S.selWall = null;
   drag = { id:it.id, ox:w.x - it.x, oy:w.y - it.y, moved:false,
-           start:JSON.stringify({room:S.room, items:S.items, sel:S.sel, selPart:S.selPart}) };
+           start:JSON.stringify({room:S.room, items:S.items, sel:S.sel, selPart:S.selPart, selWall:S.selWall}) };
   renderAll();
 }
 
@@ -1711,7 +1790,7 @@ stage.addEventListener("pointerdown", e => {
     stage.classList.add("panning");
     stage.setPointerCapture(e.pointerId);
     if(e.target === stage && !spaceDown && e.button === 0){
-      S.sel = null; S.selPart = null; renderAll();
+      S.sel = null; S.selPart = null; S.selWall = null; renderAll();
     }
   }
 });
@@ -1787,6 +1866,9 @@ document.addEventListener("keydown", e => {
   if(typing) return;
   const mod = e.ctrlKey || e.metaKey;
   if(mod && e.key.toLowerCase() === "z"){ e.preventDefault(); e.shiftKey ? redo() : undo(); return; }
+  if(S.selWall !== null && (e.key === "Delete" || e.key === "Backspace")){
+    deleteSelection(); e.preventDefault(); return;
+  }
   if(S.sel === null && S.selPart !== null){
     const p = (S.room.partitions||[])[S.selPart];
     if(p){
@@ -1968,8 +2050,44 @@ function renderPartitionInspector(host, p){
   $("pDel").onclick = deleteSelection;
 }
 
+function renderWallInspector(host, k){
+  const R = S.room, t = R.t || 90;
+  const len = sideLen(k);
+  const solidLen = solidSpans(len, sideOps(k)).reduce((n,[a,b]) => n + (b-a), 0);
+  const gap = len - solidLen;
+  host.innerHTML = `
+    <div class="fields">
+      <div class="f full"><label for="wN">Wall</label>
+        <input id="wN" type="text" value="${SIDE_NAME[k]}" readonly></div>
+      <div class="f"><label for="wL">Length mm</label>
+        <input id="wL" type="text" value="${fmt(len)}" readonly></div>
+      <div class="f"><label for="wT">Thickness mm</label>
+        <input id="wT" type="number" step="5" value="${Math.round(t)}"></div>
+    </div>
+    <div class="chk ${gap > 0 ? "warn":"ok"}" style="margin-top:11px">
+      <span class="dot"></span>
+      <span class="t">Solid / open<br>
+        <span class="v">${fmt(solidLen)} solid · ${fmt(gap)} open</span></span>
+    </div>
+    <p class="note" style="margin-top:9px">Deleting a wall opens that side right through,
+      the way the east side already opens to dining. Nothing else moves, and you can put it
+      back from <b>Room shell</b>.</p>
+    <div class="row">
+      <button class="btn danger" id="wDel">
+        <svg class="tc" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+          stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="M3 6h18M8 6V4h8v2M19 6l-1 14H6L5 6"/><path d="M10 11v6M14 11v6"/>
+        </svg>Delete wall</button>
+    </div>`;
+  $("wT").addEventListener("change", e => {
+    snapshot(); R.t = clamp(parseFloat(e.target.value)||90, 20, 400); renderAll();
+  });
+  $("wDel").onclick = deleteSelection;
+}
+
 function renderInspector(){
   const host = $("inspBody");
+  if(S.selWall !== null){ renderWallInspector(host, S.selWall); return; }
   if(S.sel === null && S.selPart !== null){
     const p = (S.room.partitions||[])[S.selPart];
     if(p){ renderPartitionInspector(host, p); return; }
@@ -2060,7 +2178,7 @@ function renderClearances(){
   }
   host.innerHTML = html;
   host.querySelectorAll("[data-id]").forEach(n => {
-    n.addEventListener("click", () => { S.sel = +n.dataset.id; S.selPart = null; renderAll(); });
+    n.addEventListener("click", () => { S.sel = +n.dataset.id; S.selPart = null; S.selWall = null; renderAll(); });
   });
 }
 
@@ -2088,7 +2206,7 @@ function renderSchedule(){
   host.querySelectorAll("tbody tr").forEach(tr => {
     tr.addEventListener("click", () => {
       S.sel = +tr.dataset.ids.split(",")[0];
-      S.selPart = null;
+      S.selPart = null; S.selWall = null;
       renderAll();
     });
   });
@@ -2105,6 +2223,15 @@ function renderRoom(){
       <div class="f full"><label for="rT">Wall thickness mm</label>
         <input id="rT" type="number" step="5" value="${Math.round(R.t||90)}"></div>
     </div>
+    <div class="wallgrid">
+      ${["N","E","S","W"].map(k => {
+        const open = sideIsOpen(k);
+        return `<button class="wallchip${open ? " off":""}" data-side="${k}"
+          title="${open ? "Put this wall back" : "Select this wall"}">
+          <span class="sw"></span>${SIDE_NAME[k].replace(" wall","")}
+          <span class="st">${open ? "open" : "wall"}</span></button>`;
+      }).join("")}
+    </div>
     <div class="row">
       <button class="btn" id="btnWallH">Add wall across</button>
       <button class="btn" id="btnWallV">Add wall down</button>
@@ -2117,6 +2244,17 @@ function renderRoom(){
   bind("rW", v => R.w = clamp(v||1000, 500, 30000));
   bind("rH", v => R.h = clamp(v||1000, 500, 30000));
   bind("rT", v => R.t = clamp(v||90, 20, 400));
+  host.querySelectorAll(".wallchip").forEach(chip => {
+    chip.addEventListener("click", () => {
+      const k = chip.dataset.side;
+      if(sideIsOpen(k)){
+        snapshot(); restoreWall(k); S.selWall = k;
+        renderAll(); flash(`${SIDE_NAME[k]} restored`);
+      }else{
+        S.selWall = k; S.sel = null; S.selPart = null; renderAll();
+      }
+    });
+  });
   const addWall = orient => {
     snapshot();
     const run = orient === "h" ? R.w : R.h;
@@ -2177,6 +2315,12 @@ function renderCoach(){
     say = `<b>${f.name}</b> sits <em>${fmt(f.into)} mm</em> into the ${f.wall} track.
       Those sliders are full height, so they run to the floor — move it clear or the
       doors won't shut.`;
+  }else if(S.selWall !== null){
+    const k = S.selWall;
+    tag = "Wall selected";
+    say = `<b>${SIDE_NAME[k]}</b>, <em>${fmt(sideLen(k))} mm</em> long. Hit the
+      <b>🗑</b> or <code>Delete</code> to open that side right through — nothing else moves,
+      and <b>Room shell</b> puts it back.`;
   }else if(S.selPart !== null){
     const p = (S.room.partitions||[])[S.selPart];
     if(p){
@@ -2203,8 +2347,8 @@ function renderCoach(){
     if(S.hasUnderlay && S.plan){
       tag = "Start here";
       say = `The consented drawing is underneath, pinned to the same millimetre grid.
-        <b>Click any cabinet to move it</b>, drag the scullery wall to reshape the space,
-        or add units from the catalogue. Fade the drawing with the slider up top.`;
+        <b>Click any cabinet to move it</b>, or click a wall to select it — walls can be
+        dragged, and deleted with the 🗑. Add units from the catalogue on the left.`;
     }else{
       tag = "Start here";
       say = `<b>Click an item to select it</b>, or add cabinetry from the catalogue on the

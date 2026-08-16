@@ -22,6 +22,9 @@ where it would on site.
   On release you choose where the extra length goes: spread evenly across the run, or
   loaded into one, two or three specific cabinets. Appliances are held at their fixed
   sizes, gaps are preserved, and cooktops and sinks travel with the unit they sit on.
+- **Editable walls** — click any perimeter wall to select it, then delete it with the 🗑
+  to open that side right through. Nothing else moves, and **Room shell** shows all four
+  sides and puts a deleted one back.
 - **Draggable partitions** — grab the scullery wall and slide it. The plan dimensions both
   sides live, so you can see what a walk-in scullery costs the kitchen run before
   committing. Add or delete walls from **Room shell**.
@@ -49,7 +52,7 @@ where it would on site.
 | `R` | rotate 90° |
 | arrows | nudge 10 mm (`Shift` for 1 mm) |
 | `D` | duplicate |
-| `Delete`, or the 🗑 button | remove the selected item or wall |
+| `Delete`, or the 🗑 button | remove the selected item, partition or wall |
 | `Ctrl`/`Cmd` `Z` | undo (`Shift` to redo) |
 | space + drag, or wheel | pan |
 | wheel | zoom |
