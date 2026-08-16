@@ -79,6 +79,18 @@ stub at the east, with three 660 **full-height cavity sliders** closing the gap 
 them. Because those doors run to the floor, nothing may sit in their track, and the app
 flags any cabinet that does.
 
+## The sandbox
+
+`sandbox.html` is a throwaway copy to design in. It opens on the cleared shell with the
+drawing underneath, keeps its own browser storage so it can never overwrite the layout
+saved in `index.html`, and has a **Reset** button to start again.
+
+It is generated, not hand-edited — after changing `index.html`, run:
+
+```
+node make-sandbox.mjs
+```
+
 ## Saving
 
 **Save** keeps the current layout in this browser. **Export** shows the whole layout as
