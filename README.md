@@ -16,8 +16,16 @@ where it would on site.
   slider.
 - **Catalogue** — base cabinets, tall units, overheads, islands, wardrobe joinery,
   bathroom joinery, appliances and fixtures. Click to place.
-- **Snapping** — cabinet edges snap to walls, partitions and each other. Hold `Alt` while
-  dragging to place freely at 1 mm.
+- **Snapping** — three kinds of line: the edges of anything nearby so units butt up, the
+  same edges seen across the room so parallel runs line up, and **centre marks** so an item
+  can be centred on another unit, on a wall, or on the room. Whatever it locked onto is
+  drawn as a guide while you drag — a long-short-long centre line with a circled crosshair
+  means a centre match. Hold `Alt` to place freely at 1 mm.
+- **Demolition** — walls printed on the drawing but not modelled by the app (the laundry
+  and bathroom walls, say) can be knocked out. Hit **Demo**, drag a box over the wall, and
+  that patch of the drawing is removed and hatched the way a demolition sheet marks it.
+  Select it and hit 🗑 to put it back. This erases the drawing only; the room model and its
+  clearances are untouched.
 - **Stretch a whole run** — select any cabinet in a run and drag the grip at either end.
   On release you choose where the extra length goes: spread evenly across the run, or
   loaded into one, two or three specific cabinets. Appliances are held at their fixed

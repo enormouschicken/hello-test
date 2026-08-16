@@ -214,6 +214,10 @@ dl.facts dd{margin:0;font-family:var(--font-num);font-variant-numeric:tabular-nu
 .dlg-b code{font-family:var(--font-num);font-size:11px;background:var(--surface-2);
   border:1px solid var(--rule);border-radius:3px;padding:0 4px;color:var(--ink)}
 .btn.ico{padding:6px 9px;font-weight:600}
+.btn.tool[aria-pressed="true"]{
+  background:var(--stamp);border-color:var(--stamp);color:#fff;font-weight:600
+}
+svg#stage.demo{cursor:crosshair}
 
 /* floating delete — follows whatever is selected on the plan */
 .trashbtn{
@@ -407,6 +411,8 @@ textarea.json{
       <button id="gridBtn" aria-pressed="true" title="Show grid">Grid</button>
       <button id="dimBtn" aria-pressed="true" title="Show dimensions">Dims</button>
     </div>
+    <button class="btn tool" id="demoBtn" aria-pressed="false"
+      title="Knock a wall out of the drawing">Demo</button>
     <label class="fade" title="Underlay opacity">
       <span>Fade</span>
       <input type="range" id="planOp" min="0" max="100" value="50" aria-label="Underlay opacity">
@@ -531,8 +537,10 @@ textarea.json{
       you draw here lands where it would on site.</p>
 
     <h3>Three things to try</h3>
-    <p><b>1 · Move something.</b> Click a cabinet and drag. It snaps to walls and to its
-      neighbours. <code>R</code> rotates, arrows nudge 10&nbsp;mm, <code>Alt</code> while
+    <p><b>1 · Move something.</b> Click a cabinet and drag. It snaps to the edges of
+      whatever is next to it, lines up with parallel runs across the room, and locks to
+      centre marks — a circled crosshair means you're centred on another unit, a wall, or
+      the room. <code>R</code> rotates, arrows nudge 10&nbsp;mm, <code>Alt</code> while
       dragging ignores the snap.</p>
     <p><b>2 · Drag the scullery wall.</b> The partition is draggable. Selecting it
       dimensions <b>both sides at once</b>, so you can see exactly what a deeper scullery
@@ -751,6 +759,9 @@ let S = {
   sel:null,
   selPart:null,              // index into room.partitions
   selWall:null,              // "N" | "E" | "S" | "W"
+  demo:[],                   // regions knocked out of the underlay
+  selDemo:null,
+  demoMode:false,
   view:{ z:0.09, px:60, py:40 },
   snap:true, grid:true, dims:true,
   plan:true, planOp:0.5,
@@ -759,7 +770,7 @@ let S = {
 let uid = 1;
 let undoStack = [], redoStack = [];
 let drag = null, partDrag = null, runDrag = null, runPending = null,
-    pan = null, spaceDown = false;
+    demoDrag = null, pan = null, spaceDown = false;
 
 const MIN_CIRC = 900;      // NZ rule of thumb: 900 min circulation
 const GOOD_GALLEY = 1200;  // comfortable between opposing runs
@@ -774,7 +785,8 @@ function loadPreset(id, keepView){
   S.room = JSON.parse(JSON.stringify(p.room));
   S.items = p.items.map(it => ({ id: uid++, ...it }));
   S.hasUnderlay = !!p.underlay;
-  S.sel = null;
+  S.demo = [];
+  S.sel = null; S.selDemo = null;
   const sel = $("presetSel");
   if(sel && sel.value !== id) sel.value = id;
   undoStack = []; redoStack = [];
@@ -783,7 +795,7 @@ function loadPreset(id, keepView){
 }
 
 function snapshot(){
-  undoStack.push(JSON.stringify({room:S.room, items:S.items, sel:S.sel, selPart:S.selPart, selWall:S.selWall}));
+  undoStack.push(JSON.stringify({room:S.room, items:S.items, demo:S.demo, sel:S.sel, selPart:S.selPart, selWall:S.selWall, selDemo:S.selDemo}));
   if(undoStack.length > 80) undoStack.shift();
   redoStack = [];
   syncUndoButtons();
@@ -793,16 +805,18 @@ function restore(json){
   S.room = d.room; S.items = d.items; S.sel = d.sel;
   S.selPart = (d.selPart ?? null);
   S.selWall = (d.selWall ?? null);
+  S.demo = d.demo || [];
+  S.selDemo = (d.selDemo ?? null);
   renderAll();
 }
 function undo(){
   if(!undoStack.length) return;
-  redoStack.push(JSON.stringify({room:S.room, items:S.items, sel:S.sel, selPart:S.selPart, selWall:S.selWall}));
+  redoStack.push(JSON.stringify({room:S.room, items:S.items, demo:S.demo, sel:S.sel, selPart:S.selPart, selWall:S.selWall, selDemo:S.selDemo}));
   restore(undoStack.pop()); syncUndoButtons();
 }
 function redo(){
   if(!redoStack.length) return;
-  undoStack.push(JSON.stringify({room:S.room, items:S.items, sel:S.sel, selPart:S.selPart, selWall:S.selWall}));
+  undoStack.push(JSON.stringify({room:S.room, items:S.items, demo:S.demo, sel:S.sel, selPart:S.selPart, selWall:S.selWall, selDemo:S.selDemo}));
   restore(redoStack.pop()); syncUndoButtons();
 }
 function syncUndoButtons(){
@@ -894,12 +908,14 @@ function renderStage(){
   const hair = 1/z;                        // 1px hairline in world units
 
   drawUnderlay(world);
+  drawDemo(world, hair);
   drawGrid(world, hair, sw, sh);
   drawWalls(world, hair);
   drawItems(world, hair);
   if(S.dims) drawDimensions(world, hair);
   drawLabels(world, hair);
   drawSelection(world, hair);
+  drawSnapGuides(world, hair);
 
   $("zoomLbl").textContent = Math.round(z/0.09*100) + "%";
   positionTrash();
@@ -920,6 +936,10 @@ function positionTrash(){
     if(p) anchor = p.orient === "h"
       ? { x:p.to, y:p.pos }
       : { x:p.pos + partThick(p), y:p.from };
+  }
+  else if(S.selDemo !== null){
+    const d = S.demo[S.selDemo];
+    if(d) anchor = { x:d.x1, y:d.y0 };
   }
   else if(S.selWall !== null){
     const R = S.room, t = R.t || 90;
@@ -949,6 +969,12 @@ function restoreWall(k){
 }
 
 function deleteSelection(){
+  if(S.selDemo !== null){
+    snapshot();
+    S.demo.splice(S.selDemo, 1); S.selDemo = null;
+    renderAll(); flash("Wall put back");
+    return;
+  }
   if(S.selWall !== null){
     const k = S.selWall;
     snapshot(); removeWall(k); S.selWall = null;
@@ -987,6 +1013,51 @@ function drawUnderlay(g){
     style:`mix-blend-mode:${dark ? "screen" : "multiply"};`
       + (dark ? "filter:invert(1);" : "")
   }, g);
+}
+
+/* Demolition. The underlay is a raster of the consented drawing, so a wall
+   printed on it can't be selected the way a modelled one can — instead you
+   knock its region out. The patch is painted in the page's own paper colour
+   so the linework underneath simply stops, then marked with the hatch that
+   means "removed" on a demolition sheet. */
+function drawDemo(g, hair){
+  if(!S.demo.length) return;
+  const grp = el("g", {}, g);
+  const defs = el("defs", {}, grp);
+  const pat = el("pattern", { id:"demoHatch", patternUnits:"userSpaceOnUse",
+    width:120, height:120, patternTransform:"rotate(45)" }, defs);
+  el("path", { d:"M0 0V120", stroke:"var(--stamp)", "stroke-width":14, opacity:.30 }, pat);
+
+  S.demo.forEach((d, i) => {
+    const box = { x:d.x0, y:d.y0, width:d.x1-d.x0, height:d.y1-d.y0 };
+    el("rect", {...box, fill:"var(--paper)"}, grp);           // erase the drawing
+    el("rect", {...box, fill:"url(#demoHatch)"}, grp);        // mark it removed
+    el("rect", {...box, fill:"none", stroke:"var(--stamp)", "stroke-width":hair*1.4,
+      "stroke-dasharray":`${hair*9} ${hair*6}`, opacity: S.selDemo === i ? 1 : .65}, grp);
+    if(S.selDemo === i)
+      el("rect", {x:d.x0-40, y:d.y0-40, width:box.width+80, height:box.height+80,
+        fill:"none", stroke:"var(--stamp)", "stroke-width":hair*2,
+        "stroke-dasharray":`${hair*8} ${hair*5}`}, grp);
+    if(!S.demoMode){
+      const hit = el("rect", {...box, fill:"transparent", style:"cursor:pointer"}, grp);
+      hit.addEventListener("pointerdown", e => {
+        e.stopPropagation();
+        S.selDemo = i; S.sel = null; S.selPart = null; S.selWall = null;
+        renderAll();
+      });
+    }
+  });
+
+  // rubber band while marking a new one
+  if(demoDrag){
+    const x0 = Math.min(demoDrag.ax, demoDrag.bx), x1 = Math.max(demoDrag.ax, demoDrag.bx);
+    const y0 = Math.min(demoDrag.ay, demoDrag.by), y1 = Math.max(demoDrag.ay, demoDrag.by);
+    el("rect", {x:x0, y:y0, width:x1-x0, height:y1-y0, fill:"var(--stamp-soft)",
+      stroke:"var(--stamp)", "stroke-width":hair*1.8,
+      "stroke-dasharray":`${hair*7} ${hair*5}`}, grp);
+    txt(grp, (x0+x1)/2, (y0+y1)/2, `${fmt(x1-x0)} × ${fmt(y1-y0)}`,
+      {size:12*hair, mono:true, weight:"700", fill:"var(--stamp)"});
+  }
 }
 
 function drawGrid(g, hair, sw, sh){
@@ -1710,7 +1781,7 @@ function applyRunChange(){
 function selectWall(e, k){
   if(spaceDown) return;
   e.stopPropagation();
-  S.selWall = k; S.sel = null; S.selPart = null;
+  S.selWall = k; S.sel = null; S.selPart = null; S.selDemo = null;
   renderAll();
 }
 
@@ -1720,27 +1791,27 @@ function beginPartDrag(e, pi){
   stage.setPointerCapture(e.pointerId);
   const p = S.room.partitions[pi];
   const w = toWorld(e.clientX, e.clientY);
-  S.selPart = pi; S.sel = null; S.selWall = null;
+  S.selPart = pi; S.sel = null; S.selWall = null; S.selDemo = null;
   partDrag = { pi, off:(p.orient === "h" ? w.y : w.x) - p.pos, moved:false,
-    start:JSON.stringify({room:S.room, items:S.items, sel:S.sel, selPart:S.selPart, selWall:S.selWall}) };
+    start:JSON.stringify({room:S.room, items:S.items, demo:S.demo, sel:S.sel, selPart:S.selPart, selWall:S.selWall, selDemo:S.selDemo}) };
   renderAll();
 }
 
 /* Partition faces snap to cabinet edges, so a wall can be parked hard
    against the back of a run without hunting for the number. */
 function snapPartition(p){
+  snapGuides = [];
   const thresh = clamp(14/S.view.z, 10, 90);
   const pt = partThick(p), horiz = p.orient === "h";
-  let best = null, bd = thresh;
-  for(const o of S.items){
-    const b = aabb(o);
-    for(const target of horiz ? [b.y0, b.y1] : [b.x0, b.x1])
-      for(const edge of [p.pos, p.pos + pt]){
-        const d = target - edge;
-        if(Math.abs(d) < Math.abs(bd)){ bd = d; best = d; }
-      }
-  }
-  if(best !== null) p.pos = clamp(p.pos + best, 0, partLimit(p));
+  const {xs, ys} = snapTargets(null);
+  const targets = (horiz ? ys : xs);
+  const hit = pickSnap(targets, [{v:p.pos, centre:false},
+                                 {v:p.pos+pt, centre:false},
+                                 {v:p.pos+pt/2, centre:true}], thresh);
+  if(!hit) return;
+  p.pos = clamp(p.pos + hit.d, 0, partLimit(p));
+  snapGuides.push({ axis:horiz ? "y" : "x", at:hit.t.at, centre:hit.t.centre,
+    lo:Math.min(hit.t.lo, p.from), hi:Math.max(hit.t.hi, p.to) });
 }
 
 function beginDrag(e, it){
@@ -1748,49 +1819,118 @@ function beginDrag(e, it){
   e.stopPropagation();
   stage.setPointerCapture(e.pointerId);
   const w = toWorld(e.clientX, e.clientY);
-  S.sel = it.id; S.selPart = null; S.selWall = null;
+  S.sel = it.id; S.selPart = null; S.selWall = null; S.selDemo = null;
   drag = { id:it.id, ox:w.x - it.x, oy:w.y - it.y, moved:false,
-           start:JSON.stringify({room:S.room, items:S.items, sel:S.sel, selPart:S.selPart, selWall:S.selWall}) };
+           start:JSON.stringify({room:S.room, items:S.items, demo:S.demo, sel:S.sel, selPart:S.selPart, selWall:S.selWall, selDemo:S.selDemo}) };
   renderAll();
 }
 
-function snapItem(it){
-  if(!S.snap) return;
-  const thresh = clamp(14/S.view.z, 10, 90);
-  const b = aabb(it), R = roomBounds();
-  const xs = [R.x0, R.x1], ys = [R.y0, R.y1];
+/* Snapping works on three kinds of line: the edges of anything nearby (so
+   units butt up), the same edges seen across the room (so parallel runs
+   line up), and centre lines (so an item can be centred on another, on a
+   wall, or on the room). Edges only take edges and centres only take
+   centres, otherwise a centre would quietly grab an edge one unit over.
+   Whatever it locked onto is drawn as a guide while you drag. */
+let snapGuides = [];
+
+function snapTargets(exceptId){
+  const R = roomBounds(), xs = [], ys = [];
+  const X = (at, lo, hi, centre) => xs.push({at, lo, hi, centre:!!centre});
+  const Y = (at, lo, hi, centre) => ys.push({at, lo, hi, centre:!!centre});
+
+  X(R.x0, R.y0, R.y1); X(R.x1, R.y0, R.y1);
+  Y(R.y0, R.x0, R.x1); Y(R.y1, R.x0, R.x1);
+  X((R.x0+R.x1)/2, R.y0, R.y1, true);          // centre line of the room
+  Y((R.y0+R.y1)/2, R.x0, R.x1, true);
+
   for(const p of (S.room.partitions||[])){
-    if(p.orient === "h"){ ys.push(p.pos, p.pos + (p.t||S.room.t)); }
-    else { xs.push(p.pos, p.pos + (p.t||S.room.t)); }
+    const pt = partThick(p);
+    if(p.orient === "h"){
+      Y(p.pos, p.from, p.to); Y(p.pos+pt, p.from, p.to);
+      Y(p.pos + pt/2, p.from, p.to, true);
+    }else{
+      X(p.pos, p.from, p.to); X(p.pos+pt, p.from, p.to);
+      X(p.pos + pt/2, p.from, p.to, true);
+    }
   }
   for(const o of S.items){
-    if(o.id === it.id) continue;
-    const ob = aabb(o);
-    xs.push(ob.x0, ob.x1); ys.push(ob.y0, ob.y1);
+    if(o.id === exceptId) continue;
+    const b = aabb(o);
+    X(b.x0, b.y0, b.y1); X(b.x1, b.y0, b.y1);
+    Y(b.y0, b.x0, b.x1); Y(b.y1, b.x0, b.x1);
+    X((b.x0+b.x1)/2, b.y0, b.y1, true);        // centre marks
+    Y((b.y0+b.y1)/2, b.x0, b.x1, true);
   }
-  let bestX = null, bdx = thresh;
-  for(const t of xs)
-    for(const edge of [b.x0, b.x1]){
-      const d = t - edge;
-      if(Math.abs(d) < Math.abs(bdx)){ bdx = d; bestX = d; }
+  return {xs, ys};
+}
+
+function pickSnap(targets, mine, thresh){
+  let best = null, bd = thresh;
+  for(const t of targets)
+    for(const m of mine){
+      if(t.centre !== m.centre) continue;
+      const d = t.at - m.v;
+      if(Math.abs(d) < Math.abs(bd)){ bd = d; best = {d, t}; }
     }
-  let bestY = null, bdy = thresh;
-  for(const t of ys)
-    for(const edge of [b.y0, b.y1]){
-      const d = t - edge;
-      if(Math.abs(d) < Math.abs(bdy)){ bdy = d; bestY = d; }
+  return best;
+}
+
+function snapItem(it){
+  snapGuides = [];
+  if(!S.snap) return;
+  const thresh = clamp(14/S.view.z, 10, 90);
+  const b = aabb(it);
+  const {xs, ys} = snapTargets(it.id);
+  const bx = pickSnap(xs, [{v:b.x0,centre:false},{v:b.x1,centre:false},
+                           {v:(b.x0+b.x1)/2,centre:true}], thresh);
+  const by = pickSnap(ys, [{v:b.y0,centre:false},{v:b.y1,centre:false},
+                           {v:(b.y0+b.y1)/2,centre:true}], thresh);
+  if(bx) it.x += bx.d;
+  if(by) it.y += by.d;
+
+  const nb = aabb(it);
+  if(bx) snapGuides.push({axis:"x", at:bx.t.at, centre:bx.t.centre,
+    lo:Math.min(bx.t.lo, nb.y0), hi:Math.max(bx.t.hi, nb.y1)});
+  if(by) snapGuides.push({axis:"y", at:by.t.at, centre:by.t.centre,
+    lo:Math.min(by.t.lo, nb.x0), hi:Math.max(by.t.hi, nb.x1)});
+}
+
+function drawSnapGuides(g, hair){
+  if(!snapGuides.length || !(drag || partDrag)) return;
+  const grp = el("g", {}, g);
+  for(const gd of snapGuides){
+    const d = gd.axis === "x"
+      ? `M${gd.at} ${gd.lo}V${gd.hi}` : `M${gd.lo} ${gd.at}H${gd.hi}`;
+    el("path", { d, stroke:"var(--stamp)", fill:"none", "stroke-width":hair*1.3,
+      // long-short-long: the drafting convention for a centre line
+      "stroke-dasharray": gd.centre
+        ? `${hair*22} ${hair*7} ${hair*5} ${hair*7}`
+        : `${hair*11} ${hair*7}` }, grp);
+    if(gd.centre){
+      const mx = gd.axis === "x" ? gd.at : (gd.lo+gd.hi)/2;
+      const my = gd.axis === "x" ? (gd.lo+gd.hi)/2 : gd.at;
+      const r = 9*hair;
+      el("circle", {cx:mx, cy:my, r, fill:"none",
+        stroke:"var(--stamp)", "stroke-width":hair*1.3}, grp);
+      el("path", {d:`M${mx-r*1.7} ${my}H${mx+r*1.7}M${mx} ${my-r*1.7}V${my+r*1.7}`,
+        stroke:"var(--stamp)", "stroke-width":hair*1.3}, grp);
     }
-  if(bestX !== null) it.x += bestX;
-  if(bestY !== null) it.y += bestY;
+  }
 }
 
 stage.addEventListener("pointerdown", e => {
+  if(S.demoMode && e.button === 0 && !spaceDown){
+    const w = toWorld(e.clientX, e.clientY);
+    demoDrag = { ax:w.x, ay:w.y, bx:w.x, by:w.y };
+    stage.setPointerCapture(e.pointerId);
+    return;
+  }
   if(e.button === 1 || spaceDown || e.target === stage){
     pan = { x:e.clientX, y:e.clientY, px:S.view.px, py:S.view.py };
     stage.classList.add("panning");
     stage.setPointerCapture(e.pointerId);
     if(e.target === stage && !spaceDown && e.button === 0){
-      S.sel = null; S.selPart = null; S.selWall = null; renderAll();
+      S.sel = null; S.selPart = null; S.selWall = null; S.selDemo = null; renderAll();
     }
   }
 });
@@ -1800,6 +1940,11 @@ stage.addEventListener("pointermove", e => {
   if(pan){
     S.view.px = pan.px + (e.clientX - pan.x);
     S.view.py = pan.py + (e.clientY - pan.y);
+    renderStage();
+    return;
+  }
+  if(demoDrag){
+    demoDrag.bx = w.x; demoDrag.by = w.y;
     renderStage();
     return;
   }
@@ -1839,14 +1984,27 @@ stage.addEventListener("pointermove", e => {
   }
 });
 function endPointer(e){
+  if(demoDrag){
+    const d = demoDrag; demoDrag = null;
+    const x0 = round(Math.min(d.ax,d.bx),10), x1 = round(Math.max(d.ax,d.bx),10);
+    const y0 = round(Math.min(d.ay,d.by),10), y1 = round(Math.max(d.ay,d.by),10);
+    if(x1-x0 >= 40 && y1-y0 >= 40){
+      snapshot();
+      S.demo.push({x0,y0,x1,y1});
+      S.selDemo = S.demo.length - 1;
+      flash(`Wall removed from the drawing — ${fmt(x1-x0)} × ${fmt(y1-y0)}`);
+    }
+    renderAll();
+    return;
+  }
   if(pan){ pan = null; stage.classList.remove("panning"); }
   if(runDrag){
     const rd = runDrag; runDrag = null;
     if(rd.preview && Math.abs(rd.delta) >= 5) openRunDialog(rd.run, rd.which, Math.round(rd.delta));
     renderAll();
   }
-  if(partDrag){ partDrag = null; renderAll(); }
-  if(drag){ drag = null; renderAll(); }
+  if(partDrag){ partDrag = null; snapGuides = []; renderAll(); }
+  if(drag){ drag = null; snapGuides = []; renderAll(); }
 }
 stage.addEventListener("pointerup", endPointer);
 stage.addEventListener("pointercancel", endPointer);
@@ -1866,9 +2024,11 @@ document.addEventListener("keydown", e => {
   if(typing) return;
   const mod = e.ctrlKey || e.metaKey;
   if(mod && e.key.toLowerCase() === "z"){ e.preventDefault(); e.shiftKey ? redo() : undo(); return; }
-  if(S.selWall !== null && (e.key === "Delete" || e.key === "Backspace")){
+  if((S.selWall !== null || S.selDemo !== null) &&
+     (e.key === "Delete" || e.key === "Backspace")){
     deleteSelection(); e.preventDefault(); return;
   }
+  if(e.key === "Escape" && S.demoMode){ setDemoMode(false); e.preventDefault(); return; }
   if(S.sel === null && S.selPart !== null){
     const p = (S.room.partitions||[])[S.selPart];
     if(p){
@@ -1922,6 +2082,7 @@ function addFromCatalog(def){
   const it = { id:uid++, n:def.t, k:def.k, w:def.w, d:def.d, h:def.h,
                x:round(c.x,10), y:round(c.y,10), r:0 };
   snapItem(it);
+  snapGuides = [];
   S.items.push(it); S.sel = it.id;
   renderAll();
   flash(`Added ${def.t}`);
@@ -2085,8 +2246,50 @@ function renderWallInspector(host, k){
   $("wDel").onclick = deleteSelection;
 }
 
+function renderDemoInspector(host, d, i){
+  host.innerHTML = `
+    <div class="fields">
+      <div class="f"><label for="dW">Width mm</label>
+        <input id="dW" type="number" step="10" value="${Math.round(d.x1-d.x0)}"></div>
+      <div class="f"><label for="dH">Height mm</label>
+        <input id="dH" type="number" step="10" value="${Math.round(d.y1-d.y0)}"></div>
+      <div class="f"><label for="dX">Left X</label>
+        <input id="dX" type="number" step="10" value="${Math.round(d.x0)}"></div>
+      <div class="f"><label for="dY">Top Y</label>
+        <input id="dY" type="number" step="10" value="${Math.round(d.y0)}"></div>
+    </div>
+    <p class="note" style="margin-top:10px">This erases part of the drawing underneath —
+      it's how you take out a wall that was only ever printed on the plan. It doesn't change
+      the room model, so clearances are unaffected.</p>
+    <div class="row">
+      <button class="btn danger" id="dDel">
+        <svg class="tc" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+          stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="M3 6h18M8 6V4h8v2M19 6l-1 14H6L5 6"/><path d="M10 11v6M14 11v6"/>
+        </svg>Put the wall back</button>
+    </div>`;
+  const bind = (id, fn) => $(id).addEventListener("change", e => {
+    snapshot(); fn(parseFloat(e.target.value)||0); renderAll();
+  });
+  bind("dW", v => d.x1 = d.x0 + Math.max(20, v));
+  bind("dH", v => d.y1 = d.y0 + Math.max(20, v));
+  bind("dX", v => { const w = d.x1-d.x0; d.x0 = v; d.x1 = v + w; });
+  bind("dY", v => { const h = d.y1-d.y0; d.y0 = v; d.y1 = v + h; });
+  $("dDel").onclick = deleteSelection;
+}
+
 function renderInspector(){
   const host = $("inspBody");
+  if(S.demoMode){
+    host.innerHTML = `<div class="empty"><b>Demolition on.</b><br>Drag a box over any wall
+      on the drawing to take it out. <kbd>Esc</kbd> or tap <b>Demo</b> again when done.</div>`;
+    return;
+  }
+  if(S.selDemo !== null){
+    const d = S.demo[S.selDemo];
+    if(d){ renderDemoInspector(host, d, S.selDemo); return; }
+    S.selDemo = null;
+  }
   if(S.selWall !== null){ renderWallInspector(host, S.selWall); return; }
   if(S.sel === null && S.selPart !== null){
     const p = (S.room.partitions||[])[S.selPart];
@@ -2315,6 +2518,17 @@ function renderCoach(){
     say = `<b>${f.name}</b> sits <em>${fmt(f.into)} mm</em> into the ${f.wall} track.
       Those sliders are full height, so they run to the floor — move it clear or the
       doors won't shut.`;
+  }else if(S.demoMode){
+    tag = "Demolition";
+    say = `<b>Drag a box over any wall on the drawing</b> to take it out — works on the
+      laundry and bathroom walls too, not just the ones this app models. <code>Esc</code>
+      when you're done.`;
+  }else if(S.selDemo !== null){
+    const d = S.demo[S.selDemo];
+    tag = "Removed wall";
+    say = `A <em>${fmt(d.x1-d.x0)} × ${fmt(d.y1-d.y0)} mm</em> patch of the drawing is
+      knocked out. The <b>🗑</b> puts it back. This only erases the drawing — the room
+      model and its clearances are untouched.`;
   }else if(S.selWall !== null){
     const k = S.selWall;
     tag = "Wall selected";
@@ -2591,6 +2805,14 @@ function render3d(){
   $("v3Lbl").textContent = `${Math.round(((V3.az%360)+360)%360)}° · ${Math.round(V3.el)}°`;
 }
 
+function setDemoMode(on){
+  S.demoMode = !!on;
+  $("demoBtn").setAttribute("aria-pressed", String(S.demoMode));
+  stage.classList.toggle("demo", S.demoMode);
+  if(S.demoMode){ S.sel = null; S.selPart = null; S.selWall = null; }
+  renderAll();
+}
+
 function setMode(m){
   S.mode = m;
   $("stage").style.display = m === "3d" ? "none" : "block";
@@ -2602,6 +2824,7 @@ function setMode(m){
   document.querySelectorAll("#modeSeg button").forEach(b =>
     b.setAttribute("aria-pressed", String(b.dataset.mode === m)));
   document.querySelector(".legend").style.display = m === "3d" ? "none" : "";
+  if(m === "3d" && S.demoMode) setDemoMode(false);
   if(m === "3d"){
     if(!V3.framed){ V3.dist = fitDist(); V3.framed = true; }
     render3d();
@@ -2634,7 +2857,7 @@ function view3dPreset(name){
 const LS_KEY = "joinery-bench-sandbox-v1";
 function serialise(){
   return JSON.stringify({ v:1, preset:S.presetId, underlay:!!S.hasUnderlay,
-                          room:S.room, items:S.items }, null, 2);
+                          room:S.room, items:S.items, demo:S.demo }, null, 2);
 }
 function deserialise(json){
   const d = JSON.parse(json);
@@ -2642,7 +2865,8 @@ function deserialise(json){
   S.room = d.room;
   S.items = d.items.map(i => ({ ...i, id: uid++ }));
   S.hasUnderlay = !!d.underlay;
-  S.sel = null;
+  S.demo = d.demo || [];
+  S.sel = null; S.selDemo = null;
   if(d.preset && PRESETS[d.preset]){ S.presetId = d.preset; $("presetSel").value = d.preset; }
 }
 
@@ -2695,6 +2919,7 @@ $("runNone").onclick = () => {
   runPending.chosen = new Set();
   renderRunList();
 };
+$("demoBtn").onclick = () => setDemoMode(!S.demoMode);
 $("resetBtn").onclick = () => {
   if(S.items.length && !confirm("Throw this layout away and start again?")) return;
   try{ localStorage.removeItem(LS_KEY); }catch(err){}
@@ -2806,6 +3031,7 @@ if(saved){
     const d = JSON.parse(saved);
     S.room = d.room; S.items = d.items.map(i => ({...i, id: uid++}));
     S.hasUnderlay = !!d.underlay;
+    S.demo = d.demo || [];
     if(d.preset && PRESETS[d.preset]){ S.presetId = d.preset; presetSel.value = d.preset; }
     fitView(); renderAll();
     flash("Restored your last layout");
