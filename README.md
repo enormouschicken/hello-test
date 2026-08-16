@@ -18,8 +18,13 @@ where it would on site.
   bathroom joinery, appliances and fixtures. Click to place.
 - **Snapping** — cabinet edges snap to walls, partitions and each other. Hold `Alt` while
   dragging to place freely at 1 mm.
+- **Draggable partitions** — grab the scullery wall and slide it. The plan dimensions both
+  sides live, so you can see what a walk-in scullery costs the kitchen run before
+  committing. Add or delete walls from **Room shell**; `Alt` drags free of the snap.
 - **Clearances** — every unit reports the clear distance from its working face to whatever
   is straight ahead. Under 900 mm is flagged; 1,200 mm and over reads as comfortable.
+  Partitions count as obstacles only where they're solid, so a doorway doesn't read as a
+  wall you'd walk into.
 - **Schedule** — running count and lineal millimetres by item, with a bench-run total.
 - **Presets** — the kitchen as consented, the same shell emptied out for a redesign, plus
   blank room, walk-in wardrobe and bathroom starters.
@@ -28,7 +33,8 @@ where it would on site.
 
 | | |
 |---|---|
-| drag | move |
+| drag | move an item, or a partition wall |
+| `Alt` + drag | ignore snapping, place to 1 mm |
 | `R` | rotate 90° |
 | arrows | nudge 10 mm (`Shift` for 1 mm) |
 | `D` | duplicate |

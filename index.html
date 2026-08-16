@@ -336,6 +336,7 @@ textarea.json{
         <div><kbd>drag</kbd> move &nbsp; <kbd>R</kbd> rotate</div>
         <div><kbd>←↑↓→</kbd> nudge 10 &nbsp; <kbd>⇧</kbd> 1mm</div>
         <div><kbd>D</kbd> duplicate &nbsp; <kbd>⌫</kbd> delete</div>
+        <div><kbd>drag a wall</kbd> to move a partition</div>
         <div><kbd>space</kbd>+drag or wheel to pan</div>
       </div>
     </div>
@@ -563,13 +564,14 @@ let S = {
   room:null,
   items:[],
   sel:null,
+  selPart:null,              // index into room.partitions
   view:{ z:0.09, px:60, py:40 },
   snap:true, grid:true, dims:true,
   plan:true, planOp:0.5
 };
 let uid = 1;
 let undoStack = [], redoStack = [];
-let drag = null, pan = null, spaceDown = false;
+let drag = null, partDrag = null, pan = null, spaceDown = false;
 
 const MIN_CIRC = 900;      // NZ rule of thumb: 900 min circulation
 const GOOD_GALLEY = 1200;  // comfortable between opposing runs
@@ -593,7 +595,7 @@ function loadPreset(id, keepView){
 }
 
 function snapshot(){
-  undoStack.push(JSON.stringify({room:S.room, items:S.items, sel:S.sel}));
+  undoStack.push(JSON.stringify({room:S.room, items:S.items, sel:S.sel, selPart:S.selPart}));
   if(undoStack.length > 80) undoStack.shift();
   redoStack = [];
   syncUndoButtons();
@@ -601,16 +603,17 @@ function snapshot(){
 function restore(json){
   const d = JSON.parse(json);
   S.room = d.room; S.items = d.items; S.sel = d.sel;
+  S.selPart = (d.selPart ?? null);
   renderAll();
 }
 function undo(){
   if(!undoStack.length) return;
-  redoStack.push(JSON.stringify({room:S.room, items:S.items, sel:S.sel}));
+  redoStack.push(JSON.stringify({room:S.room, items:S.items, sel:S.sel, selPart:S.selPart}));
   restore(undoStack.pop()); syncUndoButtons();
 }
 function redo(){
   if(!redoStack.length) return;
-  undoStack.push(JSON.stringify({room:S.room, items:S.items, sel:S.sel}));
+  undoStack.push(JSON.stringify({room:S.room, items:S.items, sel:S.sel, selPart:S.selPart}));
   restore(redoStack.pop()); syncUndoButtons();
 }
 function syncUndoButtons(){
@@ -755,22 +758,29 @@ function drawGrid(g, hair, sw, sh){
 
 /* Walls are drawn as poché: solid bands outside the interior rectangle,
    split around any openings. */
+/* The solid stretches of a wall run, i.e. the length minus its openings.
+   Shared by the wall renderer and the clearance check, so a doorway never
+   counts as something you'd walk into. */
+function solidSpans(len, ops){
+  const cuts = (ops||[]).slice().sort((a,b) => a.from - b.from);
+  const out = []; let c = 0;
+  for(const o of cuts){
+    const f = clamp(o.from,0,len), tt = clamp(o.to,0,len);
+    if(f > c) out.push([c, f]);
+    c = Math.max(c, tt);
+  }
+  if(c < len) out.push([c, len]);
+  return out;
+}
+const partThick = p => p.t || S.room.t || 90;
+const partLimit = p => (p.orient === "h" ? S.room.h : S.room.w) - partThick(p);
+
 function drawWalls(g, hair){
   const R = S.room, t = R.t || 90;
   const grp = el("g", {}, g);
   const solid = { fill:"var(--poche)", stroke:"var(--ink)", "stroke-width":hair*0.6 };
 
-  const spans = (len, ops) => {
-    const cuts = (ops||[]).slice().sort((a,b)=>a.from-b.from);
-    const out = []; let c = 0;
-    for(const o of cuts){
-      const f = clamp(o.from,0,len), tt = clamp(o.to,0,len);
-      if(f > c) out.push([c, f]);
-      c = Math.max(c, tt);
-    }
-    if(c < len) out.push([c, len]);
-    return out;
-  };
+  const spans = solidSpans;
   const ops = side => (R.openings||[]).filter(o => o.side === side);
 
   // N and S run the full width plus corners; E and W sit between them.
@@ -789,10 +799,11 @@ function drawWalls(g, hair){
   // openings: door swings, sliders, open edges
   for(const o of (R.openings||[])) drawOpening(grp, o, t, hair);
 
-  // partitions
-  for(const p of (R.partitions||[])){
+  // Partitions are draggable, so each gets a grab strip over its whole run.
+  (R.partitions||[]).forEach((p, pi) => {
     const pt = p.t || t;
-    if(p.orient === "h"){
+    const horiz = p.orient === "h";
+    if(horiz){
       for(const [a,b] of spans(p.to - p.from, p.openings))
         el("rect", {x:p.from+a, y:p.pos, width:b-a, height:pt, ...solid}, grp);
       for(const o of (p.openings||[]))
@@ -803,7 +814,17 @@ function drawWalls(g, hair){
       for(const o of (p.openings||[]))
         drawSlider(grp, p.pos, p.from+o.from, p.pos+pt, p.from+o.to, false, hair, o.kind);
     }
-  }
+    const grab = 10*hair;
+    const box = horiz
+      ? {x:p.from, y:p.pos - grab, width:p.to - p.from, height:pt + grab*2}
+      : {x:p.pos - grab, y:p.from, width:pt + grab*2, height:p.to - p.from};
+    if(S.selPart === pi)
+      el("rect", {...box, fill:"var(--stamp-soft)", stroke:"var(--stamp)",
+        "stroke-width":hair*1.8, "stroke-dasharray":`${hair*8} ${hair*5}`}, grp);
+    const hit = el("rect", {...box, fill:"transparent",
+      style:`cursor:${horiz ? "ns" : "ew"}-resize`}, grp);
+    hit.addEventListener("pointerdown", e => beginPartDrag(e, pi));
+  });
 }
 
 function drawOpening(grp, o, t, hair){
@@ -1041,7 +1062,26 @@ function drawDimensions(g, hair){
 }
 
 /* ---------- selection + live gap readouts ---------- */
+/* A selected partition reports the depth it leaves on each side — which is
+   the whole point of dragging it: what the scullery gains, the kitchen loses. */
+function drawPartSelection(g, hair){
+  const R = S.room, p = (R.partitions||[])[S.selPart];
+  if(!p) return;
+  const pt = partThick(p), grp = el("g", {}, g);
+  const inset = Math.min(560, (p.to - p.from) * 0.28);
+  if(p.orient === "h"){
+    const x = p.from + inset;
+    dimLine(grp, x, 0, x, p.pos, p.pos, hair);
+    dimLine(grp, x, p.pos + pt, x, R.h, R.h - p.pos - pt, hair);
+  }else{
+    const y = p.from + inset;
+    dimLine(grp, 0, y, p.pos, y, p.pos, hair);
+    dimLine(grp, p.pos + pt, y, R.w, y, R.w - p.pos - pt, hair);
+  }
+}
+
 function drawSelection(g, hair){
+  if(S.selPart !== null) drawPartSelection(g, hair);
   const it = S.items.find(i => i.id === S.sel);
   if(!it) return;
   const b = aabb(it);
@@ -1097,6 +1137,21 @@ function frontClearance(it){
     const gap = near - f;
     if(gap >= -20 && gap < best){ best = Math.max(0, gap); what = o.n; }
   }
+  // Partitions block too — but only where they're solid, and only when
+  // they lie across the direction of travel.
+  for(const p of (S.room.partitions||[])){
+    if((p.orient !== "h") !== horizontal) continue;
+    const pt = partThick(p);
+    const blocks = solidSpans(p.to - p.from, p.openings).some(([a,b]) =>
+      Math.min(hi, p.from + b) - Math.max(lo, p.from + a) >= 60);
+    if(!blocks) continue;
+    const near = horizontal ? (dx > 0 ? p.pos : -(p.pos + pt))
+                            : (dy > 0 ? p.pos : -(p.pos + pt));
+    const f = horizontal ? (dx > 0 ? face : -face) : (dy > 0 ? face : -face);
+    const gap = near - f;
+    if(gap >= -20 && gap < best){ best = Math.max(0, gap); what = p.label || "partition"; }
+  }
+
   const wall = horizontal ? (dx > 0 ? R.x1 - face : face - R.x0)
                           : (dy > 0 ? R.y1 - face : face - R.y0);
   if(wall < best){ best = Math.max(0, wall); what = "wall"; }
@@ -1120,14 +1175,43 @@ function analyse(){
 /* ------------------------------------------------------------------ */
 /* Interaction                                                         */
 /* ------------------------------------------------------------------ */
+function beginPartDrag(e, pi){
+  if(spaceDown) return;
+  e.stopPropagation();
+  stage.setPointerCapture(e.pointerId);
+  const p = S.room.partitions[pi];
+  const w = toWorld(e.clientX, e.clientY);
+  S.selPart = pi; S.sel = null;
+  partDrag = { pi, off:(p.orient === "h" ? w.y : w.x) - p.pos, moved:false,
+    start:JSON.stringify({room:S.room, items:S.items, sel:S.sel, selPart:S.selPart}) };
+  renderAll();
+}
+
+/* Partition faces snap to cabinet edges, so a wall can be parked hard
+   against the back of a run without hunting for the number. */
+function snapPartition(p){
+  const thresh = clamp(14/S.view.z, 10, 90);
+  const pt = partThick(p), horiz = p.orient === "h";
+  let best = null, bd = thresh;
+  for(const o of S.items){
+    const b = aabb(o);
+    for(const target of horiz ? [b.y0, b.y1] : [b.x0, b.x1])
+      for(const edge of [p.pos, p.pos + pt]){
+        const d = target - edge;
+        if(Math.abs(d) < Math.abs(bd)){ bd = d; best = d; }
+      }
+  }
+  if(best !== null) p.pos = clamp(p.pos + best, 0, partLimit(p));
+}
+
 function beginDrag(e, it){
   if(spaceDown) return;
   e.stopPropagation();
   stage.setPointerCapture(e.pointerId);
   const w = toWorld(e.clientX, e.clientY);
-  S.sel = it.id;
+  S.sel = it.id; S.selPart = null;
   drag = { id:it.id, ox:w.x - it.x, oy:w.y - it.y, moved:false,
-           start:JSON.stringify({room:S.room, items:S.items, sel:S.sel}) };
+           start:JSON.stringify({room:S.room, items:S.items, sel:S.sel, selPart:S.selPart}) };
   renderAll();
 }
 
@@ -1166,7 +1250,9 @@ stage.addEventListener("pointerdown", e => {
     pan = { x:e.clientX, y:e.clientY, px:S.view.px, py:S.view.py };
     stage.classList.add("panning");
     stage.setPointerCapture(e.pointerId);
-    if(e.target === stage && !spaceDown && e.button === 0){ S.sel = null; renderAll(); }
+    if(e.target === stage && !spaceDown && e.button === 0){
+      S.sel = null; S.selPart = null; renderAll();
+    }
   }
 });
 stage.addEventListener("pointermove", e => {
@@ -1176,6 +1262,18 @@ stage.addEventListener("pointermove", e => {
     S.view.px = pan.px + (e.clientX - pan.x);
     S.view.py = pan.py + (e.clientY - pan.y);
     renderStage();
+    return;
+  }
+  if(partDrag){
+    const p = S.room.partitions[partDrag.pi];
+    if(!p) return;
+    if(!partDrag.moved){
+      undoStack.push(partDrag.start); redoStack = []; syncUndoButtons(); partDrag.moved = true;
+    }
+    p.pos = clamp(round((p.orient === "h" ? w.y : w.x) - partDrag.off, e.altKey ? 1 : 5),
+                  0, partLimit(p));
+    if(!e.altKey && S.snap) snapPartition(p);
+    renderStage(); renderSidePanels();
     return;
   }
   if(drag){
@@ -1190,6 +1288,7 @@ stage.addEventListener("pointermove", e => {
 });
 function endPointer(e){
   if(pan){ pan = null; stage.classList.remove("panning"); }
+  if(partDrag){ partDrag = null; renderAll(); }
   if(drag){ drag = null; renderAll(); }
 }
 stage.addEventListener("pointerup", endPointer);
@@ -1210,6 +1309,23 @@ document.addEventListener("keydown", e => {
   if(typing) return;
   const mod = e.ctrlKey || e.metaKey;
   if(mod && e.key.toLowerCase() === "z"){ e.preventDefault(); e.shiftKey ? redo() : undo(); return; }
+  if(S.sel === null && S.selPart !== null){
+    const p = (S.room.partitions||[])[S.selPart];
+    if(p){
+      const step = e.shiftKey ? 1 : 10;
+      let done = true;
+      switch(e.key){
+        case "ArrowUp": case "ArrowLeft":
+          snapshot(); p.pos = clamp(p.pos - step, 0, partLimit(p)); break;
+        case "ArrowDown": case "ArrowRight":
+          snapshot(); p.pos = clamp(p.pos + step, 0, partLimit(p)); break;
+        case "Delete": case "Backspace":
+          snapshot(); S.room.partitions.splice(S.selPart, 1); S.selPart = null; break;
+        default: done = false;
+      }
+      if(done){ e.preventDefault(); renderAll(); return; }
+    }
+  }
   const it = S.items.find(i => i.id === S.sel);
   if(!it) return;
   const step = e.shiftKey ? 1 : 10;
@@ -1311,12 +1427,84 @@ function swatch(def){
     <path d="M${x} ${y+h}H${x+w}" stroke="var(--ink)" stroke-width="1.4"/></svg>`;
 }
 
+function renderPartitionInspector(host, p){
+  const R = S.room, pt = partThick(p);
+  const horiz = p.orient === "h";
+  const near = p.pos, far = (horiz ? R.h : R.w) - p.pos - pt;
+  const op = (p.openings && p.openings[0]) || null;
+  host.innerHTML = `
+    <div class="fields">
+      <div class="f full"><label for="pName">Wall label</label>
+        <input id="pName" type="text" value="${(p.label||"").replace(/"/g,"&quot;")}"></div>
+      <div class="f"><label for="pPos">${horiz ? "From north" : "From west"} mm</label>
+        <input id="pPos" type="number" step="5" value="${Math.round(p.pos)}"></div>
+      <div class="f"><label for="pT">Thickness mm</label>
+        <input id="pT" type="number" step="5" value="${Math.round(pt)}"></div>
+      <div class="f"><label for="pOf">Opening from</label>
+        <input id="pOf" type="number" step="10" value="${op ? Math.round(op.from) : 0}"></div>
+      <div class="f"><label for="pOt">Opening to</label>
+        <input id="pOt" type="number" step="10" value="${op ? Math.round(op.to) : 0}"></div>
+      <div class="f full"><label for="pOk">Opening type</label>
+        <select id="pOk">
+          <option value="slider"${op && op.kind==="slider"?" selected":""}>Sliding doors</option>
+          <option value="cased"${op && op.kind!=="slider"?" selected":""}>Cased opening</option>
+        </select></div>
+    </div>
+    <div class="chk ${near < 900 ? "warn":"ok"}" style="margin-top:11px">
+      <span class="dot"></span>
+      <span class="t">${horiz ? "North" : "West"} side depth<br>
+        <span class="v">${fmt(near)} mm${near < 900 ? " · cabinet depth only" : " · walk-in"}</span></span>
+    </div>
+    <div class="chk ${far < 3000 ? "warn":"ok"}">
+      <span class="dot"></span>
+      <span class="t">${horiz ? "South" : "East"} side depth<br>
+        <span class="v">${fmt(far)} mm remaining</span></span>
+    </div>
+    <div class="row">
+      <button class="btn" id="pFlip">Rotate wall</button>
+      <button class="btn danger" id="pDel">Delete wall</button>
+    </div>`;
+
+  const bind = (id, fn, numeric=true) => $(id).addEventListener("change", e => {
+    snapshot(); fn(numeric ? parseFloat(e.target.value) : e.target.value); renderAll();
+  });
+  bind("pName", v => p.label = v, false);
+  bind("pPos", v => p.pos = clamp(v||0, 0, partLimit(p)));
+  bind("pT",   v => p.t = clamp(v||90, 20, 400));
+  const setOp = (k, v) => {
+    if(!p.openings || !p.openings.length) p.openings = [{from:0, to:0, kind:"cased"}];
+    p.openings[0][k] = v;
+    p.openings[0].from = clamp(p.openings[0].from, 0, p.to - p.from);
+    p.openings[0].to   = clamp(p.openings[0].to,   0, p.to - p.from);
+  };
+  bind("pOf", v => setOp("from", v||0));
+  bind("pOt", v => setOp("to", v||0));
+  bind("pOk", v => setOp("kind", v), false);
+  $("pFlip").onclick = () => {
+    snapshot();
+    p.orient = horiz ? "v" : "h";
+    p.from = 0; p.to = horiz ? R.h : R.w;
+    p.pos = clamp(p.pos, 0, partLimit(p));
+    renderAll();
+  };
+  $("pDel").onclick = () => {
+    snapshot();
+    S.room.partitions.splice(S.selPart, 1); S.selPart = null; renderAll();
+    flash("Wall removed");
+  };
+}
+
 function renderInspector(){
   const host = $("inspBody");
+  if(S.sel === null && S.selPart !== null){
+    const p = (S.room.partitions||[])[S.selPart];
+    if(p){ renderPartitionInspector(host, p); return; }
+    S.selPart = null;
+  }
   const it = S.items.find(i => i.id === S.sel);
   if(!it){
     host.innerHTML = `<div class="empty">Nothing selected.<br>Click an item on the plan,
-      or add one from the catalogue.</div>`;
+      or drag a partition wall to move it.</div>`;
     return;
   }
   const c = frontClearance(it);
@@ -1393,7 +1581,7 @@ function renderClearances(){
   }
   host.innerHTML = html;
   host.querySelectorAll(".chk[data-id]").forEach(n => {
-    n.addEventListener("click", () => { S.sel = +n.dataset.id; renderAll(); });
+    n.addEventListener("click", () => { S.sel = +n.dataset.id; S.selPart = null; renderAll(); });
   });
 }
 
@@ -1421,6 +1609,7 @@ function renderSchedule(){
   host.querySelectorAll("tbody tr").forEach(tr => {
     tr.addEventListener("click", () => {
       S.sel = +tr.dataset.ids.split(",")[0];
+      S.selPart = null;
       renderAll();
     });
   });
@@ -1437,6 +1626,10 @@ function renderRoom(){
       <div class="f full"><label for="rT">Wall thickness mm</label>
         <input id="rT" type="number" step="5" value="${Math.round(R.t||90)}"></div>
     </div>
+    <div class="row">
+      <button class="btn" id="btnWallH">Add wall across</button>
+      <button class="btn" id="btnWallV">Add wall down</button>
+    </div>
     <div class="row"><button class="btn" id="btnClear">Clear all cabinetry</button></div>`;
   const bind = (id, fn, numeric=true) => $(id).addEventListener("change", e => {
     snapshot(); fn(numeric ? parseFloat(e.target.value) : e.target.value); renderAll();
@@ -1445,6 +1638,21 @@ function renderRoom(){
   bind("rW", v => R.w = clamp(v||1000, 500, 30000));
   bind("rH", v => R.h = clamp(v||1000, 500, 30000));
   bind("rT", v => R.t = clamp(v||90, 20, 400));
+  const addWall = orient => {
+    snapshot();
+    const run = orient === "h" ? R.w : R.h;
+    R.partitions = R.partitions || [];
+    R.partitions.push({
+      orient, pos:Math.round(((orient === "h" ? R.h : R.w) - 90) / 2 / 10) * 10,
+      from:0, to:run, t:90, label:"New wall",
+      openings:[{ from:Math.round(run*0.15), to:Math.round(run*0.75), kind:"cased" }]
+    });
+    S.selPart = R.partitions.length - 1; S.sel = null;
+    renderAll();
+    flash("Wall added — drag it to position");
+  };
+  $("btnWallH").onclick = () => addWall("h");
+  $("btnWallV").onclick = () => addWall("v");
   $("btnClear").onclick = () => {
     if(!S.items.length) return;
     snapshot(); S.items = []; S.sel = null; renderAll(); flash("Cabinetry cleared");
