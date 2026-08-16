@@ -12,19 +12,30 @@ underneath, pinned to the same coordinate grid, so a layout you draw here lands 
 where it would on site.
 
 - **Plan underlay** — the kitchen region of Studio 4 sheet A08, rendered at 600 dpi and
-  registered to the drawing's own millimetre origin. Toggle with **Plan**, fade with the
+  registered to the drawing's own millimetre origin. Toggle with **Drawing**, fade with the
   slider.
 - **Catalogue** — base cabinets, tall units, overheads, islands, wardrobe joinery,
   bathroom joinery, appliances and fixtures. Click to place.
 - **Snapping** — cabinet edges snap to walls, partitions and each other. Hold `Alt` while
   dragging to place freely at 1 mm.
+- **Stretch a whole run** — select any cabinet in a run and drag the grip at either end.
+  On release you choose where the extra length goes: spread evenly across the run, or
+  loaded into one, two or three specific cabinets. Appliances are held at their fixed
+  sizes, gaps are preserved, and cooktops and sinks travel with the unit they sit on.
 - **Draggable partitions** — grab the scullery wall and slide it. The plan dimensions both
   sides live, so you can see what a walk-in scullery costs the kitchen run before
-  committing. Add or delete walls from **Room shell**; `Alt` drags free of the snap.
+  committing. Add or delete walls from **Room shell**.
 - **Clearances** — every unit reports the clear distance from its working face to whatever
   is straight ahead. Under 900 mm is flagged; 1,200 mm and over reads as comfortable.
   Partitions count as obstacles only where they're solid, so a doorway doesn't read as a
   wall you'd walk into.
+- **Perspective view** — switch to **3D** to orbit the room. Fixed viewpoints for the
+  dining side, the entry, the scullery end, overhead, and eye level at 1.6 m. Walls
+  standing between you and the room drop away so you can always see in. View only;
+  editing stays on the plan.
+- **In-app guidance** — a walkthrough on first open (reachable any time from **?**), and a
+  strip above the canvas that says what you can do right now and speaks up when something
+  is wrong.
 - **Schedule** — running count and lineal millimetres by item, with a bench-run total.
 - **Presets** — the kitchen as consented, the same shell emptied out for a redesign, plus
   blank room, walk-in wardrobe and bathroom starters.
@@ -38,7 +49,7 @@ where it would on site.
 | `R` | rotate 90° |
 | arrows | nudge 10 mm (`Shift` for 1 mm) |
 | `D` | duplicate |
-| `Delete` | remove |
+| `Delete`, or the 🗑 button | remove the selected item or wall |
 | `Ctrl`/`Cmd` `Z` | undo (`Shift` to redo) |
 | space + drag, or wheel | pan |
 | wheel | zoom |
@@ -57,11 +68,16 @@ Origin `(0,0)` is the inner face of the west wall by the inner face of the north
 | Galley walkway, bench face to island | 1,200 mm |
 | Island | 900 deep × 3,495 long |
 | Wall face to island far edge | 2,730 mm |
-| Scullery | 2,640 wide × 671 deep |
+| Scullery zone | 2,640 wide × 671 deep |
+| Scullery bench | 2,010 × 630 |
+| Slider opening | 1,989 mm |
 | Kitchen zone | 2,730 × 5,282 mm |
 
-The 2,640 mm scullery width matches the dimension string printed on the sheet, which
-confirms the trace.
+The 2,640 mm printed on the sheet is the scullery's overall width; the bench inside it is
+2,010. The scullery is not a full-width wall — it is a 651 return at the west end and a 90
+stub at the east, with three 660 **full-height cavity sliders** closing the gap between
+them. Because those doors run to the floor, nothing may sit in their track, and the app
+flags any cabinet that does.
 
 ## Saving
 

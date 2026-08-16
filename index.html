@@ -169,8 +169,64 @@ select.ctl{
 .cat-item .dim{font-family:var(--font-num);font-size:10.5px;color:var(--graphite-2);font-variant-numeric:tabular-nums}
 
 /* ---------- canvas ---------- */
-.stagewrap{position:relative;min-width:0;background:var(--paper)}
-svg#stage{display:block;width:100%;height:100%;touch-action:none;cursor:default}
+.stagewrap{position:relative;min-width:0;background:var(--paper);
+  display:flex;flex-direction:column}
+svg#stage{display:block;width:100%;flex:1;min-height:0;touch-action:none;cursor:default}
+canvas#view3d{display:none;width:100%;flex:1;min-height:0;touch-action:none;cursor:grab}
+canvas#view3d.orbiting{cursor:grabbing}
+.hud.viewbar{gap:2px}
+.hud.viewbar button{width:auto;padding:0 9px;height:25px;font-size:11.5px}
+.hud.viewbar button[aria-pressed="true"]{background:var(--stamp-soft);color:var(--stamp)}
+
+/* contextual guidance strip — tells you what you can do right now */
+.coach{
+  display:flex;align-items:flex-start;gap:10px;padding:8px 14px;
+  background:var(--surface);border-bottom:1px solid var(--rule);min-height:40px
+}
+.coach .tag{
+  flex:none;font-size:9.5px;letter-spacing:.11em;text-transform:uppercase;font-weight:600;
+  color:var(--stamp);background:var(--stamp-soft);border-radius:3px;padding:2px 6px;
+  margin-top:1px
+}
+.coach.alert .tag{color:var(--warn);background:var(--warn-soft)}
+.coach .say{flex:1;min-width:0;font-size:12px;color:var(--graphite);line-height:1.5}
+.coach .say b{color:var(--ink);font-weight:600}
+.coach .say code{
+  font-family:var(--font-num);font-size:11px;background:var(--surface-2);
+  border:1px solid var(--rule);border-radius:3px;padding:0 4px;color:var(--ink)
+}
+.coach .say em{font-style:normal;font-family:var(--font-num);
+  font-variant-numeric:tabular-nums;color:var(--ink)}
+
+.note{font-size:11.5px;color:var(--graphite);line-height:1.55;margin:0 0 8px}
+.note:last-child{margin-bottom:0}
+.note b{color:var(--ink);font-weight:600}
+dl.facts{margin:0;display:grid;grid-template-columns:1fr auto;gap:3px 12px;font-size:11.5px}
+dl.facts dt{color:var(--graphite)}
+dl.facts dd{margin:0;font-family:var(--font-num);font-variant-numeric:tabular-nums;
+  text-align:right;color:var(--ink)}
+.dlg-b h3{margin:16px 0 6px;font-size:11px;letter-spacing:.1em;text-transform:uppercase;
+  color:var(--graphite-2)}
+.dlg-b h3:first-child{margin-top:0}
+.dlg-b p{margin:0 0 8px;font-size:12.5px;line-height:1.6;color:var(--graphite)}
+.dlg-b p b{color:var(--ink)}
+.dlg-b code{font-family:var(--font-num);font-size:11px;background:var(--surface-2);
+  border:1px solid var(--rule);border-radius:3px;padding:0 4px;color:var(--ink)}
+.btn.ico{padding:6px 9px;font-weight:600}
+
+/* floating delete — follows whatever is selected on the plan */
+.trashbtn{
+  position:absolute;width:32px;height:32px;border-radius:50%;padding:0;
+  background:var(--surface);border:1px solid var(--rule-strong);color:var(--graphite);
+  display:none;align-items:center;justify-content:center;cursor:pointer;z-index:15;
+  box-shadow:0 3px 10px rgba(0,0,0,.18);transition:background .12s,color .12s,border-color .12s
+}
+.trashbtn.on{display:flex}
+.trashbtn:hover,.trashbtn:focus-visible{
+  background:var(--stamp);border-color:var(--stamp);color:#fff
+}
+.trashbtn svg{width:15px;height:15px;pointer-events:none}
+.btn svg.tc{width:12px;height:12px;vertical-align:-2px;margin-right:5px}
 svg#stage.panning{cursor:grabbing}
 .hud{
   position:absolute;left:12px;bottom:12px;display:flex;gap:6px;align-items:center;
@@ -262,6 +318,34 @@ dialog::backdrop{background:rgba(0,0,0,.45)}
   letter-spacing:.05em;text-transform:uppercase}
 .dlg-b{padding:16px}
 .dlg-f{padding:12px 16px;border-top:1px solid var(--rule);display:flex;gap:8px;justify-content:flex-end}
+.runrow{
+  display:grid;grid-template-columns:auto 1fr auto 14px auto;align-items:center;gap:9px;
+  padding:7px 4px;border-bottom:1px solid var(--rule);font-size:12.5px;cursor:pointer
+}
+.runrow:last-of-type{border-bottom:0}
+.runrow:hover{background:var(--surface-2)}
+.runrow.fixed{opacity:.55;cursor:default}
+.runrow input{accent-color:var(--stamp);width:14px;height:14px}
+.runrow .nm{min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.runrow .tagfix{
+  font-size:9.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--graphite-2);
+  border:1px solid var(--rule);border-radius:3px;padding:0 4px;margin-left:4px
+}
+.runrow .wv{
+  font-family:var(--font-num);font-variant-numeric:tabular-nums;font-size:12px;
+  color:var(--graphite);min-width:44px;text-align:right
+}
+.runrow .wv.new{color:var(--stamp);font-weight:600}
+.runrow .wv.new.bad{color:var(--warn)}
+.runrow .ar{color:var(--graphite-2);text-align:center}
+.runwarn{
+  margin:10px 0 0;padding:7px 9px;border-radius:5px;font-size:11.5px;
+  background:var(--warn-soft);color:var(--warn);
+  border:1px solid color-mix(in srgb,var(--warn) 30%,transparent)
+}
+.hint em{font-style:normal;font-family:var(--font-num);
+  font-variant-numeric:tabular-nums;color:var(--ink);font-weight:600}
+
 textarea.json{
   width:100%;height:220px;background:var(--paper);border:1px solid var(--rule);border-radius:5px;
   padding:9px;font-family:var(--font-num);font-size:11px;resize:vertical
@@ -295,8 +379,13 @@ textarea.json{
 
     <select class="ctl" id="presetSel" aria-label="Room preset"></select>
 
+    <div class="seg" role="group" aria-label="View mode" id="modeSeg">
+      <button data-mode="plan" aria-pressed="true">Plan</button>
+      <button data-mode="3d" aria-pressed="false">3D</button>
+    </div>
+
     <div class="seg" role="group" aria-label="Display options">
-      <button id="planBtn" aria-pressed="true" title="Show the consented drawing underneath">Plan</button>
+      <button id="planBtn" aria-pressed="true" title="Show the consented drawing underneath">Drawing</button>
       <button id="snapBtn" aria-pressed="true" title="Snap to walls and cabinet edges">Snap</button>
       <button id="gridBtn" aria-pressed="true" title="Show grid">Grid</button>
       <button id="dimBtn" aria-pressed="true" title="Show dimensions">Dims</button>
@@ -308,6 +397,7 @@ textarea.json{
 
     <div class="spacer"></div>
 
+    <button class="btn ico" id="helpBtn" title="How this works" aria-label="How this works">?</button>
     <button class="btn mobile-toggle" id="railToggle">Catalogue</button>
     <button class="btn" id="undoBtn" title="Undo (Ctrl+Z)">Undo</button>
     <button class="btn" id="redoBtn" title="Redo (Ctrl+Shift+Z)">Redo</button>
@@ -324,18 +414,35 @@ textarea.json{
 
     <!-- ============ CANVAS ============ -->
     <div class="stagewrap">
+      <div class="coach" id="coach" role="status" aria-live="polite"></div>
       <svg id="stage" role="application" aria-label="Floor plan canvas"></svg>
-      <div class="hud">
+      <canvas id="view3d" aria-label="Perspective view"></canvas>
+      <button class="trashbtn" id="trashBtn" title="Delete selected (Del)"
+        aria-label="Delete selected">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+          stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="M3 6h18M8 6V4h8v2M19 6l-1 14H6L5 6"/><path d="M10 11v6M14 11v6"/>
+        </svg>
+      </button>
+      <div class="hud" id="hud2d">
         <button id="zoomOut" title="Zoom out" aria-label="Zoom out">&minus;</button>
         <span class="z" id="zoomLbl">100%</span>
         <button id="zoomIn" title="Zoom in" aria-label="Zoom in">+</button>
         <button id="zoomFit" title="Fit to room" aria-label="Fit to room">⤢</button>
       </div>
+      <div class="hud viewbar" id="hud3d" style="display:none">
+        <button data-view="dining"   title="Looking west from the dining side">Dining side</button>
+        <button data-view="entry"    title="Looking north from the entry">Entry</button>
+        <button data-view="scullery" title="Looking south from the scullery end">Scullery end</button>
+        <button data-view="over"     title="Looking down">Overhead</button>
+        <button data-view="eye"      title="Standing in the room at 1.6 m">Eye level</button>
+        <span class="z" id="v3Lbl">0° · 0°</span>
+      </div>
       <div class="legend">
         <b>Shortcuts</b>
         <div><kbd>drag</kbd> move &nbsp; <kbd>R</kbd> rotate</div>
         <div><kbd>←↑↓→</kbd> nudge 10 &nbsp; <kbd>⇧</kbd> 1mm</div>
-        <div><kbd>D</kbd> duplicate &nbsp; <kbd>⌫</kbd> delete</div>
+        <div><kbd>D</kbd> duplicate &nbsp; <kbd>⌫</kbd> or 🗑 delete</div>
         <div><kbd>drag a wall</kbd> to move a partition</div>
         <div><kbd>space</kbd>+drag or wheel to pan</div>
       </div>
@@ -360,6 +467,10 @@ textarea.json{
           <summary>Room shell</summary>
           <div class="body" id="roomBody"></div>
         </details>
+        <details class="sect">
+          <summary>About this drawing</summary>
+          <div class="body" id="notesBody"></div>
+        </details>
       </div>
     </aside>
   </div>
@@ -374,6 +485,58 @@ textarea.json{
     <span><span class="k">cursor</span> <span id="stXY">0, 0</span></span>
   </footer>
 </div>
+
+<dialog id="runDlg">
+  <div class="dlg-h" id="runDlgH">Extend run</div>
+  <div class="dlg-b">
+    <p class="hint" id="runSummary"></p>
+    <div class="row" style="margin:0 0 10px">
+      <button class="btn" id="runAll">Spread evenly</button>
+      <button class="btn" id="runNone">Clear all</button>
+    </div>
+    <div id="runList"></div>
+    <p class="runwarn" id="runWarn" hidden></p>
+  </div>
+  <div class="dlg-f">
+    <button class="btn" id="runCancel">Cancel</button>
+    <button class="btn primary" id="runApply">Apply</button>
+  </div>
+</dialog>
+
+<dialog id="helpDlg">
+  <div class="dlg-h">How this works</div>
+  <div class="dlg-b">
+    <h3>What you're looking at</h3>
+    <p>The kitchen at <b>409 Tara Road</b>, traced from the vector geometry of Studio 4
+      sheet <b>A08</b> in the approved consent set — not measured off a picture. The
+      consented drawing sits underneath, pinned to the same millimetre grid, so anything
+      you draw here lands where it would on site.</p>
+
+    <h3>Three things to try</h3>
+    <p><b>1 · Move something.</b> Click a cabinet and drag. It snaps to walls and to its
+      neighbours. <code>R</code> rotates, arrows nudge 10&nbsp;mm, <code>Alt</code> while
+      dragging ignores the snap.</p>
+    <p><b>2 · Drag the scullery wall.</b> The partition is draggable. Selecting it
+      dimensions <b>both sides at once</b>, so you can see exactly what a deeper scullery
+      costs the kitchen run.</p>
+    <p><b>3 · Start clean.</b> Switch the preset to <b>Kitchen — redesign</b> for the same
+      shell with the cabinetry cleared and the original ghosted underneath.</p>
+
+    <h3>The numbers that decide it</h3>
+    <p>Every unit reports the clear distance from its working face to whatever is straight
+      ahead. Under <b>900&nbsp;mm</b> is flagged as tight; <b>1,200&nbsp;mm</b> and over reads
+      as comfortable. The consented galley is exactly 1,200 between bench face and island,
+      so a deeper island eats straight into it.</p>
+
+    <h3>Worth knowing</h3>
+    <p>The scullery is <b>671&nbsp;mm</b> deep — a 630 bench behind <b>full-height cavity
+      sliders that run to the floor</b>, not a walk-in. Because those doors reach the
+      ground, nothing can sit in their track, and the app will tell you if something does.</p>
+  </div>
+  <div class="dlg-f">
+    <button class="btn primary" id="helpClose">Start designing</button>
+  </div>
+</dialog>
 
 <dialog id="exportDlg">
   <div class="dlg-h">Export &amp; import</div>
@@ -502,25 +665,29 @@ const PRESETS = {
       label:"kitchen",
       openings:[ {side:"E", from:950, to:5282, kind:"open"} ],
       partitions:[
-        { orient:"h", pos:671, from:0, to:2730, t:90,
-          openings:[{from:250, to:2450, kind:"slider"}], label:"Scullery" }
+        // Not a full-width wall: a 651 return at the west end and a 90 stub
+        // at the east, with a 1,989 clear opening between them closed by
+        // three 660 full-height cavity sliders that run to the floor.
+        { orient:"h", pos:671, from:0, to:2730, t:90, label:"Scullery",
+          openings:[{ from:651, to:2640, kind:"slider", fullHeight:true, leaves:3 }] }
       ]
     },
     items:[
       // west run — back to the west wall (rot 270), 630 deep
-      {n:"Pantry",       k:"tall",   w:601, d:630, x:315,  y:1190, r:270},
-      {n:"Oven tower",   k:"tall",   w:601, d:630, x:315,  y:1791, r:270},
-      {n:"Drawer bank",  k:"drawer", w:535, d:630, x:315,  y:2359, r:270},
-      {n:"Cooktop base", k:"drawer", w:580, d:630, x:315,  y:2916, r:270},
-      {n:"Cooktop 600",  k:"hob",    w:580, d:490, x:245,  y:2916, r:270},
-      {n:"Drawer bank",  k:"drawer", w:535, d:630, x:315,  y:3474, r:270},
-      {n:"Pantry",       k:"tall",   w:621, d:630, x:315,  y:4052, r:270},
-      {n:"Fridge",       k:"fridge", w:870, d:650, x:325,  y:4797, r:270},
+      {n:"Pantry",       k:"tall",   w:601, d:630, h:2200, x:315,  y:1190, r:270},
+      {n:"Oven tower",   k:"tall",   w:601, d:630, h:2200, x:315,  y:1791, r:270},
+      {n:"Drawer bank",  k:"drawer", w:535, d:630, h:900,  x:315,  y:2359, r:270},
+      {n:"Cooktop base", k:"drawer", w:580, d:630, h:900,  x:315,  y:2916, r:270},
+      {n:"Cooktop 600",  k:"hob",    w:580, d:490, h:60,   x:245,  y:2916, r:270},
+      {n:"Drawer bank",  k:"drawer", w:535, d:630, h:900,  x:315,  y:3474, r:270},
+      {n:"Pantry",       k:"tall",   w:621, d:630, h:2200, x:315,  y:4052, r:270},
+      {n:"Fridge",       k:"fridge", w:870, d:650, h:1800, x:325,  y:4797, r:270},
       // island — front faces west toward the run (rot 90), 900 deep
-      {n:"Island",       k:"drawer", w:3495, d:900, x:2280, y:3379, r:90},
-      {n:"Sink — double",k:"sink",   w:900,  d:500, x:2180, y:2800, r:90},
+      {n:"Island",       k:"drawer", w:3495, d:900, h:900,  x:2280, y:3379, r:90},
+      {n:"Sink — double",k:"sink",   w:900,  d:500, h:200,  x:2180, y:2800, r:90},
       // scullery bench along the north wall
-      {n:"Scullery bench", k:"plain", w:2640, d:600, x:1320, y:300, r:0},
+      // 630 deep like the main run, starting east of the return wall
+      {n:"Scullery bench", k:"plain", w:2010, d:630, h:900, x:1635, y:315, r:0},
     ]
   },
   "tara-redesign": {
@@ -538,9 +705,9 @@ const PRESETS = {
     room:{ w:2400, h:1800, t:90, label:"wardrobe",
       openings:[{side:"S", from:900, to:1710, kind:"door"}], partitions:[] },
     items:[
-      {n:"Hanging — double", k:"hang",  w:1200, d:600, x:600,  y:300, r:0},
-      {n:"Shelf bank 900",   k:"shelf", w:900,  d:600, x:1650, y:300, r:0},
-      {n:"Drawer tower 600", k:"drawer",w:600,  d:600, x:300,  y:1200, r:270},
+      {n:"Hanging — double", k:"hang",  w:1200, d:600, h:2000, x:600,  y:300, r:0},
+      {n:"Shelf bank 900",   k:"shelf", w:900,  d:600, h:2000, x:1650, y:300, r:0},
+      {n:"Drawer tower 600", k:"drawer",w:600,  d:600, h:1200, x:300,  y:1200, r:270},
     ]
   },
   "bath": {
@@ -548,9 +715,9 @@ const PRESETS = {
     room:{ w:2400, h:2000, t:90, label:"bathroom",
       openings:[{side:"S", from:1500, to:2310, kind:"door"}], partitions:[] },
     items:[
-      {n:"Vanity 1200", k:"vanity", w:1200, d:500, x:600,  y:250,  r:0},
-      {n:"Shower 1000", k:"shower", w:1000, d:1000,x:1900, y:500,  r:0},
-      {n:"Toilet",      k:"toilet", w:400,  d:700, x:1900, y:1650, r:180},
+      {n:"Vanity 1200", k:"vanity", w:1200, d:500, h:850,  x:600,  y:250,  r:0},
+      {n:"Shower 1000", k:"shower", w:1000, d:1000,h:2000, x:1900, y:500,  r:0},
+      {n:"Toilet",      k:"toilet", w:400,  d:700, h:800,  x:1900, y:1650, r:180},
     ]
   }
 };
@@ -567,11 +734,13 @@ let S = {
   selPart:null,              // index into room.partitions
   view:{ z:0.09, px:60, py:40 },
   snap:true, grid:true, dims:true,
-  plan:true, planOp:0.5
+  plan:true, planOp:0.5,
+  mode:"plan"
 };
 let uid = 1;
 let undoStack = [], redoStack = [];
-let drag = null, partDrag = null, pan = null, spaceDown = false;
+let drag = null, partDrag = null, runDrag = null, runPending = null,
+    pan = null, spaceDown = false;
 
 const MIN_CIRC = 900;      // NZ rule of thumb: 900 min circulation
 const GOOD_GALLEY = 1200;  // comfortable between opposing runs
@@ -713,6 +882,46 @@ function renderStage(){
   drawSelection(world, hair);
 
   $("zoomLbl").textContent = Math.round(z/0.09*100) + "%";
+  positionTrash();
+}
+
+/* Park the delete button just off the top-right corner of whatever is
+   selected, clamped so it never slides off the canvas. */
+function positionTrash(){
+  const btn = $("trashBtn");
+  if(!btn) return;
+  const wrap = stage.parentElement.getBoundingClientRect();
+  const sr = stage.getBoundingClientRect();
+  let anchor = null;
+  const it = S.items.find(i => i.id === S.sel);
+  if(it){ const b = aabb(it); anchor = { x:b.x1, y:b.y0 }; }
+  else if(S.selPart !== null){
+    const p = (S.room.partitions||[])[S.selPart];
+    if(p) anchor = p.orient === "h"
+      ? { x:p.to, y:p.pos }
+      : { x:p.pos + partThick(p), y:p.from };
+  }
+  if(!anchor){ btn.classList.remove("on"); return; }
+  const sx = (sr.left - wrap.left) + S.view.px + anchor.x*S.view.z;
+  const sy = (sr.top  - wrap.top)  + S.view.py + anchor.y*S.view.z;
+  btn.style.left = clamp(sx + 12, 8, wrap.width - 40) + "px";
+  btn.style.top  = clamp(sy - 38, (sr.top - wrap.top) + 8, wrap.height - 40) + "px";
+  btn.classList.add("on");
+}
+
+function deleteSelection(){
+  if(S.sel !== null){
+    const it = S.items.find(i => i.id === S.sel);
+    if(!it) return;
+    snapshot(); removeItem(it.id); renderAll(); flash(`Deleted ${it.n}`);
+    return;
+  }
+  if(S.selPart !== null){
+    const p = (S.room.partitions||[])[S.selPart];
+    if(!p) return;
+    snapshot(); S.room.partitions.splice(S.selPart, 1); S.selPart = null;
+    renderAll(); flash(`Deleted ${p.label || "wall"}`);
+  }
 }
 
 /* The consented drawing, pinned to the mm grid. Sits under everything so
@@ -807,12 +1016,12 @@ function drawWalls(g, hair){
       for(const [a,b] of spans(p.to - p.from, p.openings))
         el("rect", {x:p.from+a, y:p.pos, width:b-a, height:pt, ...solid}, grp);
       for(const o of (p.openings||[]))
-        drawSlider(grp, p.from+o.from, p.pos, p.from+o.to, p.pos+pt, true, hair, o.kind);
+        drawSlider(grp, p.from+o.from, p.pos, p.from+o.to, p.pos+pt, true, hair, o);
     }else{
       for(const [a,b] of spans(p.to - p.from, p.openings))
         el("rect", {x:p.pos, y:p.from+a, width:pt, height:b-a, ...solid}, grp);
       for(const o of (p.openings||[]))
-        drawSlider(grp, p.pos, p.from+o.from, p.pos+pt, p.from+o.to, false, hair, o.kind);
+        drawSlider(grp, p.pos, p.from+o.from, p.pos+pt, p.from+o.to, false, hair, o);
     }
     const grab = 10*hair;
     const box = horiz
@@ -860,18 +1069,51 @@ function drawOpening(grp, o, t, hair){
   }
 }
 
-function drawSlider(grp, x0, y0, x1, y1, horiz, hair, kind){
-  if(kind !== "slider") return;
-  const st = {stroke:"var(--graphite)", "stroke-width":hair*1.4, fill:"var(--surface)"};
-  if(horiz){
-    const mid = (y0+y1)/2, half = (x1-x0)/2;
-    el("rect", {x:x0, y:mid-hair*2, width:half, height:hair*4, ...st}, grp);
-    el("rect", {x:x0+half*0.75, y:mid+hair*2, width:half, height:hair*4, ...st}, grp);
-  }else{
-    const mid = (x0+x1)/2, half = (y1-y0)/2;
-    el("rect", {x:mid-hair*2, y:y0, width:hair*4, height:half, ...st}, grp);
-    el("rect", {x:mid+hair*2, y:y0+half*0.75, width:hair*4, height:half, ...st}, grp);
+/* Sliding leaves, drawn parked and staggered the way the sheet shows them.
+   Full-height sliders run to the floor, so they read heavier than a set of
+   cupboard doors would. */
+function drawSlider(grp, x0, y0, x1, y1, horiz, hair, o){
+  if(!o || o.kind !== "slider") return;
+  const n = Math.max(2, o.leaves || 2);
+  const full = !!o.fullHeight;
+  const st = { stroke:"var(--graphite)", fill:"var(--surface)",
+               "stroke-width":hair*(full ? 1.8 : 1.2) };
+  const th = hair*(full ? 5 : 3.5);
+  const run = horiz ? (x1-x0) : (y1-y0);
+  const leaf = run/n;
+  const mid = horiz ? (y0+y1)/2 : (x0+x1)/2;
+  for(let i=0;i<n;i++){
+    const along = (horiz ? x0 : y0) + i*leaf*0.94;
+    const perp = mid + (i - (n-1)/2)*th*1.05;
+    el("rect", horiz
+      ? {x:along, y:perp - th/2, width:leaf, height:th, ...st}
+      : {x:perp - th/2, y:along, width:th, height:leaf, ...st}, grp);
   }
+}
+
+/* Full-height sliders reach the floor, so nothing may sit in their track —
+   a base unit pushed into the opening stops the doors closing. */
+function sliderConflicts(){
+  const out = [];
+  for(const p of (S.room.partitions||[])){
+    const pt = partThick(p), horiz = p.orient === "h";
+    for(const o of (p.openings||[])){
+      if(o.kind !== "slider" || !o.fullHeight) continue;
+      const band = horiz
+        ? { x0:p.from+o.from, x1:p.from+o.to, y0:p.pos, y1:p.pos+pt }
+        : { x0:p.pos, x1:p.pos+pt, y0:p.from+o.from, y1:p.from+o.to };
+      for(const it of S.items){
+        if(it.k === "overhead") continue;      // sits above the track
+        const b = aabb(it);
+        const ox = Math.min(b.x1,band.x1) - Math.max(b.x0,band.x0);
+        const oy = Math.min(b.y1,band.y1) - Math.max(b.y0,band.y0);
+        if(ox > 20 && oy > 20)
+          out.push({ id:it.id, name:it.n, wall:p.label || "sliders",
+                     into:Math.round(Math.min(ox,oy)) });
+      }
+    }
+  }
+  return out;
 }
 
 /* ---------- items ---------- */
@@ -1095,6 +1337,9 @@ function drawSelection(g, hair){
     el("rect", {x:cx-4*hair, y:cy-4*hair, width:8*hair, height:8*hair,
       fill:"var(--stamp)", stroke:"none"}, grp);
 
+  const run = findRun(it);
+  if(run) drawRunHandles(g, hair, run);
+
   // arrow + distance from the front face to whatever is straight ahead
   const c = frontClearance(it);
   if(c && c.dist > 1 && c.dist < 6000){
@@ -1170,6 +1415,219 @@ function analyse(){
   }
   out.sort((a,b) => a.dist - b.dist);
   return out;
+}
+
+/* ------------------------------------------------------------------ */
+/* Runs — contiguous cabinetry sharing a back line                     */
+/* ------------------------------------------------------------------ */
+/* A run's overall length is the thing a joiner quotes and a wall
+   constrains, so it is draggable as one object. What the extra length
+   does to the individual cabinets is a separate decision, asked after
+   the drag rather than guessed at. */
+
+const RUN_MEMBER = new Set(["drawer","door","tall","plain","vanity","hang","shelf",
+                            "fridge","dish","washer","oven"]);
+const RUN_FIXED  = new Set(["fridge","dish","washer","oven"]);  // in the run, never stretched
+const RUN_INSET  = new Set(["hob","sink"]);                     // ride on a base unit
+
+const runAxis = r => (r === 0 || r === 180) ? "x" : "y";
+function backCoord(it){
+  const b = aabb(it);
+  switch(((it.r%360)+360)%360){
+    case 0:   return b.y0;
+    case 180: return b.y1;
+    case 90:  return b.x1;
+    default:  return b.x0;
+  }
+}
+const runLo = (o, ax) => ax === "x" ? aabb(o).x0 : aabb(o).y0;
+const runHi = (o, ax) => ax === "x" ? aabb(o).x1 : aabb(o).y1;
+
+/* The contiguous chain of cabinetry the seed belongs to: same rotation,
+   same back line, touching end to end. */
+function findRun(seed){
+  if(!seed || !RUN_MEMBER.has(seed.k)) return null;
+  const ax = runAxis(seed.r), back = backCoord(seed);
+  const cands = S.items
+    .filter(o => RUN_MEMBER.has(o.k) && o.r === seed.r && Math.abs(backCoord(o) - back) <= 25)
+    .sort((a,b) => runLo(a,ax) - runLo(b,ax));
+  const si = cands.findIndex(o => o.id === seed.id);
+  if(si < 0) return null;
+  const chain = [cands[si]];
+  for(let i = si-1; i >= 0; i--){
+    if(runLo(chain[0],ax) - runHi(cands[i],ax) <= 40) chain.unshift(cands[i]); else break;
+  }
+  for(let i = si+1; i < cands.length; i++){
+    if(runLo(cands[i],ax) - runHi(chain[chain.length-1],ax) <= 40) chain.push(cands[i]); else break;
+  }
+  if(chain.length < 2) return null;
+  const perp = chain.flatMap(o => {
+    const b = aabb(o);
+    return ax === "x" ? [b.y0,b.y1] : [b.x0,b.x1];
+  });
+  return {
+    items:chain, axis:ax,
+    start:runLo(chain[0],ax), end:runHi(chain[chain.length-1],ax),
+    p0:Math.min(...perp), p1:Math.max(...perp)
+  };
+}
+
+function drawRunHandles(g, hair, run){
+  const ax = run.axis, grp = el("g", {}, g);
+  const bar = 7*hair;
+  const live = runDrag && runDrag.preview;
+  const ends = [["start", run.start], ["end", run.end]];
+  for(const [which, at] of ends){
+    const box = ax === "x"
+      ? {x:at - bar, y:run.p0, width:bar*2, height:run.p1 - run.p0}
+      : {x:run.p0, y:at - bar, width:run.p1 - run.p0, height:bar*2};
+    el("rect", {...box, fill:"var(--stamp)", opacity:.85, rx:bar*0.5}, grp);
+    const hit = el("rect", ax === "x"
+      ? {x:at - bar*2.4, y:run.p0, width:bar*4.8, height:run.p1 - run.p0}
+      : {x:run.p0, y:at - bar*2.4, width:run.p1 - run.p0, height:bar*4.8},
+      grp);
+    hit.setAttribute("fill","transparent");
+    hit.setAttribute("style", `cursor:${ax === "x" ? "ew" : "ns"}-resize`);
+    hit.addEventListener("pointerdown", e => beginRunDrag(e, run, which));
+  }
+  // live projection while dragging an end
+  if(live){
+    const a = runDrag.anchorPos, b2 = runDrag.newEnd;
+    const lo = Math.min(a,b2), hi = Math.max(a,b2);
+    el("rect", ax === "x"
+      ? {x:lo, y:run.p0, width:hi-lo, height:run.p1-run.p0}
+      : {x:run.p0, y:lo, width:run.p1-run.p0, height:hi-lo},
+      grp).setAttribute("fill","var(--stamp-soft)");
+    const d = runDrag.delta;
+    const mx = ax === "x" ? (lo+hi)/2 : (run.p0+run.p1)/2;
+    const my = ax === "x" ? (run.p0+run.p1)/2 : (lo+hi)/2;
+    txt(grp, mx, my, `${fmt(hi-lo)}  (${d>=0?"+":"−"}${fmt(Math.abs(d))})`, {
+      size:13*hair, mono:true, weight:"700", fill:"var(--stamp)"
+    });
+  }
+}
+
+function beginRunDrag(e, run, which){
+  if(spaceDown) return;
+  e.stopPropagation();
+  stage.setPointerCapture(e.pointerId);
+  const anchorPos = which === "end" ? run.start : run.end;
+  runDrag = { run, which, anchorPos, newEnd:(which === "end" ? run.end : run.start),
+              delta:0, preview:false };
+  renderStage();
+}
+
+/* Snapshot the run's shape before anything moves, so the reflow can put
+   the gaps back exactly as they were. */
+function openRunDialog(run, which, delta){
+  const ax = run.axis;
+  const gaps = run.items.map((it,i) =>
+    i === 0 ? 0 : runLo(it,ax) - runHi(run.items[i-1],ax));
+  const insets = S.items.filter(a => RUN_INSET.has(a.k)).map(a => {
+    const ab = aabb(a), cx = (ab.x0+ab.x1)/2, cy = (ab.y0+ab.y1)/2;
+    const host = run.items.find(h => {
+      const hb = aabb(h);
+      return cx >= hb.x0-5 && cx <= hb.x1+5 && cy >= hb.y0-5 && cy <= hb.y1+5;
+    });
+    return host ? {id:a.id, host:host.id} : null;
+  }).filter(Boolean);
+
+  runPending = {
+    items:run.items.map(i => ({id:i.id})), axis:ax, gaps, insets,
+    anchor:(which === "end" ? "start" : "end"),
+    startPos:run.start, endPos:run.end, delta,
+    chosen:new Set(run.items.filter(i => !RUN_FIXED.has(i.k)).map(i => i.id))
+  };
+  if(!runPending.chosen.size){
+    runPending = null;
+    flash("Nothing in that run can be resized — it's all appliances");
+    return;
+  }
+  $("runDlgH").textContent = delta >= 0 ? "Extend run" : "Shorten run";
+  renderRunList();
+  $("runDlg").showModal();
+}
+
+function renderRunList(){
+  const rp = runPending; if(!rp) return;
+  const oldLen = rp.endPos - rp.startPos;
+  const share = rp.chosen.size ? rp.delta / rp.chosen.size : 0;
+  let tooSmall = false;
+
+  const rows = rp.items.map(ref => {
+    const it = S.items.find(i => i.id === ref.id);
+    if(!it) return "";
+    const fixed = RUN_FIXED.has(it.k);
+    const on = rp.chosen.has(it.id);
+    const next = on ? Math.round(it.w + share) : Math.round(it.w);
+    if(on && next < 150) tooSmall = true;
+    return `<label class="runrow${fixed ? " fixed":""}">
+      <input type="checkbox" data-id="${it.id}" ${on?"checked":""} ${fixed?"disabled":""}>
+      <span class="nm">${it.n}${fixed ? ` <span class="tagfix">fixed size</span>`:""}</span>
+      <span class="wv">${fmt(it.w)}</span>
+      <span class="ar">${on ? "→" : ""}</span>
+      <span class="wv new${on && next<150 ? " bad":""}">${on ? fmt(next) : ""}</span>
+    </label>`;
+  }).join("");
+
+  $("runSummary").innerHTML =
+    `Run is <em>${fmt(oldLen)}</em> long. Dragging it to <em>${fmt(oldLen + rp.delta)}</em>
+     leaves <em>${rp.delta >= 0 ? "+" : "−"}${fmt(Math.abs(rp.delta))} mm</em> to place.
+     Tick every cabinet to spread it evenly, or tick one to put it all in a single unit.`;
+  $("runList").innerHTML = rows;
+  $("runList").querySelectorAll("input[type=checkbox]").forEach(cb => {
+    cb.addEventListener("change", () => {
+      const id = +cb.dataset.id;
+      cb.checked ? rp.chosen.add(id) : rp.chosen.delete(id);
+      renderRunList();
+    });
+  });
+  const warn = tooSmall || !rp.chosen.size;
+  $("runWarn").textContent = !rp.chosen.size
+    ? "Tick at least one cabinet to take the change."
+    : tooSmall ? "That would take a cabinet below 150 mm — spread it wider." : "";
+  $("runWarn").hidden = !warn;
+  $("runApply").disabled = warn;
+}
+
+function applyRunChange(){
+  const rp = runPending; if(!rp || !rp.chosen.size) return;
+  snapshot();
+  const share = rp.delta / rp.chosen.size;
+  for(const id of rp.chosen){
+    const it = S.items.find(i => i.id === id);
+    if(it) it.w = Math.max(150, Math.round(it.w + share));
+  }
+  const ax = rp.axis;
+  const items = rp.items.map(r => S.items.find(i => i.id === r.id)).filter(Boolean);
+  const moved = new Map();
+  const setC = (it, c) => {
+    const before = ax === "x" ? it.x : it.y;
+    if(ax === "x") it.x = c; else it.y = c;
+    moved.set(it.id, c - before);
+  };
+  if(rp.anchor === "start"){
+    let cur = rp.startPos;
+    items.forEach((it,i) => { cur += rp.gaps[i]; setC(it, cur + it.w/2); cur += it.w; });
+  }else{
+    let cur = rp.endPos;
+    for(let i = items.length-1; i >= 0; i--){
+      if(i < items.length-1) cur -= rp.gaps[i+1];
+      setC(items[i], cur - items[i].w/2);
+      cur -= items[i].w;
+    }
+  }
+  // cooktops and sinks travel with the unit they sit on
+  for(const ins of rp.insets){
+    const d = moved.get(ins.host);
+    const it = S.items.find(i => i.id === ins.id);
+    if(d && it){ if(ax === "x") it.x += d; else it.y += d; }
+  }
+  const n = rp.chosen.size;
+  runPending = null;
+  $("runDlg").close();
+  renderAll();
+  flash(n === 1 ? "Length applied to one cabinet" : `Length spread across ${n} cabinets`);
 }
 
 /* ------------------------------------------------------------------ */
@@ -1264,6 +1722,19 @@ stage.addEventListener("pointermove", e => {
     renderStage();
     return;
   }
+  if(runDrag){
+    const ax = runDrag.run.axis;
+    const raw = round(ax === "x" ? w.x : w.y, e.altKey ? 1 : 5);
+    const anchor = runDrag.anchorPos;
+    const sign = runDrag.which === "end" ? 1 : -1;
+    // never let the dragged end cross the anchor, and keep a usable minimum
+    runDrag.newEnd = sign > 0 ? Math.max(raw, anchor + 300) : Math.min(raw, anchor - 300);
+    const oldLen = runDrag.run.end - runDrag.run.start;
+    runDrag.delta = Math.abs(runDrag.newEnd - anchor) - oldLen;
+    runDrag.preview = true;
+    renderStage();
+    return;
+  }
   if(partDrag){
     const p = S.room.partitions[partDrag.pi];
     if(!p) return;
@@ -1288,6 +1759,11 @@ stage.addEventListener("pointermove", e => {
 });
 function endPointer(e){
   if(pan){ pan = null; stage.classList.remove("panning"); }
+  if(runDrag){
+    const rd = runDrag; runDrag = null;
+    if(rd.preview && Math.abs(rd.delta) >= 5) openRunDialog(rd.run, rd.which, Math.round(rd.delta));
+    renderAll();
+  }
   if(partDrag){ partDrag = null; renderAll(); }
   if(drag){ drag = null; renderAll(); }
 }
@@ -1320,7 +1796,7 @@ document.addEventListener("keydown", e => {
         case "ArrowDown": case "ArrowRight":
           snapshot(); p.pos = clamp(p.pos + step, 0, partLimit(p)); break;
         case "Delete": case "Backspace":
-          snapshot(); S.room.partitions.splice(S.selPart, 1); S.selPart = null; break;
+          deleteSelection(); e.preventDefault(); return;
         default: done = false;
       }
       if(done){ e.preventDefault(); renderAll(); return; }
@@ -1337,7 +1813,7 @@ document.addEventListener("keydown", e => {
     case "ArrowDown":  snapshot(); it.y += step; break;
     case "r": case "R": snapshot(); it.r = (it.r + 90) % 360; break;
     case "d": case "D": snapshot(); duplicate(it); break;
-    case "Delete": case "Backspace": snapshot(); removeItem(it.id); break;
+    case "Delete": case "Backspace": deleteSelection(); return;
     default: handled = false;
   }
   if(handled){ e.preventDefault(); renderAll(); }
@@ -1462,7 +1938,7 @@ function renderPartitionInspector(host, p){
     </div>
     <div class="row">
       <button class="btn" id="pFlip">Rotate wall</button>
-      <button class="btn danger" id="pDel">Delete wall</button>
+      <button class="btn danger" id="pDel"><svg class="tc" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 6h18M8 6V4h8v2M19 6l-1 14H6L5 6"/><path d="M10 11v6M14 11v6"/></svg>Delete wall</button>
     </div>`;
 
   const bind = (id, fn, numeric=true) => $(id).addEventListener("change", e => {
@@ -1487,11 +1963,7 @@ function renderPartitionInspector(host, p){
     p.pos = clamp(p.pos, 0, partLimit(p));
     renderAll();
   };
-  $("pDel").onclick = () => {
-    snapshot();
-    S.room.partitions.splice(S.selPart, 1); S.selPart = null; renderAll();
-    flash("Wall removed");
-  };
+  $("pDel").onclick = deleteSelection;
 }
 
 function renderInspector(){
@@ -1536,7 +2008,7 @@ function renderInspector(){
     <div class="row">
       <button class="btn" id="btnRot">Rotate 90°</button>
       <button class="btn" id="btnDup">Duplicate</button>
-      <button class="btn danger" id="btnDel">Delete</button>
+      <button class="btn danger" id="btnDel"><svg class="tc" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 6h18M8 6V4h8v2M19 6l-1 14H6L5 6"/><path d="M10 11v6M14 11v6"/></svg>Delete</button>
     </div>`;
 
   const bind = (id, fn, numeric=true) => {
@@ -1557,18 +2029,23 @@ function renderInspector(){
   bind("fK", v => it.k = v, false);
   $("btnRot").onclick = () => { snapshot(); it.r = (it.r+90)%360; renderAll(); };
   $("btnDup").onclick = () => { snapshot(); duplicate(it); renderAll(); };
-  $("btnDel").onclick = () => { snapshot(); removeItem(it.id); renderAll(); };
+  $("btnDel").onclick = deleteSelection;
 }
 
 function renderClearances(){
   const host = $("clearBody");
   const rows = analyse();
   const bad = rows.filter(r => !r.ok);
+  const fouls = sliderConflicts();
   let html = "";
-  if(!rows.length){
+  if(!rows.length && !fouls.length){
     host.innerHTML = `<div class="empty">No cabinetry placed yet.</div>`;
     return;
   }
+  for(const f of fouls)
+    html += `<div class="banner" data-id="${f.id}" style="cursor:pointer">
+      <strong>${f.name}</strong> is ${fmt(f.into)} mm into the ${f.wall} track. Those
+      sliders run to the floor, so they won't close past it.</div>`;
   if(bad.length)
     html += `<div class="banner"><strong>${bad.length}</strong> ${bad.length===1?"run has":"runs have"}
       less than ${MIN_CIRC} mm in front — tight for a working aisle.</div>`;
@@ -1580,7 +2057,7 @@ function renderClearances(){
     </div>`;
   }
   host.innerHTML = html;
-  host.querySelectorAll(".chk[data-id]").forEach(n => {
+  host.querySelectorAll("[data-id]").forEach(n => {
     n.addEventListener("click", () => { S.sel = +n.dataset.id; S.selPart = null; renderAll(); });
   });
 }
@@ -1676,11 +2153,333 @@ function flash(msg){
   flashTimer = setTimeout(() => $("stMsg").textContent = "", 2200);
 }
 
+/* Says what you can do right now, and speaks up when something is wrong.
+   Warnings win over instructions — a fouled slider track matters more than
+   a reminder about which key rotates. */
+function renderCoach(){
+  const host = $("coach");
+  const fouls = sliderConflicts();
+  let tag = "Tip", say = "", alert = false;
+
+  if(S.mode === "3d"){
+    host.className = "coach";
+    host.innerHTML = `<span class="tag">Perspective</span><span class="say">
+      <b>Drag to orbit</b>, wheel to zoom, or jump to a fixed viewpoint below. Walls between
+      you and the room drop away so you can always see in. Editing stays on the plan —
+      switch back to <b>Plan</b> to move anything.</span>`;
+    return;
+  }
+  if(fouls.length){
+    alert = true; tag = "Won't close";
+    const f = fouls[0];
+    say = `<b>${f.name}</b> sits <em>${fmt(f.into)} mm</em> into the ${f.wall} track.
+      Those sliders are full height, so they run to the floor — move it clear or the
+      doors won't shut.`;
+  }else if(S.selPart !== null){
+    const p = (S.room.partitions||[])[S.selPart];
+    if(p){
+      const pt = partThick(p), horiz = p.orient === "h";
+      const near = p.pos, far = (horiz ? S.room.h : S.room.w) - p.pos - pt;
+      tag = "Wall selected";
+      say = `Drag it to trade one side against the other — currently
+        <em>${fmt(near)}</em> against <em>${fmt(far)} mm</em>. Arrows nudge,
+        <code>Delete</code> removes it. Anything under 900 on the near side is bench
+        depth, not a room you can stand in.`;
+    }
+  }else if(S.sel !== null){
+    const it = S.items.find(i => i.id === S.sel);
+    if(it){
+      const c = frontClearance(it);
+      tag = "Item selected";
+      say = `Drag to move, <code>R</code> to rotate, <code>D</code> to duplicate.
+        The dashed arrow measures clear space off its working face`
+        + (c ? ` — <em>${fmt(c.dist)} mm</em> to ${c.what}.` : ".");
+    }
+  }
+
+  if(!say){
+    if(S.hasUnderlay && S.plan){
+      tag = "Start here";
+      say = `The consented drawing is underneath, pinned to the same millimetre grid.
+        <b>Click any cabinet to move it</b>, drag the scullery wall to reshape the space,
+        or add units from the catalogue. Fade the drawing with the slider up top.`;
+    }else{
+      tag = "Start here";
+      say = `<b>Click an item to select it</b>, or add cabinetry from the catalogue on the
+        left. Everything snaps to walls and to its neighbours.`;
+    }
+  }
+  host.className = "coach" + (alert ? " alert" : "");
+  host.innerHTML = `<span class="tag">${tag}</span><span class="say">${say}</span>`;
+}
+
+function renderNotes(){
+  const host = $("notesBody");
+  if(!host) return;
+  if(!S.hasUnderlay){
+    host.innerHTML = `<p class="note">This room isn't traced from a drawing, so the
+      dimensions are whatever you set them to.</p>`;
+    return;
+  }
+  host.innerHTML = `
+    <p class="note">Traced from Studio 4 sheet <b>A08</b>, approved consent set
+      <b>KDC 260177_PL_ISSUED</b>. Scale confirmed against the 90&nbsp;mm framing, which
+      reads as 5.1&nbsp;pt on the A1 sheet — exactly 1:50.</p>
+    <p class="note">Origin is the inner face of the west wall by the inner face of the
+      north wall.</p>
+    <dl class="facts">
+      <dt>Bench run depth</dt><dd>630</dd>
+      <dt>Galley, bench face to island</dt><dd>1,200</dd>
+      <dt>Island</dt><dd>900 × 3,495</dd>
+      <dt>Wall face to island far edge</dt><dd>2,730</dd>
+      <dt>Scullery zone</dt><dd>2,640 × 671</dd>
+      <dt>Scullery bench</dt><dd>2,010 × 630</dd>
+      <dt>Slider opening</dt><dd>1,989</dd>
+      <dt>Kitchen zone</dt><dd>2,730 × 5,282</dd>
+    </dl>
+    <p class="note" style="margin-top:9px">The scullery closes with <b>three 660
+      full-height cavity sliders</b> running to the floor. The 2,640 printed on the sheet
+      is the scullery's overall width; the bench inside it is 2,010.</p>`;
+}
+
 function renderSidePanels(){
+  renderCoach(); renderNotes();
   renderInspector(); renderClearances(); renderSchedule(); renderStatus();
 }
 function renderAll(){
   renderStage(); renderSidePanels(); renderRoom();
+  if(S.mode === "3d") render3d();
+}
+
+/* ------------------------------------------------------------------ */
+/* Perspective view                                                    */
+/* ------------------------------------------------------------------ */
+/* Everything in the model is an axis-aligned box, so a painter's
+   algorithm over back-face-culled quads is enough — no library, no
+   shaders. Walls standing between the camera and the room are dropped
+   so you can always see in. View only; editing stays on the plan. */
+
+const V3 = { az:-38, el:26, dist:11000, tz:1000, eye:false };
+const WALL_H = 2400;
+
+function zBase(it){
+  if(it.k === "overhead") return 1500;
+  if(it.k === "hob") return 880;
+  if(it.k === "sink") return 830;
+  return 0;
+}
+function zHeight(it){
+  if(it.k === "hob") return 40;
+  if(it.k === "sink") return 70;
+  return Math.max(40, it.h || 900);
+}
+const isBenchTop = it =>
+  ["drawer","door","plain","vanity","sink"].includes(it.k) &&
+  (it.h||900) >= 780 && (it.h||900) <= 1150;
+
+function pal3(){
+  const dark = matchMedia("(prefers-color-scheme:dark)").matches
+    ? document.documentElement.getAttribute("data-theme") !== "light"
+    : document.documentElement.getAttribute("data-theme") === "dark";
+  return dark ? {
+    dark:true, sky:"#101215", ground:"#191C1F", floor:[58,54,48], wall:[46,50,54],
+    carcass:[104,96,84], tall:[92,85,75], appliance:[96,103,110],
+    bench:[38,41,44], edge:"rgba(0,0,0,.55)", fixture:[120,126,132]
+  } : {
+    dark:false, sky:"#F2F0EC", ground:"#E4E0D8", floor:[214,197,170], wall:[236,232,225],
+    carcass:[210,201,186], tall:[196,187,171], appliance:[186,192,197],
+    bench:[92,96,100], edge:"rgba(0,0,0,.28)", fixture:[172,178,184]
+  };
+}
+const shade = (rgb, f) =>
+  `rgb(${Math.round(rgb[0]*f)},${Math.round(rgb[1]*f)},${Math.round(rgb[2]*f)})`;
+
+function itemColour(it, P){
+  if(RUN_FIXED.has(it.k) || ["washer","dish","oven","fridge"].includes(it.k)) return P.appliance;
+  if(["bath","shower","toilet","basin"].includes(it.k)) return P.fixture;
+  if(it.k === "tall") return P.tall;
+  return P.carcass;
+}
+
+function boxQuads(b){
+  const {x0,x1,y0,y1,z0,z1} = b;
+  return [
+    { n:[0,0,1],  f:1.00, p:[[x0,y0,z1],[x1,y0,z1],[x1,y1,z1],[x0,y1,z1]], top:true },
+    { n:[0,0,-1], f:0.45, p:[[x0,y0,z0],[x0,y1,z0],[x1,y1,z0],[x1,y0,z0]] },
+    { n:[0,-1,0], f:0.88, p:[[x0,y0,z0],[x1,y0,z0],[x1,y0,z1],[x0,y0,z1]] },
+    { n:[0,1,0],  f:0.70, p:[[x0,y1,z0],[x0,y1,z1],[x1,y1,z1],[x1,y1,z0]] },
+    { n:[-1,0,0], f:0.63, p:[[x0,y0,z0],[x0,y0,z1],[x0,y1,z1],[x0,y1,z0]] },
+    { n:[1,0,0],  f:0.79, p:[[x1,y0,z0],[x1,y1,z0],[x1,y1,z1],[x1,y0,z1]] }
+  ];
+}
+
+function build3d(P){
+  const R = S.room, t = R.t || 90, boxes = [];
+  const cx = R.w/2, cy = R.h/2;
+  const push = (x0,y0,x1,y1,z0,z1,col,opt) =>
+    boxes.push({x0,y0,x1,y1,z0,z1,col, ...opt});
+
+  const opsFor = side => (R.openings||[]).filter(o => o.side === side);
+  // A wall standing between the camera and the middle of the room would
+  // block the shot, so drop it.
+  const cam = cam3();
+  const occludes = (bx,by) => (bx-cx)*(cam.x-cx) + (by-cy)*(cam.y-cy) > 0;
+
+  for(const [a,b] of solidSpans(R.w, opsFor("N")))
+    if(!occludes((a+b)/2, -t/2)) push(a,-t,b,0,0,WALL_H,P.wall);
+  for(const [a,b] of solidSpans(R.w, opsFor("S")))
+    if(!occludes((a+b)/2, R.h+t/2)) push(a,R.h,b,R.h+t,0,WALL_H,P.wall);
+  for(const [a,b] of solidSpans(R.h, opsFor("W")))
+    if(!occludes(-t/2,(a+b)/2)) push(-t,a,0,b,0,WALL_H,P.wall);
+  for(const [a,b] of solidSpans(R.h, opsFor("E")))
+    if(!occludes(R.w+t/2,(a+b)/2)) push(R.w,a,R.w+t,b,0,WALL_H,P.wall);
+
+  for(const p of (R.partitions||[])){
+    const pt = partThick(p);
+    for(const [a,b] of solidSpans(p.to - p.from, p.openings)){
+      const s0 = p.from+a, s1 = p.from+b;
+      if(p.orient === "h"){
+        if(!occludes((s0+s1)/2, p.pos+pt/2)) push(s0,p.pos,s1,p.pos+pt,0,WALL_H,P.wall);
+      }else{
+        if(!occludes(p.pos+pt/2,(s0+s1)/2)) push(p.pos,s0,p.pos+pt,s1,0,WALL_H,P.wall);
+      }
+    }
+  }
+
+  for(const it of S.items){
+    const b = aabb(it), z0 = zBase(it), z1 = z0 + zHeight(it);
+    push(b.x0,b.y0,b.x1,b.y1,z0,z1, itemColour(it,P),
+         { bench:isBenchTop(it), sel:it.id === S.sel });
+  }
+  return boxes;
+}
+
+function cam3(){
+  const R = S.room;
+  const a = V3.az*Math.PI/180, e = V3.el*Math.PI/180;
+  const tx = R.w/2, ty = R.h/2;
+  return {
+    x: tx + V3.dist*Math.cos(e)*Math.sin(a),
+    y: ty + V3.dist*Math.cos(e)*Math.cos(a),
+    z: V3.tz + V3.dist*Math.sin(e),
+    tx, ty
+  };
+}
+
+function render3d(){
+  const cv = $("view3d");
+  if(!cv || S.mode !== "3d") return;
+  const rect = cv.parentElement.getBoundingClientRect();
+  const dpr = Math.min(2, window.devicePixelRatio || 1);
+  const W = Math.max(1, Math.round(rect.width)), H = Math.max(1, Math.round(cv.clientHeight));
+  if(cv.width !== W*dpr || cv.height !== H*dpr){ cv.width = W*dpr; cv.height = H*dpr; }
+  const g = cv.getContext("2d");
+  g.setTransform(dpr,0,0,dpr,0,0);
+
+  const P = pal3();
+  const grad = g.createLinearGradient(0,0,0,H);
+  grad.addColorStop(0, P.sky); grad.addColorStop(1, P.ground);
+  g.fillStyle = grad; g.fillRect(0,0,W,H);
+
+  const cam = cam3();
+  const tgt = { x:cam.tx, y:cam.ty, z:V3.tz };
+  const norm = v => { const l = Math.hypot(v[0],v[1],v[2]) || 1; return [v[0]/l,v[1]/l,v[2]/l]; };
+  const cross = (a,b) => [a[1]*b[2]-a[2]*b[1], a[2]*b[0]-a[0]*b[2], a[0]*b[1]-a[1]*b[0]];
+  const fwd = norm([tgt.x-cam.x, tgt.y-cam.y, tgt.z-cam.z]);
+  let right = cross(fwd,[0,0,1]);
+  if(Math.hypot(...right) < 1e-6) right = [1,0,0];
+  right = norm(right);
+  const up = norm(cross(right,fwd));
+  const fl = (H/2) / Math.tan((52*Math.PI/180)/2);
+
+  const proj = p => {
+    const d = [p[0]-cam.x, p[1]-cam.y, p[2]-cam.z];
+    const cz = d[0]*fwd[0]+d[1]*fwd[1]+d[2]*fwd[2];
+    if(cz <= 30) return null;
+    const rx = d[0]*right[0]+d[1]*right[1]+d[2]*right[2];
+    const ry = d[0]*up[0]+d[1]*up[1]+d[2]*up[2];
+    return [W/2 + rx*fl/cz, H/2 - ry*fl/cz, cz];
+  };
+
+  // floor slab, drawn first
+  const R = S.room;
+  const floor = [[0,0,0],[R.w,0,0],[R.w,R.h,0],[0,R.h,0]].map(proj);
+  if(floor.every(Boolean)){
+    g.beginPath();
+    floor.forEach((p,i) => i ? g.lineTo(p[0],p[1]) : g.moveTo(p[0],p[1]));
+    g.closePath();
+    g.fillStyle = shade(P.floor, 0.95); g.fill();
+  }
+
+  const faces = [];
+  for(const b of build3d(P)){
+    for(const q of boxQuads(b)){
+      const c = [ (b.x0+b.x1)/2 + q.n[0]*(b.x1-b.x0)/2,
+                  (b.y0+b.y1)/2 + q.n[1]*(b.y1-b.y0)/2,
+                  (b.z0+b.z1)/2 + q.n[2]*(b.z1-b.z0)/2 ];
+      const view = [c[0]-cam.x, c[1]-cam.y, c[2]-cam.z];
+      if(view[0]*q.n[0] + view[1]*q.n[1] + view[2]*q.n[2] > 0) continue;   // back face
+      const pts = q.p.map(proj);
+      if(pts.some(p => !p)) continue;
+      const col = (q.top && b.bench) ? P.bench : b.col;
+      faces.push({
+        pts, sel:b.sel,
+        depth: view[0]*view[0] + view[1]*view[1] + view[2]*view[2],
+        fill: shade(col, q.f)
+      });
+    }
+  }
+  faces.sort((a,b) => b.depth - a.depth);
+
+  g.lineJoin = "round";
+  for(const f of faces){
+    g.beginPath();
+    f.pts.forEach((p,i) => i ? g.lineTo(p[0],p[1]) : g.moveTo(p[0],p[1]));
+    g.closePath();
+    g.fillStyle = f.fill; g.fill();
+    g.strokeStyle = f.sel ? "var(--stamp)" : P.edge;
+    g.lineWidth = f.sel ? 2 : 0.6;
+    if(f.sel){ g.strokeStyle = P.dark ? "#F2555F" : "#C8102E"; }
+    g.stroke();
+  }
+  $("v3Lbl").textContent = `${Math.round(((V3.az%360)+360)%360)}° · ${Math.round(V3.el)}°`;
+}
+
+function setMode(m){
+  S.mode = m;
+  $("stage").style.display = m === "3d" ? "none" : "block";
+  $("view3d").style.display = m === "3d" ? "block" : "none";
+  $("hud2d").style.display = m === "3d" ? "none" : "flex";
+  $("hud3d").style.display = m === "3d" ? "flex" : "none";
+  $("trashBtn").style.display = m === "3d" ? "none" : "";
+  $("planBtn").disabled = $("gridBtn").disabled = $("dimBtn").disabled = (m === "3d");
+  document.querySelectorAll("#modeSeg button").forEach(b =>
+    b.setAttribute("aria-pressed", String(b.dataset.mode === m)));
+  document.querySelector(".legend").style.display = m === "3d" ? "none" : "";
+  if(m === "3d"){
+    if(!V3.framed){ V3.dist = fitDist(); V3.framed = true; }
+    render3d();
+  }else renderStage();
+  renderCoach();
+}
+
+function fitDist(k=1.12){
+  const R = S.room;
+  const diag = Math.hypot(R.w, R.h, WALL_H);
+  return clamp((diag/2)/Math.tan(26*Math.PI/180)*k, 1200, 40000);
+}
+function view3dPreset(name){
+  const span = fitDist();
+  V3.eye = false;
+  switch(name){
+    case "dining":   Object.assign(V3, {az:88,  el:20, dist:span, tz:1100}); break;
+    case "entry":    Object.assign(V3, {az:6,   el:20, dist:span, tz:1100}); break;
+    case "scullery": Object.assign(V3, {az:186, el:20, dist:span, tz:1100}); break;
+    case "over":     Object.assign(V3, {az:-38, el:66, dist:span*0.95, tz:900}); break;
+    case "eye":
+      Object.assign(V3, {az:70, el:2, dist:span*0.40, tz:1600, eye:true}); break;
+  }
+  render3d();
 }
 
 /* ------------------------------------------------------------------ */
@@ -1700,6 +2499,62 @@ function deserialise(json){
   S.sel = null;
   if(d.preset && PRESETS[d.preset]){ S.presetId = d.preset; $("presetSel").value = d.preset; }
 }
+
+const HELP_KEY = "joinery-bench-seen-help";
+/* --- perspective view controls --- */
+document.querySelectorAll("#modeSeg button").forEach(b =>
+  b.addEventListener("click", () => setMode(b.dataset.mode)));
+document.querySelectorAll("#hud3d button[data-view]").forEach(b =>
+  b.addEventListener("click", () => {
+    view3dPreset(b.dataset.view);
+    document.querySelectorAll("#hud3d button[data-view]").forEach(o =>
+      o.setAttribute("aria-pressed", String(o === b)));
+  }));
+
+(() => {
+  const cv = $("view3d");
+  let orb = null;
+  cv.addEventListener("pointerdown", e => {
+    orb = { x:e.clientX, y:e.clientY, az:V3.az, el:V3.el };
+    cv.setPointerCapture(e.pointerId);
+    cv.classList.add("orbiting");
+  });
+  cv.addEventListener("pointermove", e => {
+    if(!orb) return;
+    V3.az = orb.az + (e.clientX - orb.x)*0.35;
+    V3.el = clamp(orb.el - (e.clientY - orb.y)*0.28, -8, 88);
+    render3d();
+  });
+  const stop = () => { orb = null; cv.classList.remove("orbiting"); };
+  cv.addEventListener("pointerup", stop);
+  cv.addEventListener("pointercancel", stop);
+  cv.addEventListener("wheel", e => {
+    e.preventDefault();
+    V3.dist = clamp(V3.dist * (e.deltaY > 0 ? 1.1 : 1/1.1), 900, 45000);
+    render3d();
+  }, {passive:false});
+})();
+
+$("runApply").onclick = applyRunChange;
+$("runCancel").onclick = () => { runPending = null; $("runDlg").close(); renderAll(); };
+$("runAll").onclick = () => {
+  if(!runPending) return;
+  runPending.chosen = new Set(runPending.items
+    .map(r => S.items.find(i => i.id === r.id))
+    .filter(it => it && !RUN_FIXED.has(it.k)).map(it => it.id));
+  renderRunList();
+};
+$("runNone").onclick = () => {
+  if(!runPending) return;
+  runPending.chosen = new Set();
+  renderRunList();
+};
+$("trashBtn").onclick = deleteSelection;
+$("helpBtn").onclick = () => $("helpDlg").showModal();
+$("helpClose").onclick = () => {
+  $("helpDlg").close();
+  try{ localStorage.setItem(HELP_KEY, "1"); }catch(err){}
+};
 
 $("saveBtn").onclick = () => {
   try{ localStorage.setItem(LS_KEY, serialise()); flash("Saved to this browser"); }
@@ -1770,7 +2625,9 @@ $("planOp").addEventListener("input", e => {
   if(S.planOp > 0 && !S.plan){ S.plan = true; $("planBtn").setAttribute("aria-pressed","true"); }
   renderStage();
 });
-matchMedia("(prefers-color-scheme:dark)").addEventListener("change", renderStage);
+matchMedia("(prefers-color-scheme:dark)").addEventListener("change", () => {
+  renderStage(); render3d();
+});
 
 $("undoBtn").onclick = undo;
 $("redoBtn").onclick = redo;
@@ -1784,7 +2641,7 @@ $("inspToggle").onclick = () => { $("insp").classList.toggle("open"); $("rail").
 let resizeTimer = null;
 window.addEventListener("resize", () => {
   clearTimeout(resizeTimer);
-  resizeTimer = setTimeout(renderStage, 60);
+  resizeTimer = setTimeout(() => { renderStage(); render3d(); }, 60);
 });
 
 /* ------------------------------------------------------------------ */
@@ -1806,4 +2663,9 @@ if(saved){
 }
 syncUndoButtons();
 requestAnimationFrame(() => { fitView(); renderStage(); });
+
+// First visit gets the walkthrough; after that it's behind the ? button.
+try{
+  if(!localStorage.getItem(HELP_KEY)) $("helpDlg").showModal();
+}catch(err){ /* storage blocked — skip the walkthrough rather than nag */ }
 </script>
