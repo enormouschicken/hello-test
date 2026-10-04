@@ -1,0 +1,273 @@
+# NZS 3604 foundations, framing & timber (NZS 3604:2011 as cited by B1/AS1 2nd ed; B2/AS1 3rd ed; Building Product Specifications)
+
+--- struct-01 | Rule check
+Q: What does NZS 3604 mean by good ground?
+A) Any ground that has been compacted with a plate compactor
+B) Ground a builder has dug and found firm
+C)* Soil or rock that can permanently withstand an ultimate bearing capacity of 300 kPa (100 kPa allowable), excluding soft, expansive or unstable ground
+D) Any natural ground that isn't topsoil
+Why: Good ground can permanently withstand an ultimate bearing capacity of 300 kPa (an allowable bearing pressure of 100 kPa). It excludes soft or compressible soils, expansive soils, and ground that could move 25 mm or more. B1/AS1 2nd edition also excludes ground prone to liquefaction or lateral spread.
+Tip: If the ground isn't good ground, the foundations need specific engineering design.
+Ref: NZS 3604:2011 cl 1.3 (definitions) · B1/AS1 2nd edition para 1.2.1
+
+--- struct-02 | Rule check | keep
+Q: Using a Scala penetrometer to check for good ground, what result do you need down to a depth of twice the footing width?
+A) At least 2 blows per 100 mm
+B) At least 3 blows per 100 mm
+C)* At least 5 blows per 100 mm
+D) At least 10 blows per 100 mm
+Why: Good ground needs at least 5 blows per 100 mm down to twice the footing width below the footing, and at least 3 blows per 100 mm below that. Lower counts mean the ground needs investigating by an engineer.
+Ref: B1/AS1 2nd edition para 1.2.1 · NZS 3604:2011
+
+--- struct-03 | Rule check
+Q: What does NZS 3603 cover?
+A) Timber-framed buildings
+B)* Timber structures (engineering design of timber)
+C) Timber and wood-based products for use in building
+D) Concrete masonry buildings
+Why: NZS 3603 is the timber structures standard, used for engineered timber design. NZS 3604 is timber-framed buildings, NZS 3602 is timber and wood-based products for use in building, and NZS 4229 is concrete masonry buildings not requiring specific design.
+Ref: NZS 3604:2011 referenced documents · LBP Handbook p.30
+
+--- struct-04 | Rule check
+Q: Which structural grades do the NZS 3604:2011 span tables use?
+A) No.1 Framing and Building grade
+B) MSG8, VSG8 and MSG10 only
+C) H1.2 and H3.2
+D)* SG6, SG8 and SG10 (plus wet-use grades)
+Why: NZS 3604:2011 uses verified structural grades: SG6, SG8 and SG10, plus SG6 and SG8 (Wet) for wet-use situations. Machine-graded MSG8 and visually graded VSG8 timber both meet SG8. H1.2 and H3.2 are treatment hazard classes, not structural grades.
+Ref: NZS 3604:2011 Section 2
+
+--- struct-05 | Rule check | keep
+Q: What hazard class of treatment is required for deck joists and decking that are exposed to the weather but not in the ground?
+A) H1.2
+B) H3.1
+C)* H3.2
+D) H4
+Why: H3.2 is for timber exposed to the weather above ground with a higher decay risk, such as decks, pergolas, exposed beams and posts not in the ground. H3.1 is for painted cladding, fascias and joinery. H4 and H5 are for in-ground use.
+Ref: B2/AS1 3rd edition · Building Product Specifications 3.5 · NZS 3602
+
+--- struct-06 | Rule check | keep
+Q: What treatment hazard class do timber house piles need?
+A) H3.2
+B) H4
+C)* H5
+D) H6
+Why: House piles and poles, crib walls and deck posts set in the ground need H5. H4 is for non-structural in-ground use such as fence posts and landscaping. H6 is for marine use.
+Ref: Building Product Specifications 3.5 · NZS 3604:2011 Section 6
+
+--- struct-07 | Rule check | keep
+Q: What treatment do cavity battens need under the current Building Product Specifications?
+A) None. They're protected behind the cladding.
+B) H1.2
+C)* H3.1
+D) H4
+Why: Timber cavity battens must be at least H3.1. H1.2 covers framing inside the building envelope: wall, roof (including trusses), midfloor and subfloor framing.
+Ref: Building Product Specifications 3.5 (via B2/AS1 3rd edition)
+
+--- struct-08 | Rule check
+Q: You're looking at a stack of pink-coloured framing timber. What does the colour usually tell you?
+A) It's untreated timber, primed for painting.
+B) It's H3.2 treated for exterior use.
+C)* It's boron-treated H1.2 framing timber.
+D) It's been kiln-dried to below 12%.
+Why: H1.2 boron-treated framing is usually dyed pink so it's easy to identify. Always check the branding too: it shows the treatment plant number, the preservative code and the hazard class.
+Ref: NZS 3602 · Timber treatment requirements (MBIE guidance)
+
+--- struct-09 | Site scenario
+Q: You need to shorten an H5 timber pile. What's the right way to do it?
+A) Cut the bottom off, so the treated top stays clean.
+B) Paint the cut with acrylic primer.
+C) No special care. H5 timber is treated right through.
+D)* Cut from the top, treat the cut surface with a suitable preservative, and never put a cut end in the ground.
+Why: Treatment doesn't always penetrate to the core, so a cut exposes less-protected timber. Cut piles from the top, treat the cut surface, and never place a cut end in the ground. Similarly, cut ends of H3.1 boards need re-priming.
+Ref: NZS 3602 · NZS 3604:2011 Section 6 · BRANZ Bulletin 560
+
+--- struct-10 | Rule check
+Q: What's the minimum size of a square timber house pile under NZS 3604?
+A) 100 × 100 mm
+B)* 125 × 125 mm
+C) 150 × 150 mm
+D) 200 × 200 mm
+Why: Timber piles must be at least 125 × 125 mm if square or 140 mm diameter if round, treated to H5, set in concrete footings of at least 17.5 MPa.
+Ref: NZS 3604:2011 Section 6 · BRANZ Bulletin 560
+
+--- struct-11 | Rule check
+Q: What does an ordinary pile do?
+A) Resists horizontal loads from wind and earthquakes
+B) Holds the floor down against uplift
+C)* Carries vertical loads only, with no bracing value
+D) Acts as a braced pile when the floor is under 600 mm high
+Why: Ordinary piles carry vertical loads only. Horizontal loads at subfloor level are resisted by anchor piles, braced pile systems, cantilever piles or foundation walls.
+Ref: NZS 3604:2011 Section 6
+
+--- struct-12 | Rule check
+Q: What's the minimum footing depth for an anchor pile?
+A) 200 mm
+B) 450 mm
+C) 600 mm
+D)* 900 mm
+Why: Anchor piles need a footing at least 900 mm deep so they can resist overturning and uplift. Ordinary pile footings are at least 200 mm deep, and braced pile system footings are 450 mm.
+Ref: NZS 3604:2011 Section 6 · BRANZ Bulletin 560
+
+--- struct-13 | Calculation
+Q: A floor needs subfloor ventilation. The floor area is 120 m². What's the minimum total net vent area under NZS 3604?
+A) 42,000 mm²
+B) 350,000 mm²
+C)* 420,000 mm²
+D) 700,000 mm²
+Why: NZS 3604 requires at least 3500 mm² of net vent area per square metre of floor: 3500 × 120 = 420,000 mm² (0.42 m²). Vents are spaced no more than 1.8 m apart and within 750 mm of corners.
+Ref: NZS 3604:2011 cl 6.14
+
+--- struct-14 | Rule check
+Q: Where should subfloor vents be placed?
+A) Only on the side facing the prevailing wind
+B) At least 3 m apart, away from corners
+C) Anywhere, as long as the total area is right
+D)* No more than 1.8 m apart and within 750 mm of each corner, so air flows through the whole subfloor
+Why: Vents must be spread around the perimeter: no more than 1.8 m apart and within 750 mm of corners, with no part of the ground more than 7.5 m from a vent. Spreading them out stops damp dead spots forming.
+Ref: NZS 3604:2011 cl 6.14
+
+--- struct-15 | Site scenario
+Q: On an infill section, you can't fit enough subfloor vents along one side of the house. What's the NZS 3604 fallback?
+A) Leave it. Ventilation isn't critical.
+B) Fit a fan and carry on.
+C)* Lay a 0.25 mm polythene ground vapour barrier over the whole ground surface, which lets the vent area drop to 700 mm² per m² of floor.
+D) Fill the subfloor with gravel.
+Why: Where the normal 3500 mm²/m² can't be achieved, covering all the subfloor ground with 0.25 mm polythene cuts the moisture coming off the ground. NZS 3604 then accepts a reduced vent area of at least 700 mm² per m².
+Ref: NZS 3604:2011 cl 6.14
+
+--- struct-16 | Rule check
+Q: What does NZS 3604's 450 mm subfloor clearance relate to?
+A) The minimum height of every pile above ground
+B) The clearance from ground to the underside of the bearers
+C)* The clearance to the underside of floor joists for access under the floor
+D) The minimum height of the subfloor vents
+Why: The 450 mm figure is an access clearance to the underside of the floor joists so the subfloor can be inspected and maintained. Piles themselves can be as low as 150 mm above finished ground. Particleboard floors need 550 mm to the underside of the sheet.
+Ref: NZS 3604:2011 cl 6.4.1.1 and 6.14.4 · BRANZ Bulletin 628
+
+--- struct-17 | Rule check | keep
+Q: What's the minimum damp-proof membrane (DPM) under a slab-on-ground?
+A) 0.1 mm polythene
+B) 0.15 mm polythene
+C)* 0.25 mm (250 micron) polythene, with laps taped
+D) No DPM is needed over a granular base
+Why: Slabs-on-ground need a 0.25 mm polythene DPM with taped laps over at least 75 mm of compacted granular base, under a slab at least 100 mm thick. Puncture the DPM and moisture can wick into the slab and up into flooring.
+Ref: NZS 3604:2011 cl 7.5 · BRANZ Appraisal 1030
+
+--- struct-18 | Rule check
+Q: What's the maximum depth of compacted hardfill under an NZS 3604 slab?
+A) 300 mm
+B) 450 mm
+C)* 600 mm
+D) 900 mm
+Why: Hardfill under an NZS 3604 slab can be up to 600 mm deep, compacted in layers of no more than 150 mm. Deeper fill needs specific engineering design.
+Ref: NZS 3604:2011 cl 7.5 · Standards NZ guidance on hardfill depth
+
+--- struct-19 | Rule check
+Q: Under B1/AS1 2nd edition (from July 2025), can an NZS 3604 house slab be unreinforced or use fibre reinforcement only?
+A) Yes, unreinforced slabs are fine on good ground.
+B) Yes, fibre reinforcement can replace mesh.
+C) Only in earthquake zone 1.
+D)* No. All slabs must be reinforced with ductile Grade 500E mesh (at least 2.27 kg/m²); the unreinforced and fibre-only options were removed.
+Why: B1/AS1 2nd edition requires every NZS 3604 slab to be reinforced with ductile (class E) Grade 500E mesh of at least 2.27 kg/m², carried to within 75 mm of the slab edge. The unreinforced and fibre-reinforced options were removed.
+Ref: B1/AS1 2nd edition para 2.3.7
+
+--- struct-20 | Rule check
+Q: What's the minimum concrete cover to reinforcing where the concrete is cast directly against the ground?
+A) 30 mm
+B) 50 mm
+C)* 75 mm
+D) 100 mm
+Why: Cover is 75 mm where concrete is cast against the ground, 50 mm against formwork or exposed to the weather, and 30 mm to a protected top surface. Too little cover lets moisture reach the steel and rust it.
+Ref: NZS 3604:2011 cl 4.5.1
+
+--- struct-21 | Rule check
+Q: A house is being built 300 m from a harbour. What's the minimum concrete strength under NZS 3604?
+A) 17.5 MPa
+B) 20 MPa
+C)* 25 MPa
+D) 30 MPa
+Why: Within 500 m of the coast, including harbours, the site is in exposure zone D, which needs 25 MPa concrete. Zone C needs 20 MPa, and zone B 17.5 MPa.
+Ref: NZS 3604:2011 cl 4.2 and 4.5.2
+
+--- struct-22 | Rule check | keep
+Q: Under NZS 3604, which exposure zone covers sites within 500 m of the coast (including harbours) or 100 m of tidal estuaries?
+A) Zone B
+B) Zone C
+C)* Zone D
+D) Zone E
+Why: Zone D covers land within 500 m of the coast including harbours, within 100 m of tidal estuaries and inlets, all offshore islands, and other mapped areas. Zone B is low (inland) and zone C is medium. NZS 3604 has no zone E. That only appears in E2/AS1, for breaking-surf beachfronts.
+Ref: NZS 3604:2011 Section 4 (Figure 4.2)
+
+--- struct-23 | Site scenario
+Q: You're building an exposed deck in exposure zone D. What fixings should you use for the structural connections, like joist hangers and bolts?
+A) Electroplated (zinc-plated) steel
+B) Hot-dip galvanised steel
+C) Aluminium
+D)* Stainless steel (grade 304 or better)
+Why: In zone D, structural fixings in sheltered or exposed locations must be stainless steel (304, or 316 where appearance matters). Hot-dip galvanised is acceptable in sheltered spots in zones B and C. Fixings to H5 piles within 600 mm of the ground also need to be stainless.
+Ref: NZS 3604:2011 Section 4 (durability of fixings)
+
+--- struct-24 | Rule check
+Q: Which fixing should you NOT use against copper-treated timber (ACQ or copper azole) in an exposed location?
+A) 304 stainless steel
+B) Silicon bronze
+C) 316 stainless steel
+D)* Hot-dip galvanised steel
+Why: Copper-based treatments corrode zinc and aluminium, so avoid galvanised steel, zinc, aluminium and aluminium-zinc coatings against copper-treated timber in sheltered or exposed locations. Use stainless steel or silicon bronze. Metal flashings need building paper between them and treated timber.
+Ref: NZS 3604:2011 Section 4 · E2/AS1 Tables C.1.1.1B and C.1.1.1C
+
+--- struct-25 | Rule check
+Q: What's the maximum stud spacing allowed by the NZS 3604 wall framing tables?
+A) 400 mm
+B) 450 mm
+C)* 600 mm
+D) 800 mm
+Why: NZS 3604 stud tables go up to 600 mm centres. Dwangs (nogs) are at 1350 mm maximum centres generally, closer behind some direct-fixed vertical claddings. Lining and cladding manufacturers may need closer spacing.
+Ref: NZS 3604:2011 Section 8
+
+--- struct-26 | Rule check
+Q: What does loaded dimension mean in NZS 3604 span tables?
+A) The length of the member between supports
+B) The depth of the member
+C)* A measure of the weight of construction the member supports, such as half the joist spans either side of a bearer
+D) The total load in kilonewtons
+Why: Loaded dimension is a measure of how much of the building a member carries. For a bearer, it's half the sum of the joist spans on each side. It's an input for lintel, stud, bearer and other tables, along with things like roof weight, wind zone and span.
+Ref: NZS 3604:2011 cl 1.3 (definitions)
+
+--- struct-27 | Calculation
+Q: A bearer supports floor joists spanning 3.6 m on one side and 2.4 m on the other. What's its loaded dimension?
+A) 1.2 m
+B) 2.4 m
+C)* 3.0 m
+D) 6.0 m
+Why: For a bearer, loaded dimension is half the sum of the joist spans on each side: (3.6 + 2.4) ÷ 2 = 3.0 m. Use that with the bearer span and timber grade to read the bearer size from the table.
+Ref: NZS 3604:2011 cl 1.3 and Section 6
+
+--- struct-28 | Rule check
+Q: Which of these do you NOT need when choosing a stud size from the NZS 3604 stud tables?
+A) Roof weight (light or heavy)
+B) Wind zone
+C) Loaded dimension, stud height and spacing
+D)* Earthquake zone
+Why: Stud tables are read using roof weight, wind zone, loaded dimension, stud height and stud spacing. Earthquake zone feeds into the bracing demand, not stud sizing.
+Ref: NZS 3604:2011 Section 8 (stud tables)
+
+--- struct-29 | Rule check
+Q: How soon should shrinkage control joints in a new slab be saw cut?
+A) After 7 days, once the concrete has hardened
+B) Before the concrete is poured
+C) Any time before the floor coverings go down
+D)* As soon as the concrete can be cut cleanly: typically within 24 hours in warm weather (over 20°C) or 48 hours in cooler weather
+Why: Saw cuts must go in before shrinkage cracking starts. Cut about a quarter of the slab depth, typically within 24 hours above 20°C or 48 hours below. Late cuts are pointless because the slab will already have cracked where it wanted to.
+Ref: BRANZ guidance on concrete slabs and control joints · NZS 3604:2011 Section 7
+
+--- struct-30 | Rule check
+Q: NZS 3604:2011 is cited in B1/AS1 with modifications. What's its status in October 2026?
+A) It was replaced by a new edition in 2025.
+B) It's no longer an acceptable solution.
+C) It only applies to single-storey houses now.
+D)* NZS 3604:2011 is still current. A draft revision went out for public comment in 2026 but can't be used yet.
+Why: NZS 3604:2011 remains the cited standard, modified by B1/AS1 2nd edition (2025) and the Building Product Specifications. A draft revision (DZ NZS 3604) went out for consultation in mid-2026 and isn't citable until it's published and referenced.
+Tip: Keep an eye on Codewords and LBP updates for when a new edition is cited.
+Ref: B1/AS1 2nd edition para 2.3.1.1 · Standards NZ (DZ NZS 3604 consultation, 2026)

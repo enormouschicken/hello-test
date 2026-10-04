@@ -1,0 +1,291 @@
+# Building Act, Building Code & consents
+
+--- act-01 | Rule check
+Q: Which statement best describes the purpose of the Building Act 2004?
+A) To allow for continuing innovation in building
+B) To set out the mandatory performance criteria for building work
+C)* To ensure people can use buildings safely and without endangering their health
+D) To make sure the most cost-efficient materials are used
+Why: The Act's purposes include making sure people can use buildings safely and without endangering their health, that buildings support health and wellbeing, that people can escape a fire, that buildings promote sustainable development, and that owners, designers, builders and BCAs are accountable. The mandatory performance criteria are in the Building Code, not the Act.
+Ref: LBP Handbook p.26 (self-assessment Q1) · Building Act 2004 s3
+
+--- act-02 | Rule check
+Q: Which statement best describes the Building Code?
+A) A collection of standard New Zealand building practices
+B) Step-by-step rules for designing and constructing buildings
+C) The complaints procedure for faulty building work
+D)* The mandatory performance criteria that all building work must meet
+Why: The Building Code (Schedule 1 of the Building Regulations 1992) is performance-based. It says how a building must perform in its intended use, not how it must be built, so you can use any method or product that meets the performance criteria. Step-by-step methods are in the Acceptable Solutions.
+Ref: LBP Handbook p.27 (self-assessment Q2)
+
+--- act-03 | Rule check
+Q: Which parts of the Building Code are mandatory?
+A) Only the Acceptable Solutions
+B) The Acceptable Solutions and Verification Methods
+C) Only the performance criteria
+D)* The objectives, functional requirements and performance criteria
+Why: Each Building Code clause has an objective, functional requirements and performance criteria, and these are mandatory. Verification Methods and Acceptable Solutions are optional ways to comply: if you follow one, the BCA must accept that part as complying.
+Ref: LBP Handbook p.27 · Building Code structure
+
+--- act-04 | Rule check
+Q: What is an alternative solution?
+A) A provision of Australian building legislation
+B) A design the BCA must accept without question
+C) A plain-language summary of a Verification Method
+D)* A design that differs from an Acceptable Solution or Verification Method but still shows how the work will comply with the Building Code
+Why: An alternative solution is any other way of showing compliance, for example straw bale walls, which have no Acceptable Solution. The BCA has to be satisfied on reasonable grounds that it complies, so expect to provide more detail and evidence.
+Ref: LBP Handbook pp.29–30 (self-assessment Q4)
+
+--- act-05 | Rule check
+Q: A cladding product has a current BRANZ Appraisal. How does a BCA have to treat it?
+A) It must accept the product as complying, like a CodeMark certificate.
+B)* The appraisal is evidence the BCA can consider, but it isn't deemed to comply, so the BCA decides whether it's satisfied.
+C) It must reject it, because appraisals aren't recognised.
+D) It must send it to MBIE for a determination.
+Why: Under section 19, a BCA must accept an Acceptable Solution or Verification Method, an MBIE determination, a current MultiProof, or a current CodeMark (product certification) used within its scope. A BRANZ Appraisal is useful supporting evidence but not deemed to comply.
+Ref: Building Act 2004 s19 · building.govt.nz (CodeMark vs product appraisals)
+
+--- act-06 | Rule check
+Q: Which document, first issued in July 2025, sets out product standards and specifications that must be used together with an Acceptable Solution, not on their own?
+A) The LBP Handbook
+B) NZS 3604:2011
+C) The Building Code
+D)* The Building Product Specifications
+Why: The Building Product Specifications (first edition 31 July 2025, Amendment 1 from 2 April 2026) collect the product standards that Acceptable Solutions such as E2/AS1, B1/AS1 and B2/AS1 now refer to. On their own they don't demonstrate Building Code compliance.
+Ref: Building Product Specifications · E2/AS1 4th edition para 1.2.3
+
+--- act-07 | Rule check
+Q: Who is responsible for making sure a building consent application is made?
+A) The consulting engineer
+B) The Design LBP
+C) The Site LBP
+D)* The owner
+Why: Getting a building consent is the owner's responsibility. Others, such as a designer or builder, can apply on the owner's behalf with their consent. The application must show how the work will comply. Saying it complies isn't enough.
+Ref: LBP Handbook p.32 (self-assessment Q6) · Building Act 2004 s14B
+
+--- act-08 | Site scenario
+Q: The client wants you to start framing next week. The consent has been lodged but not yet issued. What do you tell them?
+A) Start now. The consent is just paperwork and it'll come through.
+B) Start on anything that isn't restricted building work.
+C) Start, as long as the council is told.
+D)* You can't start the consented work until the building consent has been granted and issued.
+Why: Building work that needs a consent can't start until the consent is issued. Building without a required consent is an offence. The owner risks fines, being ordered to fix or remove the work, and trouble selling or insuring. As an LBP your licence is at risk too: the Board has disciplined LBPs for not making sure a consent was in place.
+Ref: LBP Handbook p.32
+
+--- act-09 | Rule check
+Q: How long does a BCA have to grant or refuse a building consent application?
+A) 10 working days
+B)* 20 working days, with the clock stopped while it waits for further information it has asked for
+C) 20 calendar days
+D) 30 working days, with no stoppages
+Why: Section 48 gives BCAs 20 working days to decide. If the BCA requests further information, the clock is suspended until it gets it. MultiProof consents have a 10 working day limit.
+Ref: Building Act 2004 s48 · LBP Handbook p.34
+
+--- act-10 | Rule check
+Q: A building consent was issued 14 months ago, but no work has started and no extension was agreed. What's its status?
+A) It's still valid for 5 years.
+B) It's valid until the code compliance certificate is issued.
+C)* It has lapsed, because work didn't start within 12 months of the consent being issued.
+D) It's valid as long as the fees were paid.
+Why: A building consent lapses if the work hasn't started within 12 months of the date it was issued, unless the BCA has agreed to a longer period. The owner, or a designer or Site LBP for them, should arrange an extension before the 12 months is up.
+Ref: Building Act 2004 s52 · LBP Handbook p.34
+
+--- act-11 | Rule check
+Q: Who certifies that completed building work complies with the building consent?
+A) The Site LBP
+B)* The building consent authority, by issuing a code compliance certificate
+C) The owner
+D) The Design LBP
+Why: The BCA certifies compliance by issuing a code compliance certificate (CCC) once it's satisfied the work matches the consent. It usually does a final inspection first.
+Ref: LBP Handbook pp.15 and 33 (self-assessment Q10)
+
+--- act-12 | Rule check
+Q: Who is responsible for applying for the code compliance certificate when the work is finished?
+A) The building consent authority
+B) The consulting engineer
+C) The carpenter who did the restricted building work
+D)* The owner
+Why: The owner must apply for the CCC once the consented work is complete (a designer or Site LBP can do it for them). The BCA then has 20 working days to decide. If no one applies within 24 months of the consent being granted, the BCA must still decide whether to issue a CCC.
+Ref: Building Act 2004 ss92–93 · LBP Handbook p.14 (self-assessment Q11)
+
+--- act-13 | Rule check
+Q: Since August 2025, what inspection timeframe are BCAs measured against?
+A) Every inspection within 24 hours of booking
+B) Inspections within 10 working days
+C) No timeframe applies
+D)* At least 80% of inspections done within 3 working days of the requested date
+Why: From 22 August 2025, BCAs must carry out at least 80% of inspections within 3 working days of the date requested. Book inspections as early as you can, and don't cover up work before the inspection that's listed for it.
+Tip: Missed inspections can stop the BCA issuing a CCC, which is a big problem for the owner and for you.
+Ref: building.govt.nz (BCA accreditation regulatory guidance 7A)
+
+--- act-14 | Rule check
+Q: What is a minor variation to a building consent?
+A) Any change the builder thinks is small
+B) A change that doesn't need to be recorded
+C) A change that is approved after the work is done
+D)* A change that doesn't significantly depart from the consent, approved by the BCA before it's built and recorded in writing
+Why: A minor variation is a small change, such as substituting a comparable product or moving a window slightly. It doesn't need a formal amendment, but the BCA must approve it before the work is done and record it in writing. Changes to primary structure, footprint or fire safety usually need a full amendment.
+Ref: Building Act 2004 s45A · LBP Handbook p.33
+
+--- act-15 | Site scenario
+Q: The specified cladding is out of stock and the supplier offers a different brand. When can the substitution be treated as a minor variation?
+A) Whenever the new product is cheaper
+B) Whenever the builder signs off on it
+C) Never. All product substitutions need a full amendment.
+D)* When it gives equivalent performance, is unlikely to affect compliance of other work, and the consequence of failure isn't significantly worse
+Why: Since 30 September 2024, a product substitution can be a minor variation only if all three tests are met: equivalent performance, unlikely to affect the compliance of other building work, and no significantly worse consequence if it fails. Otherwise it needs an amendment. Either way the BCA approves it before you build.
+Ref: Building (Minor Variations) Amendment Regulations 2024
+
+--- act-16 | Rule check
+Q: What is a notice to fix?
+A) A request from the owner to repair a defect
+B) An instruction from the designer
+C) An insurance claim form
+D)* A formal notice from the BCA or council requiring someone to fix building work that breaches the Act or regulations
+Why: A notice to fix requires the owner or the person doing or supervising the work to put things right. Not complying is an offence under section 168, with a fine of up to $200,000 plus up to $20,000 a day while it continues, or a $1,000 infringement fee.
+Ref: Building Act 2004 ss164 and 168
+
+--- act-17 | Rule check
+Q: What is a certificate of acceptance?
+A) A certificate that a design LBP gives with a consent application
+B) The certificate issued at the end of a consented job
+C) A certificate from the supplier that a product is suitable
+D)* A certificate the council can issue for building work done without a required building consent, if it's satisfied the work complies
+Why: A certificate of acceptance is a way to regularise work done without a consent (or urgent work done before one could be obtained). The council inspects what it can and may limit the certificate to what it can check. It's not a substitute for getting a consent first.
+Ref: Building Act 2004 s96
+
+--- act-18 | Rule check
+Q: What is a project information memorandum (PIM)?
+A) A record of work given by an LBP
+B) A list of required inspections
+C) The approved consent plans
+D)* Information from the council about a property and the proposed work, such as hazards, services and other approvals needed
+Why: A PIM tells the owner what the council knows that's relevant to the project, including natural hazards, services and whether resource consent is needed. It's optional for consented work, but mandatory before building an exempt small stand-alone dwelling (granny flat).
+Ref: Building Act 2004 ss31–35
+
+--- act-19 | Rule check
+Q: When do you need a resource consent?
+A) When the project involves a Category 3 building
+B) When the site is within 10 km of a national park
+C) Never, if the work complies with the Building Code
+D)* When the district plan (or a regional plan) requires one for the activity
+Why: Resource consent comes from the Resource Management Act rules in district and regional plans. If the plan says the activity needs consent, you must get it before building work starts. Check early, as it's separate from the building consent.
+Ref: LBP Handbook p.36 (self-assessment Q7)
+
+--- act-20 | Rule check | keep
+Q: Under Building Code clause B2, how long must wall cladding (part of the building envelope) last with normal maintenance?
+A) 5 years
+B)* 15 years
+C) 50 years
+D) The full life of the building, at least 100 years
+Why: B2 sets three durability periods. 50 years for structural elements and anything difficult to access or replace, or whose failure would go undetected. 15 years for moderately difficult to access or replace elements, such as the building envelope and claddings. 5 years for elements that are easy to access and replace, such as linings, renewable coatings and fixtures.
+Ref: Building Code clause B2.3.1
+
+--- act-21 | Rule check
+Q: Under clause B2, which of these must last at least 50 years?
+A) Paint finishes
+B) Interior wall linings
+C) Kitchen fixtures
+D)* Wall framing and its fixings
+Why: Elements that provide structural stability (including floors, walls and their fixings), are difficult to access or replace, or whose failure would go undetected must last the life of the building, not less than 50 years. Coatings, linings and fixtures are 5-year elements.
+Ref: Building Code clause B2.3.1(a)
+
+--- act-22 | Rule check
+Q: Which Building Code clause covers barriers to stop people falling from decks and stairs?
+A) B1 Structure
+B) D1 Access routes
+C) E2 External moisture
+D)* F4 Safety from falling
+Why: F4 Safety from falling requires barriers where people could fall 1 m or more. D1 covers access routes such as stairs, ramps and handrails. B1 is structure and E2 is external moisture.
+Ref: Building Code clauses F4 and D1
+
+--- act-23 | Site scenario
+Q: A client wants a deck that sits 1.2 m above the ground at its highest point. It's exempt from building consent. Does it need a barrier?
+A) No. Exempt work doesn't have to meet the Building Code.
+B) No. Barriers are only needed above 1.5 m.
+C) Only if the council asks for one.
+D)* Yes. All building work must meet the Building Code, and clause F4 needs a barrier where someone could fall 1 m or more.
+Why: Schedule 1 exempts decks where no one could fall more than 1.5 m, even if the deck collapsed. Exempt work still has to comply with the Building Code, though, and F4 requires a barrier where the fall is 1 m or more.
+Ref: Building Act 2004 s17 and Schedule 1 · Building Code clause F4
+
+--- act-24 | Rule check
+Q: Which Building Code clause covers keeping rain and groundwater out of a building?
+A) E1 Surface water
+B)* E2 External moisture
+C) E3 Internal moisture
+D) G4 Ventilation
+Why: E2 External moisture requires buildings to resist penetration and accumulation of moisture from outside. E1 covers surface water run-off and drainage, and E3 covers moisture generated inside, such as in bathrooms and kitchens.
+Ref: Building Code clauses E1, E2 and E3
+
+--- act-25 | Rule check
+Q: Which of these must you know about all building work, including work exempt from consent?
+A) It doesn't need to meet the Building Code.
+B) Only an LBP can do it.
+C) The council must inspect it.
+D)* It must still comply with the Building Code.
+Why: Section 17 says all building work must comply with the Building Code, whether or not it needs a consent. Exempt work just doesn't need a consent or inspections. The owner is responsible for deciding whether work is exempt, and for any consents that are needed.
+Ref: Building Act 2004 ss14B and 17 · LBP Handbook p.13
+
+--- act-26 | Rule check
+Q: Since 15 January 2026, what's the maximum floor area of a small stand-alone dwelling (granny flat) that can be built without a building consent?
+A) 30 m²
+B) 50 m²
+C)* 70 m²
+D) 90 m²
+Why: The Schedule 1A exemption covers new, single-storey, stand-alone dwellings of up to 70 m² (including any internal garage), at least 2 m from boundaries and other residential buildings, built with lightweight framing and roofing. A PIM is required before work starts and the build must be finished within 2 years.
+Ref: Building and Construction (Small Stand-alone Dwellings) Amendment Act 2025 · Building Act Schedule 1A
+
+--- act-27 | Rule check
+Q: Who can do the building work on an exempt granny flat under Schedule 1A?
+A) Anyone, because it doesn't need a consent
+B) Only the owner
+C) Only a registered architect
+D)* Licensed building practitioners (doing or supervising the work), with plumbing, drainlaying, gas and electrical work done by authorised people
+Why: The design and building work must be carried out or supervised by LBPs, and plumbing, drainlaying, gasfitting and electrical work must be done by authorised people. The council doesn't inspect, so LBPs' records of work and the other certificates go to the council, and the owner must lodge everything within 20 working days of completion.
+Ref: Building Act Schedule 1A · lbp.govt.nz (granny flat exemption)
+
+--- act-28 | Rule check
+Q: Under H1/AS1 6th edition (from 27 November 2025), how is compliance for house insulation shown?
+A) By the schedule method only
+B) By choosing R-values from a table, with no calculation
+C) H1 no longer applies to houses
+D)* By the calculation method (or modelling); the schedule method was removed
+Why: H1/AS1 6th edition removed the schedule method. Houses now show compliance with the calculation method (or modelling under the Verification Method), comparing the design against a reference building. The 5th edition can still be used for consents lodged before 27 November 2026.
+Ref: H1/AS1 6th edition (27 November 2025)
+
+--- act-29 | Rule check | keep
+Q: In the H1/AS1 calculation method, what roof R-value does the reference building use?
+A) R2.9
+B) R3.3
+C) R4.0
+D)* R6.6
+Why: The reference building uses R6.6 for the roof. Walls in the 6th edition reference building use R1.6, because framing is now counted at a minimum 38% framing fraction. The proposed design can trade off between elements, but must still meet minimum R-values (for example roof R2.6, wall R1.0).
+Ref: H1/AS1 6th edition
+
+--- act-30 | Rule check
+Q: Who issues the certificate for electrical work that the BCA needs before it can issue a CCC?
+A) The BCA's building inspector
+B) The builder
+C) The Site LBP
+D)* The licensed electrical worker who did the work
+Why: Gas and electrical work generally isn't inspected by the BCA. The licensed worker certifies their own work with an energy work certificate (electrical certificate of compliance or gas certificate), and the BCA needs these before issuing the CCC.
+Ref: LBP Handbook p.14
+
+--- act-31 | Rule check
+Q: What's the status of proportionate liability for building defects in October 2026?
+A) It became law in 2025.
+B) It applies only to LBPs.
+C) It applies only to council inspectors.
+D)* It isn't law yet. The Building Amendment Bill introduced in June 2026 proposes it, and it's still before Parliament.
+Why: The Building Amendment Bill (introduced 29 June 2026) proposes proportionate liability, mandatory home warranties for larger residential jobs, and other changes. Until it passes, the current joint and several liability rules still apply.
+Tip: Mention you follow changes like this through Codewords and LBP news. Assessors like to see you keep up to date.
+Ref: Building Amendment Bill 2026 (lbp.govt.nz consultation notice)
+
+--- act-32 | Rule check
+Q: What must be kept on site during consented building work?
+A) Nothing. The council holds the documents.
+B) Only the builder's own drawings
+C) Only the engineer's producer statements
+D)* The approved (stamped) consent documents, including any amendments and the inspection schedule
+Why: The BCA-approved plans and specifications, any amendments and the inspection schedule must be on site so everyone builds to the consent and the inspector can check against it. Building from unapproved drawings is a common way work ends up not matching the consent.
+Ref: BCA building consent conditions · LBP Handbook p.33

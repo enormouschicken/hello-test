@@ -1,0 +1,337 @@
+# Restricted building work, supervision & records of work
+
+--- rbw-01 | Site scenario
+Q: You've framed and closed in a new house when the owner ends your contract, before the cladding goes on. The owner says you don't need to do a record of work because the house isn't finished. What do you do?
+A) Nothing yet. A record of work is only due once the whole house is complete.
+B)* Give a record of work for the RBW you carried out or supervised up to the day you left, to the owner and the council.
+C) Pass your notes to the next builder so your work goes on their record of work.
+D) Provide the record of work once the owner has paid your final invoice.
+Why: A record of work is due when your part of the restricted building work is finished, and leaving the job early (or being dismissed, or the company being liquidated) counts as finishing. Give it to the homeowner and the territorial authority, listing the work you completed and the work still to be done. Another LBP can't take responsibility for your work, and you can't hold the record back over a payment dispute.
+Tip: Say who gets it (owner and council), when it's due (when your RBW ends, not when the job ends), and that it isn't a bargaining chip.
+Ref: LBP Handbook p.11 · Building Act 2004 s88
+
+--- rbw-02 | Site scenario
+Q: You're asked to frame a new three-storey building with a café on the ground floor and two apartments above. It needs a building consent. Is the structural framing restricted building work?
+A) Yes. Any building with apartments in it counts as residential.
+B) Only the framing for the two apartment floors.
+C)* No. RBW covers houses and purely residential small-to-medium apartment buildings, and this building is mixed-use.
+D) Only if the building is more than 10 m high.
+Why: RBW only applies to houses and small-to-medium apartment buildings (two or more residential units, no commercial units, under 10 m high). A building with a café or shops is mixed-use, so the work isn't RBW. It still has to follow the consent and the Building Code, and as an LBP you're accountable to the Board for all building work you carry out or supervise, RBW or not.
+Ref: LBP Handbook pp.8–9 · Building (Definition of Restricted Building Work) Order 2011
+
+--- rbw-03 | Site scenario
+Q: You're the LBP carpenter running a job. Another LBP carpenter on your crew fixes all the wall cladding. Who provides the record of work for the cladding?
+A)* The other LBP. An LBP can't supervise another LBP in the same licence class, so each LBP who does RBW provides their own record of work.
+B) You do, because you're supervising the whole job.
+C) Nobody. Wall cladding isn't restricted building work.
+D) The building company provides one record of work covering the whole crew.
+Why: Each LBP is personally accountable to the Building Practitioners Board, and that accountability can't be passed to a supervisor. Two LBPs in the same class can help or mentor each other, but each provides a record of work for the RBW they did. Wall cladding is part of the external moisture-management system, so it is RBW. Records of work come from individual LBPs, not companies.
+Ref: LBP Handbook pp.10–11 · Codewords 132
+
+--- rbw-04 | Rule check
+Q: Which of these jobs on a house is NOT restricted building work?
+A) Replacing a load-bearing wall with a beam
+B) Installing the windows in a new extension
+C) Framing the roof of a new house
+D)* Demolishing an old house to clear the site
+Why: RBW is the construction or alteration (or design) of the primary structure or external moisture-management system of a home. Demolition and removal aren't construction or alteration, so they aren't RBW. The other three all affect primary structure or weathertightness.
+Ref: LBP Handbook p.8 (RBW flowchart)
+
+--- rbw-05 | Site scenario
+Q: A homeowner wants you to replace rotten wall framing and weatherboards caused by a long-term leak, using the same materials. They say it's just maintenance, so no consent is needed. What's the correct position?
+A) They're right. Like-for-like repairs are always exempt.
+B) It's exempt as long as you use treated timber this time.
+C) Only the weatherboards need a consent.
+D)* It isn't exempt. Repairing work that failed its durability requirements (like a leak) or substantially replacing structural framing needs a building consent, so it's RBW.
+Why: Schedule 1's repair and maintenance exemption excludes repairing or replacing components that failed to meet the Building Code's durability requirements (for example, because of an external moisture failure) and complete or substantial replacement of structural components. So this work needs a consent, and because it involves primary structure and the external moisture-management system of a house, it's RBW.
+Tip: Leaky-building repairs are a classic assessor scenario. Explain why the exemption doesn't apply, not just that it doesn't.
+Ref: Building Act 2004 Schedule 1, exemption 1 · building.govt.nz exempt work guidance
+
+--- rbw-06 | Site scenario
+Q: You're building a deck that is exempt from building consent under Schedule 1 (no one could fall more than 1.5 m). Is the deck framing restricted building work?
+A) Yes. Any structural framing is RBW.
+B)* No. Work that doesn't need a building consent isn't RBW (consent-exempt granny flats aside), though it must still meet the Building Code.
+C) Yes, because it's attached to a house.
+D) Only if an LBP builds it.
+Why: For ordinary building work, RBW only covers work that needs a building consent, so Schedule 1 exempt work isn't RBW. It still has to comply with the Building Code (including F4 barriers where there's a 1 m fall), and if you're an LBP you're still accountable for doing it competently. The exception is consent-exempt granny flats, which do include RBW.
+Ref: LBP Handbook p.8 · Building Act 2004 s17 and Schedule 1
+
+--- rbw-07 | Site scenario
+Q: An owner-builder is building their own home. They want to pay their unlicensed nephew to fix the wall cladding. Is that allowed?
+A) Yes. The owner-builder exemption covers anyone the owner hires.
+B) Yes, as long as the nephew is a qualified builder.
+C) Yes, if the owner signs off the work.
+D)* No. The exemption only covers RBW the owner does personally or with unpaid friends and family. Paid workers doing RBW must be LBPs or supervised by one.
+Why: Under section 90B, an owner-builder can carry out RBW on their own home themselves or with help from unpaid friends or family. Anyone paid to do RBW must be an appropriately licensed LBP or be supervised by one, and any paid LBPs on the job must provide records of work.
+Ref: Building Act 2004 s90B · Codewords (owner-builders)
+
+--- rbw-08 | Rule check
+Q: Which of these is NOT a condition of the owner-builder exemption?
+A) The owner lives in, or intends to live in, the home (including as a holiday home)
+B) The owner hasn't used the exemption for a different home in the previous 3 years
+C) The owner provides a statutory declaration to the BCA
+D)* The owner holds a building trade qualification
+Why: An owner-builder must be a person who lives or intends to live in the home, does the RBW personally or with unpaid friends and family, hasn't used the exemption on a different home in the previous 3 years, and gives the BCA a statutory declaration. No trade qualification is needed.
+Ref: Building Act 2004 s90B
+
+--- rbw-09 | Rule check
+Q: Can the owner-builder exemption be used to build a consent-exempt granny flat (small stand-alone dwelling) under Schedule 1A?
+A) Yes, the same as any other home.
+B) Yes, if the owner will live in it.
+C) Only if the flat is under 30 m².
+D)* No. The owner-builder exemption isn't available for Schedule 1A granny flats.
+Why: Granny flats built without consent under Schedule 1A must be designed and built (or supervised) by LBPs, and section 90D(1A) rules out the owner-builder exemption for them. The council doesn't inspect these builds, so the LBP records are the main record of who did the work.
+Ref: Building Act 2004 s90D(1A) and Schedule 1A
+
+--- rbw-10 | Rule check
+Q: Who must receive your record of work?
+A) The main contractor only
+B)* The owner and the territorial authority (the council)
+C) The BCA inspector at the final inspection
+D) The LBP Registrar
+Why: Section 88 says each LBP who carries out or supervises RBW under a consent must give a record of work to the owner and the territorial authority. For a consent-exempt granny flat it goes to the owner and the council that issued the PIM.
+Ref: Building Act 2004 s88(1), (1A) and (2)
+
+--- rbw-11 | Rule check
+Q: When is your record of work due?
+A) When the code compliance certificate is issued
+B) Within 12 months of starting the job
+C) Only when the owner asks for it
+D)* On completion of the RBW you carried out or supervised, even if the rest of the job is still going
+Why: Section 88 says you provide it on completion of your restricted building work, not the whole project. If you're engaged for part of a job, it's due when your part is done. The Board expects it promptly, within weeks rather than months.
+Ref: Building Act 2004 s88 · LBP Handbook p.11
+
+--- rbw-12 | Site scenario
+Q: The client still hasn't paid your final invoice. Can you hold back your record of work until they pay?
+A) Yes. It's your leverage for payment.
+B) Yes, if your contract says so.
+C) Only if the amount owing is over $5,000.
+D)* No. A record of work can't be withheld over payment or any other dispute. Recover the money through your contract or the Construction Contracts Act.
+Why: The record of work is a statutory obligation, not a contract term, and the Board treats withholding it for non-payment as a failure to provide it without good reason. That's a disciplinary offence. Chase payment separately, for example under the Construction Contracts Act.
+Ref: Building Act 2004 ss88 and 317(1)(da) · Codewords 119
+
+--- rbw-13 | Site scenario
+Q: You're a subcontracted LBP. The main contractor says to hand your record of work to them and they'll pass it on. Is that enough?
+A) Yes. The main contractor is responsible for it after that.
+B) Yes, if they sign a receipt.
+C) Only if the main contractor is also an LBP.
+D)* No. You're responsible for making sure your record of work reaches the owner and the council.
+Why: The duty sits with each LBP personally. Giving it to someone else who doesn't pass it on still leaves you in breach. Send it to the owner and the council yourself, and keep proof that you did.
+Ref: Building Act 2004 s88 · Codewords 119
+
+--- rbw-14 | Rule check
+Q: What does a record of work do?
+A) Certifies that the work complies with the Building Code
+B) Gives the owner a 10-year guarantee
+C) Replaces the code compliance certificate
+D)* Records which restricted building work you carried out or supervised. It doesn't, of itself, create any liability.
+Why: A record of work (prescribed form 6A) is a statement of what RBW you did or supervised, so the owner and council know who was responsible. Section 88(4) says it doesn't, of itself, create liability. It isn't a guarantee or a certificate of compliance.
+Ref: Building Act 2004 s88(4) · LBP Handbook p.11
+
+--- rbw-15 | Site scenario
+Q: You supervised an unlicensed second-year apprentice who installed all the windows on a new house. Who provides the record of work for the windows?
+A) The apprentice, because they did the work
+B) Nobody. Apprentices don't need records of work.
+C) The window supplier
+D)* You do, as the LBP who supervised the RBW
+Why: Section 88 applies to LBPs who carry out or supervise RBW. The apprentice isn't licensed, so the supervising LBP records the RBW they supervised and is accountable for it being done competently and to the consent.
+Ref: Building Act 2004 s88 · LBP Handbook p.9
+
+--- rbw-16 | Rule check
+Q: What can happen if you fail to provide a record of work without good reason?
+A) Nothing. It's only a guideline.
+B) The council refuses to issue your next consent.
+C) You lose your licence automatically.
+D)* It's a ground for discipline by the Building Practitioners Board, and recent penalties include fines of $1,000 to $1,500 plus costs.
+Why: Failing without good reason to provide a record of work is a specific ground for discipline under section 317(1)(da)(ii). The Board can censure, fine and order costs, and it regularly hears these complaints.
+Ref: Building Act 2004 s317(1)(da) · lbp.govt.nz (recent Board decisions, 2026)
+
+--- rbw-17 | Rule check
+Q: What's the difference between a certificate of work and a record of work?
+A) They're the same document with different names.
+B) A certificate of work comes from the builder at the end of the job.
+C) A record of work is only for design.
+D)* A certificate of work comes from the design LBP with the consent application; a record of work comes from each LBP who carries out or supervises RBW.
+Why: Design LBPs complete a certificate of work (Form 2A) setting out the RBW design work and who did it, and it's lodged with the consent application. LBPs who build or supervise RBW give records of work (Form 6A) when their RBW is complete.
+Ref: LBP Handbook p.11 · Building Act 2004 s88 and s317(1)(da)
+
+--- rbw-18 | Rule check
+Q: How does the Building Act define supervise?
+A) Being on site for at least half of the working day
+B) Signing off the work once it's finished
+C) Holding a higher licence class than the worker
+D)* Providing control or direction and oversight of the work, enough to ensure it's done competently and complies with the building consent (if any)
+Why: Section 7 defines supervise as providing control or direction and oversight to an extent sufficient to ensure the work is performed competently and complies with the building consent (if any). You don't need to be there all the time, but you're responsible for the work's quality and compliance.
+Tip: The words (if any) were added in October 2025, alongside the changes that brought consent-exempt granny flats into the RBW regime.
+Ref: Building Act 2004 s7
+
+--- rbw-19 | Site scenario
+Q: A first-year apprentice is installing windows into a cavity system on a complex architectural house. What level of supervision fits?
+A) Remote: check the photos at the end of the day
+B) General: drop in once a week
+C) None, if the window supplier's instructions are on site
+D)* Direct: be there, guiding and checking the work as it's done
+Why: The supervision risk matrix weighs the skill of the person against the complexity of the work. A low-skilled worker on complex, high-risk work needs direct supervision. Remote supervision only suits highly skilled people doing simple work.
+Ref: LBP Handbook p.9 (supervision risk matrix) · LBP supervision practice note
+
+--- rbw-20 | Rule check
+Q: Which statement about supervising RBW is true?
+A) You must be on site the whole time.
+B) Once you've told the worker what to do, you're no longer responsible.
+C) Any experienced builder can supervise RBW.
+D)* You don't have to be on site all the time, but you're responsible for the quality and compliance of the work you supervise.
+Why: Only an LBP licensed in the right class can supervise RBW. The amount of on-site presence depends on the worker's skill and the complexity of the work, but the supervising LBP is accountable for it either way. The Board has disciplined LBPs whose supervision wasn't enough.
+Ref: LBP Handbook pp.9–10
+
+--- rbw-21 | Rule check
+Q: Who can supervise building work that is NOT restricted building work?
+A) Only an LBP
+B) Only a Site LBP
+C) Only the BCA
+D)* Anyone, although an LBP who does or supervises it is still accountable for it
+Why: Non-RBW building work can be supervised by anyone. But if you're an LBP, the Board can discipline you over any building work you carry out or supervise (for example for negligence or not following the consent), not only RBW.
+Ref: LBP Handbook p.9
+
+--- rbw-22 | Rule check
+Q: Which RBW can a Carpentry LBP NOT carry out or supervise?
+A) Framing the walls and roof of a house
+B) Fixing weatherboards and installing windows
+C) Laying lightweight corrugated steel roofing
+D)* Laying a clay brick veneer
+Why: Carpentry LBPs can do framing, cladding, joinery installation and other carpentry RBW, and can also do foundations and lightweight profiled metal roofing without holding those licences. Brick veneer is Brick and Blocklaying licence work. Solid plaster and proprietary plaster claddings need an External Plastering licence, and other roof types such as tiles and membranes need a Roofing licence.
+Ref: lbp.govt.nz (Carpentry factsheet and licensing classes)
+
+--- rbw-23 | Rule check
+Q: Can a Site LBP carry out or supervise restricted building work?
+A) Yes, on any category of building.
+B) Yes, but only on Category 1 buildings.
+C) Only if they also hold a design licence.
+D)* No. The Site licence covers coordinating and overseeing building work, not carrying out or supervising RBW, so Site LBPs don't issue records of work.
+Why: Site LBPs coordinate and oversee construction and manage the building process, but they're not licensed to carry out or supervise RBW. That needs a trade licence such as Carpentry.
+Ref: LBP Handbook p.7
+
+--- rbw-24 | Rule check
+Q: What's the maximum fine for a person who carries out RBW without being licensed or supervised by an appropriately licensed LBP?
+A) $5,000
+B) $20,000
+C)* $50,000
+D) $200,000
+Why: Under section 85, carrying out or supervising RBW without the right licence is an offence with a fine of up to $50,000 (raised from $20,000 in 2021). The council can also issue an instant infringement fine of $750, and MBIE can prosecute.
+Ref: Building Act 2004 s85 · lbp.govt.nz (offences and penalties)
+
+--- rbw-25 | Rule check
+Q: An owner knowingly engages an unlicensed person to do RBW on their house. What's the maximum fine for an individual owner?
+A) $1,000
+B) $10,000
+C)* $50,000
+D) $500,000
+Why: Section 86 makes it an offence to engage someone you know isn't appropriately licensed to carry out or supervise RBW: up to $50,000 for an individual and $150,000 for a company.
+Ref: Building Act 2004 s86
+
+--- rbw-26 | Site scenario
+Q: A block of three attached townhouses is purely residential and 9 m high. You're framing it under a building consent. Is the framing RBW?
+A) No. RBW only covers stand-alone houses.
+B)* Yes. It's a small-to-medium apartment building: two or more residential units, no commercial units, under 10 m high.
+C) Only the framing for the end units.
+D) Only if the owner lives in one of them.
+Why: RBW covers houses (free-standing single residential units) and small-to-medium apartment buildings, meaning buildings with two or more residential units, no commercial units, and under 10 m high. At 10 m or more, the same work is no longer RBW.
+Ref: Building (Definition of Restricted Building Work) Order 2011 · LBP Handbook p.8
+
+--- rbw-27 | Rule check
+Q: You're building a detached garage on a residential section under a building consent. Is the garage framing RBW?
+A) Yes. Everything on a residential section is RBW.
+B) Yes, because it needs a consent.
+C) Only if it's bigger than 40 m².
+D)* No. RBW covers houses and small-to-medium apartment buildings, not detached garages, sheds and other outbuildings.
+Why: Detached outbuildings like garages and sheds aren't houses, so their construction isn't RBW. A garage attached to the house is part of the house, so its structure and weathertightness are RBW.
+Ref: LBP Handbook p.8 · Codewords 74
+
+--- rbw-28 | Site scenario
+Q: In a consented kitchen renovation, you re-line a wall that the plans show as a plasterboard bracing element. Is that RBW?
+A) No. Linings are never RBW.
+B) No. Kitchens are internal work.
+C) Only if the wall is external.
+D)* Yes. Bracing is part of the primary structure, so the bracing element is RBW and needs an LBP to carry it out or supervise it.
+Why: Primary structure includes the elements that resist vertical and horizontal loads, including bracing. A plasterboard bracing element is part of that system, so lining it as specified is RBW, and you'll need to provide a record of work.
+Ref: LBP Handbook p.10 (supervision examples) · RBW Order 2011
+
+--- rbw-29 | Site scenario
+Q: In the same consented renovation, you move a non-load-bearing, non-bracing internal partition. Is that RBW?
+A) Yes. All work under a consent is RBW.
+B) Yes, if it has a door in it.
+C) Only if you're the LBP for the job.
+D)* No. It isn't primary structure or the external moisture-management system.
+Why: RBW only covers the primary structure and external moisture-management system (and fire safety design for apartments). A non-structural internal partition is neither. It still has to match the consent and the Building Code, and you're still accountable as an LBP.
+Ref: RBW Order 2011 · LBP Handbook pp.8–9
+
+--- rbw-30 | Site scenario
+Q: The owner of a single-storey house wants you to replace an old aluminium window with a new one of the same size, in the same position. There's no history of leaks. What's the likely position?
+A) It needs a consent and is RBW.
+B) It needs a consent but isn't RBW.
+C) It's only exempt if the owner does it themselves.
+D)* It can be exempt under Schedule 1 (window and door replacement in an existing dwelling of two storeys or less), so it isn't RBW. It must still meet the Building Code.
+Why: Schedule 1 lets windows and exterior doors in existing dwellings of up to two storeys be replaced without a consent. The exemption doesn't apply if the window is being replaced because it failed its durability requirements (for example a leak), or if the work affects a specified system. Then a consent is needed and the work is RBW.
+Ref: Building Act 2004 Schedule 1 (exemption 8)
+
+--- rbw-31 | Site scenario
+Q: Halfway through a consented build, the LBP carpenter running the job leaves and another LBP takes over. What has to happen?
+A) Nothing. The new LBP's record of work will cover everything.
+B) The new LBP signs a record of work for the whole house.
+C) The BCA cancels the consent.
+D)* The first LBP gives a record of work for their RBW so far, and the owner tells the BCA about the new LBP who will carry out or supervise the RBW.
+Why: Each LBP records only their own RBW, and leaving the job counts as completing your part. The owner must tell the BCA who is carrying out or supervising the RBW, and must update the BCA when that changes.
+Ref: LBP Handbook pp.11, 14 and 18
+
+--- rbw-32 | Site scenario
+Q: As an LBP, you do a commercial shop fit-out (not RBW) and the work is negligent. Can the Building Practitioners Board discipline you?
+A) No. The Board only deals with RBW.
+B) No. Commercial work is covered by the Fair Trading Act.
+C) Only if the client is a homeowner.
+D)* Yes. LBPs are accountable to the Board for all building work they carry out or supervise, including work that isn't RBW.
+Why: The disciplinary grounds, such as negligence, incompetence and not following the building consent, apply to any building work an LBP carries out or supervises. Your licence is on the line whatever the job.
+Ref: LBP Handbook p.9 · Building Act 2004 s317
+
+--- rbw-33 | Rule check
+Q: Is the structural work on a consent-exempt granny flat built under Schedule 1A restricted building work?
+A) No. Work without a consent is never RBW.
+B) Only the foundations.
+C) Only if the owner asks for a record of work.
+D)* Yes. Since 15 January 2026, RBW includes consent-exempt granny flats, so LBPs must carry out or supervise it and provide records of work.
+Why: The 2025 amendment brought Schedule 1A granny flats into the RBW regime even though they don't need a consent. LBPs carry out or supervise the RBW, the designer provides a certificate of work, and records of work go to the owner and the council that issued the PIM.
+Ref: Building Act 2004 ss88(1A) and 401B · Schedule 1A
+
+--- rbw-34 | Rule check
+Q: Since what date has restricted building work had to be carried out or supervised by an LBP?
+A) 1 November 2007
+B)* 1 March 2012
+C) 1 January 2015
+D) 25 October 2022
+Why: The RBW requirements began on 1 March 2012. The LBP scheme itself started in November 2007, the consumer protection rules (written contracts and checklists) began on 1 January 2015, and the LBP Code of Ethics became enforceable on 25 October 2022.
+Ref: Building (Definition of Restricted Building Work) Order 2011 · LBP Handbook p.5
+
+--- rbw-35 | Rule check
+Q: Which of these is part of a house's primary structure for RBW purposes?
+A) Kitchen cabinets
+B) Internal doors
+C) Skirting boards
+D)* Subfloor framing and bracing
+Why: Primary structure means the building elements that help it withstand vertical or horizontal loads, such as foundations, subfloor framing, walls, bracing, beams, columns and the roof structure. Fit-out items aren't primary structure.
+Ref: Building (Definition of Restricted Building Work) Order 2011
+
+--- rbw-36 | Rule check
+Q: Which of these is part of a house's external moisture-management system?
+A) The bathroom wall tiles
+B) The ceiling insulation
+C) The internal wall linings
+D)* The wall cladding, flashings, wall underlay and window installation
+Why: The external moisture-management system is everything that keeps outside moisture out: roof and wall cladding, flashings, underlays, cavities, and window and door installation. Bathroom waterproofing deals with internal moisture (clause E3), so it isn't part of it.
+Ref: Building (Definition of Restricted Building Work) Order 2011 · LBP Handbook p.8
+
+--- rbw-37 | Site scenario
+Q: A client offers you a job framing a two-storey house on a site with complex ground conditions and engineer-designed foundations, which you haven't done before. What should you do?
+A) Take it. Your Carpentry licence covers all foundations work.
+B) Take it and learn as you go.
+C) Turn down all work you haven't done before.
+D)* Only take it on if you can do it competently, for example with the engineer's input and experienced support, and be upfront about your experience.
+Why: Your licence class sets what you're allowed to do, but you must only carry out or supervise work within your competence (s314B). For unfamiliar work, get the right support and mentoring, and never misrepresent your experience. Going outside your competence is a ground for discipline.
+Ref: Building Act 2004 s314B · LBP Handbook p.11

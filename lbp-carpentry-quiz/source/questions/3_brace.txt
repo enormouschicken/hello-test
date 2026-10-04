@@ -1,0 +1,330 @@
+# NZS 3604 bracing (NZS 3604:2011 Section 5, as cited by B1/AS1 2nd edition; GIB EzyBrace)
+
+--- brace-01 | Rule check
+Q: On a bracing calculation sheet, how many bracing units (BUs) equal 1 kN of bracing resistance?
+A) 5
+B) 10
+C)* 20
+D) 50
+Why: NZS 3604 measures bracing in bracing units, where 1 BU = 0.05 kN (50 N). So 1 kN = 20 BUs, and 100 BUs is about 5 kN. Demand and bracing element ratings are both in BUs, so you can compare them directly.
+Ref: NZS 3604:2011 Section 5 · GIB Bracing Supplement
+
+--- brace-02 | Calculation
+Q: For a single-storey house you calculate bracing demand along the building: wind gives 380 BUs and earthquake gives 290 BUs. How much bracing must the walls along the building provide?
+A) 290 BUs
+B) 335 BUs (the average)
+C)* 380 BUs
+D) 670 BUs (the total)
+Why: Work out wind and earthquake demand in each direction, along and across. The larger of the two governs that direction, so the walls along the building need at least 380 BUs. Check each direction separately: wind can govern one way and earthquake the other.
+Ref: NZS 3604:2011 Section 5
+
+--- brace-03 | Site scenario
+Q: Your bracing plan has across-the-building bracing lines at 0 m, 4.2 m and 11.0 m along the house. There's no ceiling diaphragm and no dragon ties. What's wrong?
+A) Nothing. Bracing line spacing isn't limited.
+B) The lines have to be evenly spaced.
+C) The first line can't be on an external wall.
+D)* The 6.8 m gap is more than the 6 m maximum, so another bracing line is needed between 4.2 m and 11.0 m.
+Why: NZS 3604 limits the spacing between parallel wall bracing lines to 6 m (clause 5.4.6). The gap from 4.2 m to 11.0 m is 6.8 m, so add a line in between, for example an internal wall near 7.6 m, with enough bracing to meet that line's minimum.
+Tip: The 6 m limit can be extended with dragon ties (rooms up to 7.5 m) or a ceiling diaphragm (up to 12 m), but only when those are designed and built to NZS 3604.
+Ref: NZS 3604:2011 cl 5.4.6
+
+--- brace-04 | Rule check
+Q: Where dragon ties are installed to NZS 3604, what's the maximum spacing between wall bracing lines?
+A) 6 m
+B)* 7.5 m
+C) 9 m
+D) 12 m
+Why: The standard maximum spacing between bracing lines is 6 m. Dragon ties built to NZS 3604 allow rooms up to 7.5 m × 7.5 m, so lines up to 7.5 m apart. A ceiling diaphragm allows up to 12 m.
+Ref: NZS 3604:2011 Section 5 · GIB EzyBrace Systems (bracing distribution)
+
+--- brace-05 | Rule check
+Q: With a plasterboard ceiling diaphragm designed to NZS 3604, how far apart can the supporting bracing lines be?
+A) 6 m
+B) 7.5 m
+C) 9 m
+D)* 12 m
+Why: A ceiling diaphragm transfers load to the bracing lines around it, so those lines can be up to 12 m apart. The diaphragm must be no more than 12 m long, no longer than twice its width, and have bracing lines on all four sides.
+Ref: NZS 3604:2011 cl 5.6 and 13.5 · GIB EzyBrace Systems (ceiling diaphragms)
+
+--- brace-06 | Rule check
+Q: What's the minimum bracing capacity required on a bracing line that runs along an external wall?
+A) 50 BUs
+B) 100 BUs, whatever the wall length or demand
+C) 10% of the total demand in that direction
+D)* The greatest of 100 BUs, 15 BUs per metre of external wall, and 50% of the total demand divided by the number of lines in that direction
+Why: Every bracing line needs at least the greater of 100 BUs or 50% of the total demand divided by the number of lines in that direction. Lines along external walls also need at least 15 BUs per metre of that wall. Use whichever of these is largest.
+Tip: Internal lines don't have the 15 BU/m rule, just 100 BUs or the 50% rule.
+Ref: NZS 3604:2011 Section 5 · GIB EzyBrace Systems p.8
+
+--- brace-07 | Calculation
+Q: Across the building, total demand is 600 BUs spread over 4 bracing lines. Line B is an internal wall. What's the minimum bracing for line B?
+A) 75 BUs
+B)* 100 BUs
+C) 150 BUs
+D) 300 BUs
+Why: The 50% rule gives 50% × 600 ÷ 4 = 75 BUs, but every line needs at least 100 BUs. The greater of the two is 100 BUs. Internal lines don't get the 15 BU per metre external wall rule.
+Ref: NZS 3604:2011 Section 5
+
+--- brace-08 | Calculation
+Q: Total demand in one direction is 1000 BUs over 3 bracing lines. Line A runs along a 12 m external wall. What's the minimum bracing for line A?
+A) 100 BUs
+B) 167 BUs
+C)* 180 BUs
+D) 333 BUs
+Why: Check all three minimums. 100 BUs. 15 BUs × 12 m of external wall = 180 BUs. 50% × 1000 ÷ 3 = 167 BUs. The greatest is 180 BUs.
+Ref: NZS 3604:2011 Section 5
+
+--- brace-09 | Site scenario
+Q: Two parallel walls 1.5 m apart both carry bracing elements. Can you count them as one bracing line?
+A) No. Every wall has to be its own bracing line.
+B) Only if the elements are the same type.
+C) Only if they're within 600 mm of each other.
+D)* Yes. Parallel elements up to 2 m apart can be counted on one line.
+Why: Parallel walls less than 1 m apart count as one line. Between 1 m and 2 m apart they can be treated as one line or two. More than 2 m apart, they're separate lines.
+Ref: NZS 3604:2011 Section 5 · GIB EzyBrace Systems (bracing distribution)
+
+--- brace-10 | Site scenario
+Q: On a gable end wall, a plasterboard bracing element stops at a row of nogs at ceiling height instead of running to the top plate. Is that acceptable?
+A) Yes. Nogs give plenty of fixing.
+B) Yes, as long as you add extra screws along the nogs.
+C) No. Gable end walls can't be used for bracing.
+D)* No, unless a continuous member, such as a ribbon plate fixed across the studs above the nogs or a GIBFix Angle, is installed at the ceiling line.
+Why: Bracing elements must be fixed from top plate to bottom plate. Fixing to a row of nogs is only acceptable with a continuous member at the ceiling line, such as an ex 90 × 45 ribbon plate fixed across the studs or a GIBFix Angle, so the load can get into the structure.
+Ref: GIB EzyBrace Systems (parapets and gable end walls)
+
+--- brace-11 | Rule check
+Q: In a GIB EzyBrace element code such as BL1-H, what does the H mean?
+A) For High wind zones only
+B)* Specific panel hold-down fixings are needed at each end of the element
+C) For heavy roofs
+D) Sheets are fixed horizontally
+Why: H means the element needs specific panel hold-down fixings at each end. N means no specific hold-downs (normal bottom plate fixings to NZS 3604 apply). NOM means the nominal plasterboard fixing pattern. BL is GIB Braceline, GS is GIB Standard, P is plywood, and 1 or 2 is lining on one or both sides.
+Ref: GIB EzyBrace Systems (specification numbering)
+
+--- brace-12 | Rule check
+Q: What does the bracing element code GS1-N describe?
+A)* GIB Standard plasterboard on one side, with no specific hold-down fixings
+B) GIB Standard plasterboard on one side, 1 m long, nailed
+C) GIB Braceline on one side with nominal fixings
+D) Structural grade 1 timber with no nogs
+Why: GS is GIB Standard plasterboard, 1 means lined on one side, and N means no specific panel hold-downs are needed. GS1-N is the go-to element for available wall lengths. You change to BL1-H if you need a higher rating.
+Ref: GIB EzyBrace Systems p.8
+
+--- brace-13 | Rule check
+Q: A BL1-H bracing element is on a concrete slab. What's needed at each end of the element?
+A) Standard bottom plate fixings at 900 mm centres
+B) A 100 mm nail through the plate into the slab
+C) Construction adhesive under the plate
+D)* A hold-down with at least 15 kN characteristic uplift capacity and a 50 × 50 × 3 mm washer, within 80 mm of the end of the element (or a GIB HandiBrac)
+Why: H-type elements need a hold-down at each end. On concrete that's a mechanical fastening with at least 15 kN characteristic uplift capacity and a 50 × 50 × 3 mm square washer, within 80 mm of the end of the element. The GIB HandiBrac with its screw bolt is an approved alternative to a strap.
+Ref: GIB EzyBrace Systems (hold-down fastener requirements)
+
+--- brace-14 | Rule check
+Q: An H-type bracing element sits on a timber floor. What hold-down does GIB specify at each end?
+A) Two 100 mm nails into the joist
+B) A metal strap only, with no screw
+C) 10 g screws at 300 mm centres
+D)* A 12 × 150 mm galvanised coach screw with a 50 × 50 × 3 mm washer, within 80 mm of the end, into a solid joist or block
+Why: On timber floors the hold-down goes into a solid joist or full-depth block: a 12 × 150 mm galvanised coach screw with a 50 × 50 × 3 mm square washer within 80 mm of each end of the element (or the GIB HandiBrac with its supplied screw bolt).
+Ref: GIB EzyBrace Systems (hold-down fastener requirements)
+
+--- brace-15 | Rule check
+Q: For N-type bracing elements on a timber floor, how is the bottom plate fixed down?
+A) One 75 mm nail at 900 mm centres
+B) 10 g screws at 1200 mm centres
+C) Construction adhesive only
+D)* Pairs of 100 × 3.75 mm hand-driven nails, or three 90 × 3.15 mm power-driven nails, at 600 mm centres
+Why: N-type elements rely on the standard NZS 3604 bottom plate fixings. On timber floors that's pairs of 100 × 3.75 mm hand-driven nails or three 90 × 3.15 mm power-driven nails at 600 mm centres.
+Ref: GIB EzyBrace Systems (bottom plate fixings) · NZS 3604:2011
+
+--- brace-16 | Site scenario
+Q: The bracing calculation passes on total BUs, but almost all of the bracing is in walls at one end of the house. Is that a problem?
+A) No. Total BUs is all that matters.
+B) Only in High wind zones.
+C) No, as long as hold-downs are used.
+D)* Yes. Uneven bracing lets the building twist (torsion) in an earthquake, so spread bracing evenly and as close as practical to external corners.
+Why: The NZS 3604 rules are minimums. The designer still has to check that bracing is evenly distributed. Bracing bunched at one end lets the building rotate under load, which can cause damage in an earthquake.
+Ref: GIB EzyBrace Systems (bracing distribution)
+
+--- brace-17 | Rule check
+Q: NZS 3604 earthquake bracing demand is based on an earthquake with what chance of being exceeded during a 50-year design life?
+A) 2%
+B)* 10%
+C) 25%
+D) 50%
+Why: The default is an earthquake with a 10% chance of being exceeded in the assumed 50-year design life, which is a return period of about 500 years. Some commercial and public buildings are designed for rarer, stronger events.
+Ref: GIB EzyBrace Systems (bracing demand)
+
+--- brace-18 | Rule check
+Q: What's the maximum design wind speed for the High wind zone in NZS 3604?
+A) 32 m/s
+B) 37 m/s
+C)* 44 m/s
+D) 50 m/s
+Why: The NZS 3604 wind zones are Low 32 m/s, Medium 37 m/s, High 44 m/s, Very High 50 m/s and Extra High 55 m/s. Sites above 55 m/s are outside NZS 3604 and need specific engineering design.
+Ref: NZS 3604:2011 Table 5.1
+
+--- brace-19 | Site scenario
+Q: Working through the wind zone steps, your site comes out above 55 m/s. What happens?
+A) Use the Extra High wind zone tables.
+B) Add 20% to the bracing demand.
+C) Use a rigid underlay and carry on with NZS 3604.
+D)* The site is beyond Extra High and outside NZS 3604, so it needs specific engineering design.
+Why: Extra High (55 m/s) is the top of NZS 3604's range. Anything above that is outside the standard's scope and needs specific engineering design (SED), usually by a structural engineer.
+Ref: NZS 3604:2011 Table 5.1
+
+--- brace-20 | Rule check
+Q: Which of these is NOT used to work out a site's wind zone under NZS 3604?
+A) Wind region (A or W)
+B) Ground roughness (urban or open terrain)
+C) Site exposure (sheltered or exposed) and topographic class
+D)* Soil class
+Why: Wind zone comes from wind region and lee zones, ground roughness, site exposure and topographic class (T1 to T4). Soil class is used for earthquake demand, not wind.
+Ref: NZS 3604:2011 Section 5 · BRANZ Level (site analysis: wind)
+
+--- brace-21 | Rule check | keep
+Q: NZS 3604 divides New Zealand into four earthquake zones. Which is the lowest-risk zone?
+A)* Zone 1
+B) Zone 2
+C) Zone 3
+D) Zone 4
+Why: Earthquake zones run from 1 (lowest) to 4 (highest). B1/AS1 modifies the zone map so that all of Christchurch City, and any Zone 1 land in Selwyn and Waimakariri districts, is treated as Zone 2.
+Ref: NZS 3604:2011 Figure 5.4 · B1/AS1 2nd edition para 2.3.4.1
+
+--- brace-22 | Rule check | keep
+Q: The soil class for a site hasn't been established. Which soil class should you use when calculating earthquake bracing demand?
+A) Class A (rock)
+B) Class C (shallow soil)
+C) Class D
+D)* Class E (deep or soft soil)
+Why: Earthquake demand is multiplied by a factor for earthquake zone and soil class. If the soil class isn't known, use class E, which is the most onerous.
+Ref: NZS 3604:2011 Section 5
+
+--- brace-23 | Rule check
+Q: Which of these does NOT change the bracing demand calculated for a house?
+A) The wind zone
+B) The earthquake zone and soil class
+C) The weight of the roof and wall claddings
+D)* The type of plasterboard used in the bracing elements
+Why: Demand is what the building needs to resist, and it depends on location (wind and earthquake zones, soil), size and shape, and weight (heavy or light roof and cladding). The plasterboard and bracing elements are on the resistance side of the calculation.
+Ref: NZS 3604:2011 Section 5
+
+--- brace-24 | Rule check
+Q: A client switches from a light metal roof to heavy concrete tiles. Which bracing demand goes up the most?
+A) Wind demand only
+B)* Earthquake demand, because the building is heavier
+C) Neither. Roof weight doesn't affect bracing.
+D) Only the subfloor wind demand
+Why: Earthquake loads come from the building's mass, so a heavier roof increases earthquake demand. Wind demand depends mainly on the building's size, shape, height and exposure.
+Ref: NZS 3604:2011 Section 5
+
+--- brace-25 | Rule check
+Q: On a two-storey house, why does the ground floor need more bracing than the upper floor?
+A) The ground floor walls are taller.
+B) Ground floor walls are internal, so they're weaker.
+C) It doesn't. Both floors need the same.
+D)* The ground floor walls resist the loads from the upper storey and roof as well as their own.
+Why: Lateral loads build up down the building. The ground floor walls carry the wind and earthquake loads from everything above them, so ground-floor demand is higher than upper-floor demand.
+Ref: NZS 3604:2011 Section 5
+
+--- brace-26 | Rule check
+Q: On a piled timber floor, which of these does NOT provide subfloor bracing?
+A) Anchor piles
+B) Braced pile systems
+C) Cantilever piles
+D)* Ordinary piles
+Why: Ordinary piles carry vertical load only. Subfloor bracing comes from anchor piles, braced pile systems, cantilever (driven) piles, or bracing walls and foundation walls.
+Ref: NZS 3604:2011 Section 6 · BRANZ Bulletin 617
+
+--- brace-27 | Rule check
+Q: What's the maximum spacing between subfloor bracing lines?
+A) 3 m
+B)* 5 m
+C) 6 m
+D) 7.5 m
+Why: Subfloor bracing lines are limited to 5 m apart, closer than the 6 m allowed for wall bracing lines. Subfloor demand is worked out separately from wall bracing, and anchor piles, braced piles or foundation walls provide the resistance.
+Ref: NZS 3604:2011 Section 5 · BRANZ Bulletin 617
+
+--- brace-28 | Rule check
+Q: What bracing rating does NZS 3604 give one anchor pile (wind / earthquake)?
+A) 70 / 30 BUs
+B) 120 / 120 BUs
+C)* 160 / 120 BUs
+D) 200 / 160 BUs
+Why: Anchor piles and braced pile systems are each rated 160 BUs for wind and 120 BUs for earthquake. A cantilever pile is rated 70 BUs for wind and 30 BUs for earthquake.
+Ref: NZS 3604:2011 Table 5.11
+
+--- brace-29 | Site scenario
+Q: The electrician wants a 150 × 150 mm hole for a data cabinet in the middle of a GS1-N bracing element. What do you tell them?
+A) Fine. Small holes don't affect bracing.
+B) Fine, as long as it's 90 mm from the edge.
+C) Fill the hole with an offcut afterwards.
+D)* No. Openings over 90 × 90 mm (or 100 mm round) go outside the bracing element, or the bracing moves to the other side of the wall.
+Why: GIB allows small openings in bracing elements, like power outlets, up to 90 × 90 mm or 100 mm diameter. They must be at least 90 mm from the element's edge and 250 mm from the top and bottom, with limits on how many per stud bay. Larger openings, like switchboards and recessed cabinets, go outside the element.
+Tip: Coordinate service locations with other trades before lining. Integration with other trades is one of the Carpentry competencies.
+Ref: GIB EzyBrace Systems (openings in bracing elements)
+
+--- brace-30 | Site scenario
+Q: The client asks for a new window where the consented plans show a bracing element. What do you do?
+A) Just move the bracing element along the wall.
+B) Swap to a higher-rated element somewhere else and carry on.
+C) Build it and tell the inspector at the final.
+D)* Get the designer to recheck the bracing, and get the change approved by the BCA (as a minor variation or amendment) before building it.
+Why: Bracing is part of the primary structure shown on the consent. A change needs the bracing checked by the designer and BCA approval before you build it. A small bracing change can be a minor variation; bigger changes need an amendment.
+Tip: As an LBP, building work that doesn't match the consent is a ground for discipline, even if the work itself is sound.
+Ref: Building Act 2004 s45A (minor variations) · LBP Handbook p.33
+
+--- brace-31 | Calculation
+Q: A bracing element is rated 70 BUs per metre for wind. How many wind BUs does a 1.8 m length provide?
+A) 70 BUs
+B) 112 BUs
+C)* 126 BUs
+D) 168 BUs
+Why: Multiply the rating per metre by the element length: 70 × 1.8 = 126 BUs. Wind and earthquake ratings are different, so do the sum for each.
+Tip: Ratings per metre depend on element length. Short elements rate lower, and GIB EzyBrace elements must be at least 0.4 m long.
+Ref: NZS 3604:2011 Section 5 · GIB Bracing Supplement
+
+--- brace-32 | Calculation
+Q: Bracing line C has two elements: 1.2 m rated 60 BUs/m and 2.4 m rated 100 BUs/m. What's the total capacity of line C?
+A) 160 BUs
+B) 252 BUs
+C)* 312 BUs
+D) 384 BUs
+Why: 1.2 × 60 = 72 BUs and 2.4 × 100 = 240 BUs. Total 72 + 240 = 312 BUs. Then check that this meets the line's minimum and that the totals for the direction meet demand.
+Ref: NZS 3604:2011 Section 5
+
+--- brace-33 | Rule check
+Q: What shape and size limits apply to a plasterboard ceiling diaphragm under NZS 3604?
+A) It must be square.
+B) Any shape, as long as the area is under 100 m².
+C) Up to 20 m long, any width.
+D)* No more than 12 m long, no longer than twice its width, with bracing lines on all four sides.
+Why: Ceiling diaphragms must be no more than 12 m long with a length-to-width ratio of 2:1 or less. They need bracing lines on all four sides and none inside. Protrusions are allowed but cut-outs aren't.
+Ref: NZS 3604:2011 cl 5.6 and 13.5 · GIB EzyBrace Systems (ceiling diaphragms)
+
+--- brace-34 | Calculation
+Q: A ceiling diaphragm is 10 m long and 6 m wide. What's the minimum bracing for each 6 m end wall that supports it?
+A) 90 BUs
+B) 100 BUs
+C)* 150 BUs
+D) 300 BUs
+Why: Each supporting line needs the greater of 100 BUs or 15 BUs per metre of diaphragm dimension measured at right angles to that line. For the end walls that dimension is the 10 m length, so 15 × 10 = 150 BUs. The long side walls need 15 × 6 = 90, so 100 BUs governs there.
+Ref: GIB EzyBrace Systems (ceiling diaphragms, figure 21) · NZS 3604:2011 cl 13.5
+
+--- brace-35 | Rule check
+Q: Under the Building Product Specifications (2025), what rating can generic plasterboard bracing use for a wall at least 1.2 m long, fully lined with 10 or 13 mm plasterboard?
+A) 10 BUs/m per lined face
+B)* 25 BUs/m per lined face
+C) 50 BUs/m per lined face
+D) 100 BUs/m per lined face
+Why: The Building Product Specifications (section 3.5.3.3) give generic plasterboard walls a rating of 25 BUs/m per lined face, for walls at least 1.2 m long fully covered in 10 or 13 mm board. Proprietary systems like GIB EzyBrace have their own tested ratings.
+Ref: Building Product Specifications 3.5.3.3 (via B1/AS1 2nd edition)
+
+--- brace-36 | Rule check
+Q: A wall bracing line rated over 100 BUs has a joint in its top plate. What does NZS 3604 require at the joint?
+A) Nothing, as long as the joint is over a stud
+B) A 3 kN connection
+C)* A 6 kN connection, or a staggered double top plate
+D) A bolted steel plate
+Why: Top plate joints sit over a stud or blocking. In bracing walls, joints need a 3 kN connection up to 100 BUs and 6 kN above 100 BUs or where there's a ceiling diaphragm. A staggered double top plate does away with these joint connections.
+Ref: NZS 3604:2011 cl 8.7.3

@@ -1,0 +1,228 @@
+# LBP scheme: licensing, competence, Code of Ethics & discipline
+
+--- lbp-01 | Rule check
+Q: What is the main aim of the Licensed Building Practitioner scheme?
+A) To set the price of building work
+B) To replace building consents
+C) To license every trade on a building site
+D)* To protect consumers, lift practitioners' competence and make LBPs accountable for their work
+Why: The scheme began in November 2007 under the Building Act 2004. It sets minimum competence standards for licensing, requires skills maintenance, keeps a public register, and makes practitioners accountable to the Building Practitioners Board.
+Ref: LBP Handbook p.5
+
+--- lbp-02 | Rule check
+Q: Who decides licence applications and renewals, keeps the public register and sets the skills maintenance requirements?
+A) The Building Practitioners Board
+B) The Minister for Building and Construction
+C) The local council
+D)* The Registrar of Building Practitioners
+Why: The Registrar (appointed by MBIE's chief executive) makes licensing and renewal decisions, maintains the public register and sets skills maintenance requirements. The Board approves the Rules with the Minister, hears appeals against the Registrar's decisions, and deals with complaints and discipline.
+Ref: LBP Handbook p.5
+
+--- lbp-03 | Rule check
+Q: Which of these is NOT an LBP licence class?
+A) Foundations
+B) External Plastering
+C) Site
+D)* Plumbing
+Why: There are seven LBP classes: Carpentry, Design, Site, Roofing, External Plastering, Brick and Blocklaying, and Foundations. Plumbers, gasfitters and drainlayers are licensed separately through their own registration board.
+Ref: LBP Handbook pp.5–6 · lbp.govt.nz (licensing classes)
+
+--- lbp-04 | Rule check | keep
+Q: How many areas of practice does the Carpentry licence have?
+A)* None. Carpentry is a single licence with no areas of practice.
+B) Two
+C) Three, one for each building category
+D) Seven
+Why: Carpentry has no areas of practice. Design and Site each have three (linked to building categories), Roofing has seven, and External Plastering, Brick and Blocklaying, and Foundations have two each.
+Ref: lbp.govt.nz (licensing classes)
+
+--- lbp-05 | Rule check
+Q: Which of these is one of the four Carpentry licence competencies?
+A) Prepare architectural drawings for building consent
+B) Manage the design process for Category 2 buildings
+C) Inspect building work on behalf of a BCA
+D)* Carry out planning and scheduling for carpentry work
+Why: The four Carpentry competencies are: 1. Demonstrate knowledge of the regulatory environment of the building construction industry. 2. Demonstrate knowledge of current building and trade practice. 3. Carry out planning and scheduling for carpentry work. 4. Carry out carpentry work.
+Tip: Read the performance indicators under each competency. They're a good map of what the assessor will ask about.
+Ref: LBP Rules 2007 Schedule 1 (Carpentry licence class competencies)
+
+--- lbp-06 | Rule check
+Q: Under the standard (experience) application for a Carpentry licence, what happens at the assessment?
+A) A three-hour written exam at a polytechnic
+B) A practical test on a training site
+C) An online multiple-choice test only
+D)* An assessor reviews your evidence, interviews you about the competencies (recorded, usually by video call) and phones your referees
+Why: After a completeness check, an assessor reviews your project records and other evidence, holds a recorded interview (usually on Microsoft Teams) about the competencies, and contacts your referees. The Registrar then decides, and you can appeal to the Board. There's no written exam.
+Ref: lbp.govt.nz (standard application)
+
+--- lbp-07 | Rule check
+Q: Which of these people can be a referee for your LBP application?
+A) Your partner, who has watched you work for years
+B) A client who hired you once
+C) Your brother, who is also an LBP
+D)* A technically credible person, preferably an LBP, who has seen you do RBW in the last 5 years and isn't family
+Why: You need at least two referees for each area of practice. They can't be family, must be technically credible (preferably LBPs) and must have seen you carry out RBW within the last 5 years.
+Ref: lbp.govt.nz (experience pathway checklist)
+
+--- lbp-08 | Rule check
+Q: You hold the New Zealand Certificate in Carpentry (Level 4). How does that change your licence application?
+A) You're licensed automatically, with no assessment.
+B) It makes no difference.
+C) You only need to pay the fee.
+D)* You can use the streamlined (qualified) pathway, but you still need referees and an assessment interview.
+Why: The NZ Certificate in Carpentry (Level 4) is a recognised qualification (the list was updated in September 2024). It lets you use the streamlined pathway with a certified copy of the qualification, but you still need referees and an interview.
+Ref: LBP Rules (Schedule 2 recognised qualifications, amended 2024) · lbp.govt.nz (streamlined application)
+
+--- lbp-09 | Rule check
+Q: How often must an LBP renew their licence?
+A) Every 5 years
+B) Every 2 years
+C) Never. Licences are for life.
+D)* Every year, by replying to the Registrar and paying the fee within 20 working days
+Why: Licences are renewed annually. The Registrar writes about 20 working days before your licence expires, and you must confirm your details and pay within 20 working days. If you don't, your licence is suspended, and cancelled if it isn't sorted within 12 months.
+Ref: lbp.govt.nz (relicensing) · LBP Amendment Rules 2024
+
+--- lbp-10 | Rule check
+Q: What skills maintenance must a Carpentry LBP complete in each two-year cycle?
+A) Nothing, once you're licensed
+B) A refresher exam
+C) 40 hours of courses
+D)* 12 hours (points) of elective activities, 2 on-the-job learning examples, and the specified Codewords articles and quizzes
+Why: Skills maintenance runs on a two-year cycle and must be done before renewal. For Carpentry it's 12 hours of electives (1 hour = 1 point), two on-the-job learning examples, and all specified Codewords articles and quizzes. If it isn't met, the licence can be suspended, then cancelled.
+Ref: lbp.govt.nz (skills maintenance) · LBP Handbook p.11
+
+--- lbp-11 | Rule check
+Q: Your contact details change. How long do you have to tell the Registrar?
+A) 3 months
+B) At your next renewal
+C) 12 months
+D)* 10 working days
+Why: Under section 302 you must tell the Registrar in writing about any change in circumstances (any change to the information you gave them) within 10 working days. Failing to do so is an offence with a fine of up to $5,000.
+Ref: Building Act 2004 s302
+
+--- lbp-12 | Rule check
+Q: When did the Code of Ethics for LBPs become enforceable?
+A) 1 March 2012
+B) 1 January 2015
+C)* 25 October 2022
+D) 15 January 2026
+Why: The Building (Code of Ethics for Licensed Building Practitioners) Order 2021 became enforceable on 25 October 2022. Breaching it is a ground for discipline. It has four principles and 19 standards.
+Ref: Building (Code of Ethics for LBPs) Order 2021 · lbp.govt.nz (Code of Ethics)
+
+--- lbp-13 | Rule check
+Q: Which of these is one of the four principles of the LBP Code of Ethics?
+A) Maximise profit for your business
+B) Always use the cheapest compliant product
+C) Work only for homeowners
+D)* Take responsibility for your actions
+Why: The four principles are: work safely, act within the law, take responsibility for your actions, and behave professionally. Each has its own standards, 19 in total.
+Ref: lbp.govt.nz (Code of Ethics)
+
+--- lbp-14 | Site scenario
+Q: A supplier delay means the cladding will arrive three weeks late. What does the Code of Ethics expect of you?
+A) Say nothing until the cladding arrives.
+B) Wait until the client asks.
+C) Blame the supplier if the client complains.
+D)* Tell the client about the delay as soon as it becomes apparent.
+Why: The Code of Ethics requires LBPs to advise clients of any delays as soon as they become apparent. It also expects you to explain risks to clients, keep them informed, and act in their interests.
+Ref: Code of Ethics for LBPs (take responsibility for your actions)
+
+--- lbp-15 | Site scenario
+Q: A client asks you to swap the consented cladding for a cheaper, non-equivalent product without telling the council. What do you do?
+A) Do it, because the Code says you must follow your client's instructions.
+B) Do it, but don't put it on your record of work.
+C) Do it and get the council to sign off later.
+D)* Refuse to change it without BCA approval, and explain the risks and the legal requirements to the client.
+Why: The Code says you must normally follow your client's instructions, but not where doing so would break the law. You must comply with the law, explain risks to your client, and build to the consent. Changes need BCA approval first.
+Ref: Code of Ethics for LBPs · Building Act 2004 s40
+
+--- lbp-16 | Rule check
+Q: Which of these is a standard in the LBP Code of Ethics?
+A) You must accept every job you're offered.
+B) You must always quote the lowest price.
+C) You must keep all disputes confidential from the Board.
+D)* You must price work fairly and reasonably.
+Why: Under behaving professionally, the Code includes pricing work fairly and reasonably, acting in good faith during dispute resolution, declaring and managing conflicts of interest, keeping client information confidential, respecting cultural norms and values, and running your business in a methodical and responsible way.
+Ref: Code of Ethics for LBPs (behave professionally)
+
+--- lbp-17 | Site scenario
+Q: On a multi-trade site you see another trade's worker repeatedly working on a roof edge with no fall protection. What does the Code of Ethics expect?
+A) Ignore it. It's not your crew.
+B) Mention it at the end of the job.
+C) Only act if you're the main contractor.
+D)* Take responsibility for health and safety and report the unsafe behaviour.
+Why: Under the work safely principle, LBPs must take responsibility for health and safety and report unsafe behaviour by others on a building site. Under HSWA, PCBUs sharing a site also have to consult, cooperate and coordinate.
+Ref: Code of Ethics for LBPs (work safely) · HSWA 2015 s34
+
+--- lbp-18 | Rule check
+Q: Which of these can lead to disciplinary action by the Building Practitioners Board?
+A) Failing to provide a record of work
+B) Getting a licence by giving false information
+C) Supervising RBW without enough oversight of the work
+D)* All of the above
+Why: Grounds for discipline include negligence or incompetence (including poor supervision), building work that doesn't follow the consent, failing to provide a record of work or certificate of work, false information to get licensed, holding yourself out as licensed for work you're not, breaching the Code of Ethics, working outside your competence, certain convictions, and bringing the regime into disrepute.
+Ref: LBP Handbook p.7 (self-assessment Q12) · Building Act 2004 s317
+
+--- lbp-19 | Rule check
+Q: Which of these can the Board do if a complaint against an LBP is upheld?
+A) Order the LBP to do training
+B) Cancel the LBP's licence
+C) Suspend the licence for up to 12 months, or restrict the work the LBP can do
+D)* All of the above
+Why: Under section 318 the Board can cancel a licence, suspend it for up to 12 months, restrict the work you can do, censure you, order training, and fine you. It can also order you to pay costs and publish its decision.
+Ref: LBP Handbook p.8 (self-assessment Q13) · Building Act 2004 s318
+
+--- lbp-20 | Rule check
+Q: What's the maximum fine the Building Practitioners Board can order under section 318 of the Building Act?
+A) $1,000
+B)* $10,000
+C) $50,000
+D) $150,000
+Why: Section 318(1)(f) caps the Board's disciplinary fine at $10,000. The LBP Handbook says $50,000, but that figure is the criminal maximum for RBW offences under sections 85 and 86, which go through the courts. Changes proposed in 2025 would raise the Board's maximum to $20,000 and suspensions to 24 months, so check whether they've passed.
+Tip: If your handbook and the Act disagree, the Act wins. Assessors appreciate it when you know the difference.
+Ref: Building Act 2004 s318(1)(f) · regulation.govt.nz (RIS on LBP fines, 2025)
+
+--- lbp-21 | Rule check
+Q: Who can make a complaint about an LBP to the Building Practitioners Board?
+A) Only the homeowner
+B) Only the council
+C) Only another LBP
+D)* Anyone
+Why: Section 315 says any person can complain, and the Board can also start its own inquiries. Complaints use the approved form and can't be anonymous. The Board doesn't resolve payment disputes. Complaints about people who aren't LBPs go to MBIE or the council.
+Ref: Building Act 2004 s315 · lbp.govt.nz (making a complaint)
+
+--- lbp-22 | Rule check
+Q: Which statement best describes working within your competence?
+A) I should never try anything new.
+B) My licence lets me take on any work in my class.
+C) The Board will punish me if I make any mistake.
+D)* I only do work I know how to do well, and I get support when I take on something unfamiliar.
+Why: Section 314B says an LBP must not misrepresent their competence and must only carry out or supervise building work within it. Your licence covers a range of work, but you should only do the parts you're competent in, with mentoring or expert help for new areas.
+Ref: LBP Handbook p.11 (self-assessment Q14) · Building Act 2004 s314B
+
+--- lbp-23 | Rule check
+Q: A homeowner checks the public LBP register before hiring you. What will they see?
+A) Your income and tax records
+B) Your client list
+C) Only your name
+D)* Your licence status and history, and any disciplinary action in the last 3 years
+Why: The public register shows whether you're licensed and in which class, your licence history, and disciplinary outcomes from the last 3 years. Homeowners are encouraged to check it before engaging someone for RBW.
+Ref: lbp.govt.nz (public register)
+
+--- lbp-24 | Rule check
+Q: You disagree with a Building Practitioners Board disciplinary decision. Where can you appeal?
+A) To the Registrar
+B) To MBIE's chief executive
+C) To the local council
+D)* To the District Court, within 20 working days
+Why: Board decisions can be appealed to the District Court within 20 working days. Decisions of the Registrar (such as declining a licence) are appealed to the Board.
+Ref: Building Act 2004 ss330–331 · LBP Handbook p.5
+
+--- lbp-25 | Rule check
+Q: For LBP purposes, what's a Category 1 building?
+A) Any commercial building under 10 m
+B) A multi-unit residential building over 10 m high
+C) A building that contains non-residential parts
+D)* A single residential unit with a risk matrix score under 12 on every external elevation
+Why: Category 1 is a single residential unit scoring under 12 on every elevation. Category 2 is a single unit scoring 12 or more on any elevation, or a multi-unit residential building under 10 m. Category 3 is multi-unit residential over 10 m, or buildings with non-residential parts. Most simple houses are Category 1 or 2.
+Ref: LBP Handbook p.6

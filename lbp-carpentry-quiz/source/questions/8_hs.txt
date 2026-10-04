@@ -1,0 +1,136 @@
+# Health & safety on site (Health and Safety at Work Act 2015)
+
+--- hs-01 | Rule check
+Q: Which statement best describes the relevance of the Health and Safety at Work Act to building?
+A) It prescribes how building work must be carried out.
+B) It only concerns employers and site managers.
+C) Construction is low risk, so the Act hardly applies.
+D)* It provides a framework for the health and safety of workers and workplaces.
+Why: HSWA sets a framework for keeping workers and others safe at work. Construction is one of the highest-risk sectors in New Zealand, with worker fatalities more than double the average for other sectors.
+Ref: LBP Handbook p.22 (self-assessment Q9)
+
+--- hs-02 | Rule check
+Q: Under HSWA, what does PCBU stand for?
+A) Primary contractor building unit
+B) Public construction business union
+C) Principal certified building undertaker
+D)* Person conducting a business or undertaking
+Why: A PCBU is a person conducting a business or undertaking, such as a building company or a self-employed builder. PCBUs have the primary duty to ensure, so far as is reasonably practicable, the health and safety of workers and others affected by the work.
+Ref: Health and Safety at Work Act 2015 s17 and s36 · LBP Handbook p.22
+
+--- hs-03 | Site scenario
+Q: Your boss tells you to keep cutting near an unpropped excavation that you believe could collapse. What are your rights?
+A) You must keep working or you can be dismissed.
+B) You can stop, but you'll lose a day's pay.
+C) You must finish the task first, then report it.
+D)* You can stop or refuse the work if you believe it exposes you or others to a serious risk, and you should tell your manager as soon as possible.
+Why: Workers have the right to stop or refuse work that would expose them or anyone else to a serious health or safety risk. You must let your manager know as soon as you can. Your job can't be threatened for raising or acting on a health and safety concern.
+Ref: LBP Handbook pp.22–23 · HSWA 2015
+
+--- hs-04 | Rule check
+Q: Who pays for the personal protective equipment (PPE) a worker needs?
+A) The worker, as a tool of trade
+B) The worker and the business split the cost
+C) The client
+D)* The business. It can't charge workers for PPE they need.
+Why: In most cases the business must provide PPE at no cost to the worker and train them to use and maintain it. Workers can supply their own if they choose, but it must be checked and approved by the business.
+Ref: LBP Handbook p.22
+
+--- hs-05 | Rule check
+Q: Which of these is a worker's duty under HSWA?
+A) To write the company's health and safety policy
+B) To notify WorkSafe of every injury
+C) To provide their own PPE
+D)* To take reasonable care for their own health and safety and that of others, and follow reasonable instructions
+Why: Workers must take reasonable care of their own health and safety, take reasonable care that what they do (or don't do) doesn't harm others, follow reasonable instructions, and cooperate with reasonable health and safety policies and procedures.
+Ref: HSWA 2015 s45 · LBP Handbook p.23
+
+--- hs-06 | Rule check
+Q: Which of these is a notifiable event that must be reported to WorkSafe?
+A) A worker cutting their finger and needing a plaster
+B) A near miss with a dropped hammer
+C) A sprained wrist treated with first aid on site
+D)* A death, a notifiable injury or illness, or a notifiable incident
+Why: Notifiable events are deaths, notifiable injuries or illnesses (for example, injuries needing immediate hospital admission) and notifiable incidents (dangerous events like a collapse). The PCBU must notify WorkSafe as soon as possible, phone 0800 030 040 for a death, and keep records for at least 5 years.
+Ref: HSWA 2015 ss23–25, 56–57 · LBP Handbook p.24
+
+--- hs-07 | Site scenario
+Q: A scaffold collapses and a worker is seriously injured. Once emergency services are called, what must happen to the scene?
+A) Clean it up quickly so work can carry on.
+B) Take photos, then clear it.
+C) Leave it for the next day's toolbox meeting.
+D)* Don't disturb it until a WorkSafe inspector authorises you to, except to help the injured, make the site safe or protect property.
+Why: After a notifiable event the site must be preserved until an inspector says otherwise. The exceptions are helping injured people, removing a body, making the area safe or minimising risk, or protecting property. Then notify WorkSafe as soon as possible.
+Ref: HSWA 2015 s55 · LBP Handbook p.24
+
+--- hs-08 | Rule check
+Q: When several businesses work on the same site, what does HSWA require of them?
+A) The main contractor takes on everyone's duties.
+B) Each business only looks after its own workers.
+C) They can sign a contract moving their duties to the client.
+D)* They must consult, cooperate and coordinate with each other. Duties can't be contracted out.
+Why: Where PCBUs share duties, such as several trades on one site, each must, so far as is reasonably practicable, consult, cooperate and coordinate activities with the others. You can't transfer a health and safety duty to someone else by contract.
+Ref: HSWA 2015 ss29 and 34
+
+--- hs-09 | Rule check
+Q: What's the right order for controlling a risk such as working at height?
+A) PPE first, then training, then engineering
+B) Administrative controls, then PPE, then elimination
+C) Whatever is cheapest first
+D)* Eliminate it if you can. If not, minimise it with substitution, isolation or engineering controls, then administrative controls, and PPE last.
+Why: The hierarchy of controls starts with elimination (for example, prefabricating at ground level). If that's not reasonably practicable, minimise the risk with substitution, isolation and engineering controls (such as edge protection or scaffolding), then administrative controls, and finally PPE.
+Ref: Health and Safety at Work (General Risk and Workplace Management) Regulations 2016 reg 6
+
+--- hs-10 | Rule check | keep
+Q: How much notice must WorkSafe get before a trench is dug that's more than 1.5 m deep and deeper than it is wide at the top?
+A) None
+B)* At least 24 hours
+C) At least 5 working days
+D) At least 20 working days
+Why: Trenches and pits more than 1.5 m deep (and deeper than they are wide at the top) are notifiable hazardous work, which needs at least 24 hours' notice to WorkSafe. So do erecting or dismantling scaffolding with a fall risk of 5 m or more, and some other high-risk work.
+Ref: Health and Safety in Employment Regulations 1995 reg 26 · worksafe.govt.nz (hazardous work notifications)
+
+--- hs-11 | Site scenario
+Q: You're re-roofing a two-storey house, where someone could fall more than 5 m. Do you need to notify WorkSafe 24 hours before starting?
+A) Yes. Any fall risk over 5 m is notifiable.
+B) Only if you use scaffolding.
+C) Only if the roof is steeper than 30°.
+D)* No. Work on residential buildings up to and including two full storeys is excluded from the 5 m notification rule, but you must still manage the fall risk.
+Why: The 24-hour notification for work where someone could fall 5 m or more excludes residential buildings of up to and including two full storeys, work done only from a ladder, and minor or routine maintenance. Being exempt from notification doesn't remove the duty to control the fall risk with edge protection, scaffolding or other controls.
+Ref: Health and Safety in Employment Regulations 1995 reg 26 · worksafe.govt.nz
+
+--- hs-12 | Rule check
+Q: Under WorkSafe's working at height guidance (August 2026), which of these is right?
+A) Falls under 3 m don't need to be managed.
+B) Ladders are fine for any task if you're careful.
+C) Standing on a top plate is fine for short periods.
+D)* Fall risks must be managed at any height, and you should never stand on a top plate without fall protection.
+Why: WorkSafe's 2026 guidance says there's no minimum height: fall risks must be managed at any height. Never stand on a top plate without fall protection. Ladders are for short, low-risk work only, set at 4:1 and extending 1 m above the landing.
+Ref: worksafe.govt.nz (Working at height in New Zealand, 2026)
+
+--- hs-13 | Site scenario
+Q: You're about to strip old cladding off a 1970s house. What should you consider first?
+A) Nothing special, as long as you wear a dust mask.
+B) Only whether the cladding can be recycled.
+C) Whether the council needs to inspect.
+D)* Whether it contains asbestos. Pre-2000 buildings are likely to, and it must be identified and removed safely, by a licensed removalist where required.
+Why: Buildings from before 2000 are likely to contain asbestos. It must be identified before work starts. Friable asbestos needs a Class A licensed removalist, and more than 10 m² of non-friable asbestos needs at least a Class B licence. Licensed removalists must notify WorkSafe at least 5 days before starting.
+Ref: worksafe.govt.nz (asbestos removal)
+
+--- hs-14 | Rule check
+Q: Which welfare facilities must workers on a building site have access to?
+A) None on temporary sites
+B) Only a first aid kit in the ute
+C) Only a portable toilet
+D)* Toilets and hand-washing, clean drinking water, first aid facilities, and a sheltered place for meal breaks
+Why: Workers must have toilets and hand-washing facilities, clean drinking water, first aid facilities, and somewhere to have a meal break in reasonable comfort and shelter. They also need to know what to do in an emergency.
+Ref: LBP Handbook p.23 · GRWM Regulations 2016
+
+--- hs-15 | Site scenario
+Q: The homeowner wants to wander through the site on weekends to see progress. What's your responsibility as the main contractor?
+A) None. It's their property.
+B) Lock the site and never let them in.
+C) Get them to sign a waiver so you're not responsible.
+D)* Make sure visitors aren't harmed by hazards in the workplace you control, for example by escorting them and briefing them on hazards.
+Why: As the PCBU controlling the workplace, you must ensure, so far as is reasonably practicable, that other people, including clients visiting the site, aren't put at risk by the work. Waivers don't transfer HSWA duties.
+Ref: LBP Handbook p.19 · HSWA 2015 s36

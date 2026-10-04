@@ -1,0 +1,442 @@
+# E2/AS1 weathertightness & clearances (E2/AS1 4th edition, effective 28 July 2025)
+
+--- e2-01 | Site scenario
+Q: On a slab-on-ground house, the landscaper has poured a concrete path hard up against the wall. The bottom of the weatherboards is now 60 mm above the path. What's the minimum clearance from a paved surface to the bottom of the cladding?
+A) 35 mm
+B) 50 mm
+C)* 100 mm
+D) 175 mm
+Why: The bottom of the cladding must finish at least 100 mm above a paved surface, or 175 mm above unpaved ground. At 60 mm, splash and ponding water can get up behind the cladding. The path needs lowering or cutting back before the final inspection.
+Tip: Learn the pair: 100 mm to paved, 175 mm to unpaved. Landscaping done after you leave site is a common way these get lost, so point it out to the owner.
+Ref: E2/AS1 Table 9.1.2.1 and para 9.1.2.6
+
+--- e2-02 | Rule check
+Q: What's the minimum height of a concrete slab floor above finished unpaved ground (for claddings other than masonry veneer)?
+A) 100 mm
+B) 150 mm
+C) 175 mm
+D)* 225 mm
+Why: The slab must sit at least 225 mm above unpaved ground, or 150 mm above paved ground. Set slab levels so these heights still work once the final landscaping goes in.
+Tip: For masonry veneer the slab heights in the same table are 100 mm (paved) and 150 mm (unpaved).
+Ref: E2/AS1 Table 9.1.2.1 and para 9.1.2.4
+
+--- e2-03 | Rule check
+Q: A single house has one elevation with an E2/AS1 risk matrix score of 13. Every other elevation scores under 12. What building category is it for LBP purposes?
+A) Category 1
+B)* Category 2
+C) Category 3
+D) It can't be classed until the cladding is chosen
+Why: Category 1 is a single residential unit with a risk matrix score under 12 on every elevation. A score of 12 or more on any one elevation makes it Category 2. Category 3 covers multi-unit buildings over 10 m high and buildings with non-residential parts.
+Ref: LBP Handbook p.6 · E2/AS1 Table 3.1.3.1
+
+--- e2-04 | Rule check
+Q: Which of these is NOT one of the six risk factors in the E2/AS1 building envelope risk matrix?
+A) Envelope complexity
+B) Number of storeys
+C) Deck design
+D)* Distance from the coast
+Why: The six risk factors are wind zone, number of storeys, roof/wall intersection design, eaves width, envelope complexity and deck design. Distance from the coast matters for the durability of fixings and flashings (exposure zones), not for the risk score.
+Tip: Be able to list all six from memory. Assessors often ask you to talk through a risk matrix on one of your own jobs.
+Ref: E2/AS1 Figure 3.1.1.1 and Table 3.1.2.1
+
+--- e2-05 | Calculation
+Q: Work out the risk score for this elevation: Very High wind zone, two storeys, gable roof with eaves (roof/wall intersection fully protected), 450 mm eaves, simple rectangular shape with one cladding, and a timber slat deck attached at first-floor level.
+A) 7
+B) 9
+C)* 11
+D) 13
+Why: Wind zone Very High = 2. Two storeys = 2. Roof/wall fully protected = 0. Eaves of 450 mm on a two-storey building = 5 (0–450 mm is very high risk at two storeys). Simple shape, single cladding = 0. Slat deck attached at first floor = 2. Total 2 + 2 + 0 + 5 + 0 + 2 = 11.
+Tip: Eaves width scores depend on the number of storeys. 450 mm eaves score 2 on a single storey but 5 on two storeys.
+Ref: E2/AS1 Table 3.1.2.1 and Table 3.1.3.1
+
+--- e2-06 | Site scenario
+Q: An elevation scores 9 on the risk matrix. The plans show fibre cement weatherboards. What does E2/AS1 require?
+A) Direct fixing is fine, because weatherboards can be direct fixed up to a score of 12.
+B) A rigid underlay instead of a cavity.
+C)* Fix them over a nominal 20 mm drained cavity.
+D) Specific design, because the score is over 6.
+Why: Fibre cement weatherboards can only be direct fixed for scores of 0 to 6. From 7 to 20 they must go over a nominal 20 mm drained cavity. Over 20, E2/AS1 no longer applies: redesign to lower the score or use specific design.
+Ref: E2/AS1 Table 3.1.3.2
+
+--- e2-07 | Rule check | keep
+Q: Up to what risk score can bevel-back timber weatherboards be direct fixed to the framing under E2/AS1?
+A) 6
+B)* 12
+C) 20
+D) Any score, because timber weatherboards never need a cavity
+Why: All timber weatherboard types can be direct fixed for scores of 0 to 6, and bevel-back weatherboards (and vertical board and batten) can still be direct fixed from 7 to 12. From 13 to 20, bevel-back weatherboards need a drained cavity.
+Tip: Rusticated weatherboards are different: they need a cavity from a score of 7.
+Ref: E2/AS1 Table 3.1.3.2
+
+--- e2-08 | Site scenario
+Q: The risk matrix for one face of a proposed house comes out at 22. What are the options under E2/AS1?
+A) Use any cladding over a drained cavity.
+B) Use a rigid underlay with a drained cavity.
+C) Use masonry veneer, which suits any risk score.
+D)* Redesign to bring the score down, or treat that face as specific design outside E2/AS1.
+Why: A score over 20 is outside E2/AS1. Either change the design (for example wider eaves or a simpler deck) to lower the score, or go down a specific-design path. With specific design the council may ask for more detail, more inspections or a third-party review.
+Ref: E2/AS1 Table 3.1.3.2 and note 8
+
+--- e2-09 | Rule check
+Q: How is eaves width measured for the E2/AS1 risk matrix?
+A) From the wall framing to the end of the rafter.
+B) Along the slope of the soffit lining.
+C) From the top plate to the fascia.
+D)* Horizontally from the outside face of the wall cladding to the outer edge of the overhang, including fascia and gutter.
+Why: Eaves width is measured horizontally from the external face of the wall cladding to the outer edge of the overhang, and fascias and external gutters count. Balustrades and parapets count as 0 mm eaves.
+Ref: E2/AS1 Table 3.1.2.1 notes 1 and 2
+
+--- e2-10 | Rule check
+Q: One face of a house has a parapet instead of eaves. What eaves width do you use for that face in the risk matrix?
+A)* 0 mm
+B) The parapet height
+C) 100 mm
+D) The width of the capping
+Why: Parapets and balustrades count as 0 mm eaves, so that face scores the maximum for eaves width. A parapet also makes the roof/wall intersection fully exposed (3). Parapets push risk scores up quickly.
+Ref: E2/AS1 Table 3.1.2.1 note 2
+
+--- e2-11 | Rule check
+Q: An enclosed deck is cantilevered out at first-floor level. What does it score for deck design in the risk matrix?
+A) 0 (low)
+B) 2 (medium)
+C)* 4 (high)
+D) 6 (very high)
+Why: An enclosed deck exposed in plan or cantilevered at first-floor level is high risk (4). At second floor or above it's very high (6). A timber slat deck at ground level scores 0, and a deck fully covered by roof or a slat deck at first or second floor scores 2.
+Ref: E2/AS1 Table 3.1.2.1
+
+--- e2-12 | Rule check | keep
+Q: What size cavity battens does E2/AS1 call for behind a cladding on a drained cavity?
+A) 10–15 mm thick, any width
+B)* Nominal 20 mm (18–25 mm thick) and at least 45 mm wide
+C) At least 30 mm thick and 70 mm wide
+D) Any size, as long as they're fixed with the cladding fixings
+Why: Cavity battens are nominal 20 mm, between 18 and 25 mm thick, at least 45 mm wide, and fixed through the wall underlay into the framing by the cladding fixings. Timber battens must meet B2/AS1 for treatment.
+Ref: E2/AS1 para 9.1.7.8
+
+--- e2-13 | Rule check
+Q: Behind fibre cement weatherboards on a drained cavity, how should the cavity be finished at the top and bottom?
+A) Vented at the top and bottom so air can flow straight through.
+B) Sealed at the bottom and vented at the top.
+C)* Drained and open to the outside at the bottom (with vermin-proofing), but not vented at the top.
+D) Sealed at both ends to stop wind-driven rain getting in.
+Why: Drained cavities must be open at the bottom so water can drain out, with vermin-proofing across the opening. Apart from masonry veneer, the cavity is not vented at the top. Air movement between the cavity and the framing, roof space and subfloor also has to be restricted.
+Ref: E2/AS1 paras 9.1.7.2 and 9.1.7.4
+
+--- e2-14 | Rule check
+Q: What size openings must the vermin-proofing (cavity closer) at the base of a drained cavity have?
+A) 1–2 mm holes
+B) 6–10 mm slots
+C)* 3–5 mm holes or slots, giving at least 1000 mm² of opening per metre of wall
+D) 12 mm gaps every 600 mm
+Why: Vermin-proofing needs holes or slots between 3 and 5 mm, adding up to 1000 mm² of opening per lineal metre of wall, so the cavity can still drain and breathe. It goes at the base of the cavity and above window and door heads.
+Ref: E2/AS1 paras 9.1.7.5 and 9.1.7.7
+
+--- e2-15 | Rule check
+Q: Above a window head flashing on a cavity wall, how far must the cladding extend past the vermin-proofing to form a drip edge?
+A) 5 mm
+B) 10 mm
+C)* 15 mm
+D) 25 mm
+Why: The cladding needs a drip edge of at least 15 mm past the vermin-proofing above window and door head flashings, and at least 10 mm at the base of walls.
+Ref: E2/AS1 para 9.1.7.7(c)
+
+--- e2-16 | Site scenario
+Q: Your apprentice is wrapping the house. Which way of installing flexible wall underlay is correct?
+A) Run it vertically, with 50 mm laps at the joins.
+B) Lap lower sheets over upper sheets so the staples hold better.
+C) Stop it at the top of the bottom plate so it doesn't sit in the cavity.
+D)* Run it horizontally, upper sheets over lower, with 75 mm horizontal laps and 150 mm laps over studs at vertical joins.
+Why: Flexible wall underlay runs horizontally with upper sheets lapped over lower ones so water sheds outwards. Laps are at least 75 mm at horizontal joints and 150 mm over studs at vertical joints. It extends 35 mm below the bottom plate or bearer.
+Tip: Supervising RBW means checking details like this before the cladding hides them.
+Ref: E2/AS1 para 9.1.6.1
+
+--- e2-17 | Rule check | keep
+Q: How far must flexible wall underlay extend below the bottom plate or bearer?
+A) It should finish flush with the bottom of the plate
+B) 20 mm
+C)* 35 mm
+D) 50 mm
+Why: The wall underlay must extend 35 mm below the bottom plate or bearer, so water running down it drips clear of the framing.
+Ref: E2/AS1 para 9.1.6.1(e)
+
+--- e2-18 | Site scenario
+Q: You're cladding a house in an Extra High wind zone. What does E2/AS1 require behind the cladding?
+A) Flexible building wrap and a drained cavity, the same as any other zone.
+B)* A rigid underlay, such as 7 mm H3 plywood or 6 mm fibre cement, with a drained cavity.
+C) Direct-fixed cladding over two layers of building wrap.
+D) Nothing extra. Extra High is treated the same as Very High.
+Why: In Extra High wind zones every cladding goes over a drained cavity and a rigid underlay (at least 7 mm H3 plywood or 6 mm fibre cement, sheet edges on solid framing, over-fixed with flexible underlay, cavity battens at 600 mm maximum centres). Flashing upstands also need hooks or hems plus an extra 25 mm.
+Ref: E2/AS1 paras 9.1.1.4, 9.1.6.2 and 9.1.6.4
+
+--- e2-19 | Rule check
+Q: What's an acceptable air seal between a window reveal and the wrapped opening?
+A)* Self-expanding polyurethane foam or sealant, installed over a closed-cell PEF backing rod
+B) Fibreglass insulation packed into the gap
+C) Flashing tape across the gap on the outside face
+D) Nothing. The head flashing keeps the water out.
+Why: Every window, door and penetration needs a flexible air seal between the reveal or frame and the wrapped opening. E2/AS1 accepts self-expanding polyurethane foam or a suitable sealant, both installed over a closed-cell polyethylene foam (PEF) backing rod.
+Ref: E2/AS1 para 9.1.5.1
+
+--- e2-20 | Rule check
+Q: Why does E2/AS1 want a PEF backing rod behind self-expanding foam in a window air seal?
+A) To add insulation around the window
+B) To hold the window square while the foam cures
+C)* To stop the foam expanding out to the exterior and forming a moisture bridge to the inside
+D) To give the window fixings something to bite into
+Why: Without a backing rod, expanding foam can push right through to the outside of the wall and form a bridge that carries water inwards. The air seal's job is to stop wind-driven air (and the water it carries) getting through the reveal.
+Ref: E2/AS1 para 9.1.5.1 comment
+
+--- e2-21 | Rule check
+Q: Once a window is installed, what's the minimum overlap of the window's facing flange over the cladding or back flashing at the sill?
+A) 5 mm
+B)* 8 mm
+C) 10 mm
+D) 15 mm
+Why: The facing flange must overlap the surrounding cladding or back flashings by at least 8 mm at the sill and 10 mm at the jambs and head.
+Ref: E2/AS1 para 9.1.9.3 and Table 4.5.1.1
+
+--- e2-22 | Rule check
+Q: In a High wind zone, what's the minimum lap of a window head flashing up under the cladding above?
+A) 15 mm
+B)* 35 mm
+C) 60 mm
+D) 75 mm
+Why: Head flashings lap at least 35 mm under the cladding above, rising to 60 mm in Extra High wind zones. The head flashing slopes at 15°, has a 40 mm total upstand, and keeps a 5 mm (maximum 10 mm) anti-capillary gap to the cladding.
+Ref: E2/AS1 Table 4.5.1.1 (Heads)
+
+--- e2-23 | Rule check
+Q: What gap should there be between the head flashing and the bottom edge of the cladding above it?
+A) None. Seal the cladding to the flashing.
+B) 2 mm
+C) 20 mm, for cavity ventilation
+D)* 5 mm (10 mm maximum), as an anti-capillary gap
+Why: A 5 mm gap, and no more than 10 mm, stops water being drawn up between the cladding and the flashing by capillary action. Sealing the cladding down onto the flashing traps water instead.
+Ref: E2/AS1 Table 4.5.1.1 (Heads)
+
+--- e2-24 | Site scenario
+Q: The client wants an aluminium window with a raking (sloped) head in a weatherboard wall. Can you use the standard E2/AS1 window details?
+A) Yes, with a standard head flashing.
+B) Yes, as long as the slope is under 15°.
+C)* No. E2/AS1 window details only cover horizontal heads, so a sloped head needs specific design.
+D) Yes, as long as the window is under 13.5 m².
+Why: Within E2/AS1, aluminium windows and doors must have horizontal heads only. Sloped heads need specifically designed kick-out flashings at the bottom of the head flashing. E2/AS1 also limits frame size: 5000 × 5000 mm and 13.5 m² for sills above floor level, or 6000 mm wide and 16 m² for sills at floor level.
+Ref: E2/AS1 para 9.1.9.1
+
+--- e2-25 | Site scenario
+Q: On a house with direct-fixed weatherboards, you check the window sill flashings before the cladding goes on. Which of these is a fault?
+A) The sill flashing extends past the window's condensation channel.
+B) The sill flashing is flat.
+C)* The sill flashing slopes back towards the building.
+D) The sill is supported as the window manufacturer specifies.
+Why: Sill flashings must extend past the condensation channel and must never slope backwards towards the building, because a back slope runs water into the wall. E2/AS1 Table 4.5.1.1 shows the sill flashing for direct-fixed windows as flat.
+Ref: E2/AS1 Table 4.5.1.1 note 6
+
+--- e2-26 | Rule check | keep
+Q: How far can a drained cavity run continuously up a wall before an inter-storey flashing is needed?
+A) One storey or 3.5 m, whichever is less
+B)* Two storeys or 7 m, whichever is less
+C) Three storeys or 10 m
+D) There's no limit
+Why: A continuous drained cavity is limited to the lesser of two storeys or 7 m. Beyond that, an inter-storey flashing bridges the cavity and drains it to the outside, so the cavity doesn't carry too much water.
+Ref: E2/AS1 para 9.1.8.4
+
+--- e2-27 | Rule check
+Q: On a slab-on-ground house with direct-fixed weatherboards, how should the bottom of the cladding finish against the slab?
+A) Flush with the top of the slab
+B) Overlapping the slab by 20 mm and sealed to it
+C) Overlapping the slab by 100 mm and fixed into the slab edge
+D)* Overlapping the slab by 50 mm, held off the slab face by at least 6 mm
+Why: The base of the cladding overlaps the slab by 50 mm. For direct-fixed claddings it's also held off the slab face by at least 6 mm so water can't wick up by capillary action. It must still finish 100 mm above paving or 175 mm above unpaved ground.
+Ref: E2/AS1 para 9.1.2.6
+
+--- e2-28 | Rule check
+Q: On a house with a suspended timber floor, how far must the wall cladding extend below the bearer or lowest part of the floor framing?
+A) 20 mm
+B) 35 mm
+C)* 50 mm
+D) 100 mm
+Why: The cladding must overlap the timber floor structure by at least 50 mm. It must also keep 100 mm clearance to paving and 175 mm to unpaved ground, and there must be no direct connection between the subfloor space and a drained cavity.
+Ref: E2/AS1 para 9.1.2.8 and Table 9.1.2.1 note 2
+
+--- e2-29 | Site scenario
+Q: A lean-to roof meets the wall of the house. What clearance must the bottom of the wall cladding have above the roofing or apron flashing?
+A) 10 mm
+B) 20 mm
+C)* 35 mm
+D) 50 mm
+Why: Wall cladding must finish at least 35 mm above roof claddings and membrane decks, measured to the top of the apron flashing. The gap keeps the cladding's bottom edge dry and lets it be cleaned and painted.
+Tip: Keeping this 35 mm clearance is listed as ongoing maintenance in E2/AS1, so mention it in the owner's maintenance information.
+Ref: E2/AS1 para 9.1.2.2 and Table 4.5.1.1
+
+--- e2-30 | Rule check
+Q: In a Medium wind zone with a 25° roof, what total upstand does a metal roof-to-wall flashing need?
+A) 90 mm
+B)* 110 mm
+C) 125 mm
+D) 150 mm
+Why: Roof-to-wall metal flashings need a total upstand of 110 mm, with a 75 mm lap under the cladding above and 35 mm clearance below the cladding. In Extra High wind zones the upstand rises to 125 mm and the lap to 90 mm.
+Ref: E2/AS1 Table 4.5.1.1 (Roof or deck to wall)
+
+--- e2-31 | Rule check
+Q: Where a butyl or EPDM membrane deck meets a wall, how far must the membrane lap up under the cladding above?
+A) 35 mm
+B) 75 mm
+C)* 115 mm
+D) 150 mm
+Why: Membrane roofs and decks need at least 115 mm lap under the cladding above, with the cladding still 35 mm clear of the membrane surface.
+Ref: E2/AS1 Table 4.5.1.1 (Membrane roofs and decks)
+
+--- e2-32 | Rule check
+Q: For an enclosed (membrane) deck, what's the minimum step down from the door threshold to the finished deck surface?
+A) 25 mm
+B) 50 mm
+C)* 100 mm
+D) 150 mm
+Why: Enclosed decks need at least 100 mm between the opening threshold and the finished deck surface. Level thresholds onto enclosed decks need the special removable-surface details in Part 7.
+Ref: E2/AS1 para 7.2.3.1
+
+--- e2-33 | Rule check
+Q: For a slatted timber deck next to the house, what's the minimum gap between the external wall and the first decking slat?
+A) 5 mm
+B)* 12 mm
+C) 20 mm
+D) 35 mm
+Why: Leave at least a 12 mm gap between the external wall and the adjacent decking slat so water can drain and debris doesn't pack against the cladding.
+Ref: E2/AS1 para 7.2.2.2
+
+--- e2-34 | Site scenario | keep
+Q: You're building a cantilevered slatted timber deck off a first-floor living room. How far below the door threshold must the deck surface be?
+A) It can be level with the threshold
+B) 25 mm
+C)* 50 mm
+D) 100 mm
+Why: For cantilevered slatted decks, the deck surface must be at least 50 mm below the threshold. A non-cantilevered slatted deck built to the E2/AS1 junction detail can be level with the threshold. Enclosed decks need 100 mm.
+Ref: E2/AS1 para 7.2.2.1
+
+--- e2-35 | Site scenario
+Q: Which membrane deck design is within E2/AS1?
+A) A 50 m² deck with a 1:60 fall
+B)* A 35 m² deck with a 1:40 fall, no steps, and no downpipes discharging onto it
+C) A 30 m² deck with an integral roof garden
+D) A 40 m² deck with a downpipe discharging straight onto it
+Why: Membrane decks under E2/AS1 must be butyl or EPDM over plywood, with a fall of at least 1.5° (1:40), a maximum area of 40 m², no steps in level except into gutters, no integral roof gardens and no downpipes discharging directly onto the deck.
+Ref: E2/AS1 para 8.5.1.2
+
+--- e2-36 | Rule check
+Q: What's the minimum fall for a butyl or EPDM membrane roof under E2/AS1?
+A) 1:100 (about 0.6°)
+B) 1:60 (about 1°)
+C) 1:40 (1.5°)
+D)* 1:30 (2°)
+Why: Membrane roofs need at least 2° (1:30). Membrane decks need at least 1.5° (1:40), and internal gutters at least 1:100 with no cross seams.
+Ref: E2/AS1 para 8.5.1.2
+
+--- e2-37 | Site scenario
+Q: A client wants corrugated steel on a 5° lean-to roof, 6 m long with no end laps. What do you tell them?
+A) That's fine. Any metal roof can go down to 3°.
+B) That's fine, as long as it's fixed at every crest.
+C) Corrugate needs at least 15°.
+D)* Corrugate needs at least 8°, so use a trough profile or a trapezoidal profile with crests 27 mm or higher (3° minimum).
+Why: For metal roofs up to 18 m long without end laps, corrugated needs at least 8° (1:7). Trough profiles can go to 3°, and trapezoidal to 3° if the crest is 27 mm or higher (4° if lower). Check the manufacturer's requirements too, as they may be stricter.
+Ref: E2/AS1 para 8.4.4.1
+
+--- e2-38 | Rule check
+Q: What's the maximum moisture content of timber framing in an insulated house when the interior linings go on?
+A) 12%
+B) 16%
+C)* 20%
+D) 24%
+Why: Framing must be at 20% or less in insulated buildings (24% in non-insulated), or lower if NZS 3602 or the lining manufacturer says so. Timber weatherboards and joinery must be at 20% or less when painted, and concrete slabs must read below 75% relative humidity before fixed floor coverings go down.
+Tip: Know how you'd check it on site: a calibrated resistance meter, probes at least a third of the way into the timber, more than 200 mm from board ends.
+Ref: E2/AS1 paras 10.1.2.1 and 10.2.1.1
+
+--- e2-39 | Rule check | keep
+Q: What level change does E2/AS1 require at the vehicle door of a garage attached to the house?
+A) None, if the door is a weather-resisting sectional door
+B) 12 mm
+C)* 50 mm minimum total level change between the garage floor and the exterior paving
+D) 100 mm
+Why: Garage openings need at least a 50 mm total level change between inside and outside paving, plus drainage away from the threshold. Ways to get it include a 50 mm drop in ground level, a raised threshold or concrete nibs. At the door opening, the bottom of the cladding must also be at least 25 mm above the driveway, and unlined external garage walls need a rigid underlay.
+Ref: E2/AS1 para 9.1.1.6
+
+--- e2-40 | Rule check
+Q: What's the maximum spacing of dwangs (nogs) behind direct-fixed vertical weatherboards?
+A)* 480 mm
+B) 600 mm
+C) 800 mm
+D) 1350 mm
+Why: Dwangs are at 1350 mm maximum centres generally, but 480 mm maximum behind direct-fixed vertical weatherboards and vertical corrugated or symmetrical trapezoidal metal, because those claddings fix into horizontal framing.
+Ref: E2/AS1 para 9.1.1.5
+
+--- e2-41 | Rule check
+Q: In an Extra High wind zone, what does E2/AS1 require for flashing upstands?
+A) Either hooks and hems, or an extra 25 mm of upstand
+B)* Both hooks or hems and an extra 25 mm of upstand
+C) Sealant along the top of the upstand instead of hooks
+D) An extra 50 mm of upstand, with no hooks needed
+Why: In Low to Very High wind zones you can either fold hooks or hems on upstands or leave them off and add 25 mm to the upstand. In Extra High wind zones you need both. Exposed bottom edges of flashings get a kick-out or bird's beak.
+Ref: E2/AS1 para 4.4.3.4 and Table 4.5.1.1 note 1
+
+--- e2-42 | Site scenario
+Q: A three-storey house on a sloping site measures 10.8 m from the lowest adjacent ground level to the ridge. Can E2/AS1 be used for its weathertightness details?
+A) Yes. It's only three storeys.
+B) Yes. Height is measured from the average ground level.
+C) Yes. The ridge doesn't count.
+D)* No. E2/AS1 is limited to 10 m, measured from the lowest adjacent ground level to the highest point of the roof.
+Why: E2/AS1 covers timber-framed buildings within NZS 3604, up to 3 storeys and no more than 10 m from the lowest ground level next to the building to the highest point of the roof (chimneys and aerials excluded). Above that, weathertightness needs an alternative solution or specific design.
+Ref: E2/AS1 para 1.1.1.1
+
+--- e2-43 | Rule check
+Q: A building consent application for a new house is lodged in September 2026. Which edition of E2/AS1 can it use to show compliance?
+A) The 3rd edition (Amendment 10), because most designers still use it
+B) Either edition, the designer's choice
+C) Whichever edition the council prefers
+D)* The 4th edition. The 3rd edition could only be used for applications lodged before 1 August 2026.
+Why: E2/AS1 4th edition took effect on 28 July 2025. The 3rd edition could still be used for applications submitted before 1 August 2026, so anything lodged now uses the 4th edition (or another compliance path).
+Tip: Assessors expect you to know which documents are current. Codewords and LBP updates flag changes like this.
+Ref: E2/AS1 4th edition, Preface (document status)
+
+--- e2-44 | Site scenario
+Q: A window opening is wider than the cavity batten spacing. What must you leave above the head flashing at the bottom of the vertical cavity battens?
+A) Nothing. Seal the battens down onto the flashing.
+B) A horizontal batten across the full width.
+C) A 50 mm gap filled with vermin mesh.
+D)* A gap of at least 10 mm between the bottom of the battens and the flashing, so air can move between cavities
+Why: Where a penetration is wider than the batten spacing, leave at least a 10 mm gap between the bottom of each vertical cavity batten and the flashing below. That lets air and water move between neighbouring cavity spaces.
+Ref: E2/AS1 para 9.1.8.2
+
+--- e2-45 | Site scenario
+Q: The studs are at 600 mm centres, the wall underlay is flexible building wrap, and the cladding goes on a drained cavity. What else does E2/AS1 require?
+A) Nothing more
+B) A second layer of wrap
+C) Thicker cavity battens
+D)* An intermediate restraint, such as polypropylene tape or galvanised wire at 300 mm centres, to stop the wrap and insulation bulging into the cavity
+Why: Where studs are more than 450 mm apart and only flexible wrap is used, the wrap and insulation must be restrained from bulging into the cavity. Accepted options are 75 mm galvanised mesh, polypropylene tape or galvanised wire at 300 mm centres drawn taut, or extra cavity battens at 300 mm maximum centres.
+Ref: E2/AS1 para 9.1.7.10
+
+--- e2-46 | Rule check
+Q: In wind zones up to Very High, what forms the barrier to airflow in an external wall?
+A) The building wrap on its own
+B)* The interior linings, with all joints stopped
+C) The cavity battens
+D) The wall insulation
+Why: Up to Very High wind zones, the barrier to airflow is the interior lining with all joints stopped. In Extra High zones a rigid underlay does this job. Unlined walls, such as attic gable ends, need an air barrier fixed to the framing before the cladding or battens.
+Ref: E2/AS1 paras 9.1.3.1 and 9.1.3.2
+
+--- e2-47 | Rule check
+Q: Under B2, how long must a flashing that is completely hidden behind masonry veneer last?
+A) 5 years
+B) 15 years
+C)* 50 years
+D) 100 years
+Why: Flashings that are completely hidden behind claddings like masonry veneer, or otherwise inaccessible, need 50-year durability. Exposed, partly exposed or accessible flashings need 15 years. Two-part flashings let you replace the exposed part without removing cladding.
+Ref: E2/AS1 para 4.2.1.1 comment · Building Code clause B2
+
+--- e2-48 | Rule check
+Q: What minimum cavity does E2/AS1 assume for traditional clay brick masonry veneer?
+A) 20 mm
+B) 25 mm
+C)* 40 mm
+D) 75 mm
+Why: Masonry veneer always goes over a drained cavity, at least 40 mm for traditional veneer to SNZ HB 4236. Other claddings that need a cavity use the nominal 20 mm cavity.
+Ref: E2/AS1 Table 3.1.3.2 note 3

@@ -1,0 +1,127 @@
+# Contracts & consumer protection (Building Act Part 4A; Construction Contracts Act 2002)
+
+--- con-01 | Rule check
+Q: For residential building work, above what price must there be a written contract with the homeowner?
+A) $5,000
+B) $10,000
+C)* $30,000 including GST
+D) $100,000
+Why: Residential building work costing $30,000 or more (including GST) must have a written contract with the minimum content set out in the regulations. That's the total price for the job, so splitting it into several invoices just under $30,000 doesn't get around it.
+Ref: Building Act 2004 s362F · LBP Handbook p.17
+
+--- con-02 | Rule check
+Q: Before signing a residential contract, when must you give the client the prescribed disclosure statement and checklist?
+A) Only when the job is under $30,000
+B) Only for new houses
+C) Only when the client is buying the land too
+D)* When the job will cost $30,000 or more (including GST), or whenever the client asks for them
+Why: The disclosure statement (your skills, qualifications, licensing, insurance and guarantees) and the standard checklist must be given before the contract is signed if the work is $30,000 or more, or if the client asks for them. Knowingly giving false or misleading information, or leaving information out, can lead to fines of up to $50,000 for individuals and $150,000 for organisations.
+Ref: Building Act 2004 s362D · LBP Handbook p.17
+
+--- con-03 | Rule check
+Q: When do the implied warranties for residential building work apply?
+A) Only to contracts over $30,000
+B) Only if they're written into the contract
+C) Only to new builds
+D)* To all residential building work, whatever the price and whether or not there's a written contract. You can't contract out of them.
+Why: The implied warranties in section 362I apply to every residential building contract regardless of value, and section 362K stops parties contracting out of them. Later owners of the home can also rely on them.
+Ref: Building Act 2004 ss362I–362K · LBP Handbook p.17
+
+--- con-04 | Rule check
+Q: Which of these is NOT one of the implied warranties for residential building work?
+A) The work will be done competently and in line with the plans and specifications
+B) Materials will be suitable and, unless otherwise agreed, new
+C) The work will comply with the Building Act and Building Code
+D)* The work will be finished for the price first quoted, whatever variations the client asks for
+Why: The implied warranties cover proper and competent work to the plans and specs, suitable (and new) materials, compliance with the law, reasonable care and skill, completion within the agreed or a reasonable time, a home fit to live in, and fitness for any stated purpose. Price changes from client-requested variations aren't covered by them.
+Ref: Building Act 2004 s362I
+
+--- con-05 | Rule check | keep
+Q: How long after the work do the implied warranties let a homeowner bring a claim?
+A) 12 months
+B) 2 years
+C) 6 years
+D)* Up to 10 years
+Why: Homeowners can bring a claim under the implied warranties for up to 10 years (the long-stop limit in section 393). That's separate from the first-year defect repair period.
+Ref: Building Act 2004 s393(2) · LBP Handbook p.19
+
+--- con-06 | Rule check
+Q: How long is the defect repair period after residential building work is completed?
+A) 90 days
+B) 6 months
+C)* 12 months
+D) 24 months
+Why: For 12 months from completion, the contractor must fix any defects the client notifies in writing, within a reasonable time. If you dispute a defect during this period, it's up to you to prove it isn't your fault (or your subcontractor's, or due to products you used).
+Ref: Building Act 2004 s362Q · LBP Handbook p.19
+
+--- con-07 | Site scenario
+Q: Eighteen months after completion, a client reports a defect. You think it isn't your fault. Who has to prove what?
+A) You have to prove it isn't your fault, as in the first year.
+B) Nobody. Claims end after 12 months.
+C) The council decides.
+D)* The homeowner has to prove there's a defect, but the implied warranties still apply for up to 10 years.
+Why: Within the 12-month defect repair period the contractor must prove a disputed defect isn't their fault. After that, the homeowner has to prove it. You can still be liable under the implied warranties for up to 10 years.
+Ref: LBP Handbook p.19
+
+--- con-08 | Rule check
+Q: What must you give the client when residential building work is finished, whatever the price?
+A) Only the final invoice
+B) Only the code compliance certificate
+C) Your record of work, and nothing else
+D)* Copies of relevant insurance policies, guarantees and warranties (with how to claim and whether they transfer), and maintenance information for the work
+Why: Section 362T requires, for all residential work, copies of insurance policies covering the work, guarantees and warranties for materials or services (how to claim, whether transferable, whether they must be registered), and information on maintaining the work where it affects compliance or a guarantee. Not providing it can lead to a $500 infringement fee.
+Ref: Building Act 2004 s362T · LBP Handbook pp.18–19
+
+--- con-09 | Rule check
+Q: What's the infringement fee for failing to give a client the disclosure statement and checklist, a compliant written contract, or the completion information?
+A) $50
+B)* $500
+C) $5,000
+D) $50,000
+Why: Each of these is an infringement offence with a $500 fee. More serious offences, such as knowingly giving false or misleading information in the disclosure statement, can be prosecuted with fines of up to $50,000 for individuals and $150,000 for organisations.
+Ref: Building Act 2004 ss362D, 362F and 362T · LBP Handbook p.17
+
+--- con-10 | Rule check
+Q: There's no written contract for a $45,000 residential job. What happens?
+A) There's no contract, so the client owes nothing.
+B) The job is illegal and must stop.
+C) Only the Consumer Guarantees Act applies.
+D)* Default clauses in the Building Act regulations apply automatically, alongside the implied warranties.
+Why: Where a residential contract of $30,000 or more isn't in writing, or misses the minimum content, default clauses are implied. For example, the contractor must get the necessary consents before starting and provide CCCs before the final payment claim. The contractor can also be fined for not having a written contract.
+Ref: Building (Residential Consumer Rights and Remedies) Regulations 2014 · LBP Handbook p.18
+
+--- con-11 | Rule check
+Q: Under the Construction Contracts Act 2002, what applies if your contract doesn't set out how payments work?
+A) You can only be paid at the end of the job.
+B) The client sets the payment dates.
+C) Pay-when-paid clauses apply.
+D)* The default provisions apply, with monthly progress payments.
+Why: The Construction Contracts Act gives default payment provisions (monthly progress payments) where the contract doesn't cover payments, bans pay-when-paid clauses, and offers fast adjudication of disputes. It covers residential and commercial construction contracts.
+Ref: Construction Contracts Act 2002 · LBP Handbook p.20
+
+--- con-12 | Rule check
+Q: Under the Construction Contracts Act, what must go with every payment claim you send?
+A) A copy of your licence
+B) A statutory declaration
+C) Photos of the work
+D)* The prescribed notice (Form 1) explaining how to respond and what happens if the claim isn't answered or paid
+Why: Every payment claim must include the prescribed notice (Form 1). It tells the payer how to respond, for example with a payment schedule, and the consequences of not responding or not paying.
+Ref: Construction Contracts Act 2002 · LBP Handbook p.20
+
+--- con-13 | Rule check
+Q: You're the main contractor on a renovation. A subcontractor's tiling turns out to be defective within the first year. Who has to sort it out with the homeowner?
+A) The homeowner has to chase the subcontractor directly.
+B) The tile supplier
+C) The council
+D)* You, as the main contractor, because you're responsible to the homeowner for your subcontractors' work
+Why: The main contractor must fix defects notified within the 12-month repair period, including work done by subcontractors. That's why it pays to check subcontractors' work as the job goes, not just at the end.
+Ref: LBP Handbook p.19
+
+--- con-14 | Rule check
+Q: When pricing a residential job, what must the price for the $30,000 contract threshold include?
+A) Only your own labour
+B) Only materials
+C) Everything except GST
+D)* The total cost of all the building work, including subcontractors, supplies, fixtures and GST
+Why: The price is the total cost of all the building work, including supplies, fixtures and fittings, subcontractors and GST. You can only leave out a subcontractor's work if they contract with the client separately.
+Ref: LBP Handbook p.18
